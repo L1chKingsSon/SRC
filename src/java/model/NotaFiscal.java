@@ -5,72 +5,56 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Raphael
  */
 public class NotaFiscal {
-    private String codigo;
-    private String data;
-    private float valor;
-    private Cliente cliente;
+    private long id;
+    private LocalDate data;
+    private double valor;
+    private Item itens;
+    private Transacao transacao;
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public String getTransacao() {
+    public Transacao getTransacao() {
         return transacao;
     }
 
-    public void setTransacao(String transacao) {
+    public void setTransacao(Transacao transacao) {
         this.transacao = transacao;
     }
 
-    public Carro getCarro() {
-        return carro;
+    public long getId() {
+        return id;
     }
 
-    public void setCarro(Carro carro) {
-        this.carro = carro;
+    public void setId(long id) {
+        this.id = id;
     }
-    private Funcionario funcionario;
-    private String transacao;
-    private Carro carro;
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public Item getItens() {
+        return itens;
+    }
+
+    public void setItens(Item itens) {
+        this.itens = itens;
+    }
 }

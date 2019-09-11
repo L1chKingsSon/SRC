@@ -9,10 +9,10 @@ package model;
  *
  * @author Raphael
  */
-public class Estacionamento {
+public class Modelo {
     private long id;
-    private long numeroVagas;
-    private Endereco endereco;
+    private String nome;
+    private Marca marca;
 
     public long getId() {
         return id;
@@ -22,19 +22,19 @@ public class Estacionamento {
         this.id = id;
     }
 
-    public long getNumeroVagas() {
-        return numeroVagas;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNumeroVagas(long numeroVagas) {
-        this.numeroVagas = numeroVagas;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 }

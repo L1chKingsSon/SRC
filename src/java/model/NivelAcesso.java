@@ -9,5 +9,8 @@ package model;
  *
  * @author Raphael
  */
-public class Administrador extends Usuario {
+public enum NivelAcesso {
+    ADMIN,
+    FUNCIONARIO;
+    
 }

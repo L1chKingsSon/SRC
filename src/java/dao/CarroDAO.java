@@ -20,6 +20,22 @@ import model.Carro;
  */
 public class CarroDAO {
     
+//         public static Carro instanciarCarro(ResultSet rs) throws SQLException {
+//        Carro carro = new Carro(rs.getInt("idCarro")),
+//                rs.getString("placa"),
+//                rs.getString("chassi"),
+//                rs.getString("ano"),
+//                rs.getString("cor"),
+//                rs.getString("IPVA"),
+//                rs.getString("seguro"),
+//                rs.getString("garantia"),
+//                rs.getString("valorComprado"),
+//                null);
+//                carro.setModelo(rs.getInt("1"));
+//                return carro;
+//    
+//    }
+    
     public static List<Carro> obterCarros() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;

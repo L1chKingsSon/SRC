@@ -9,6 +9,7 @@ package model;
  *
  * @author Raphael
  */
-public class Cliente extends Pessoa{
-    
+public enum Transacao {
+    COMPRA,
+    VENDA;
 }

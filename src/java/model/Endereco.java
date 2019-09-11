@@ -10,14 +10,22 @@ package model;
  * @author Raphael
  */
 public class Endereco {
+    private long id;
     private String cep;
     private String uf;
     private String cidade;
     private String bairro;
     private String logadouro;
-    private int numEndereco;
+    private int numero;
     private String complemento;
-
+    
+    public long getId() {
+        return id;
+    }
+    
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getCep() {
         return cep;
     }
@@ -58,12 +66,12 @@ public class Endereco {
         this.logadouro = logadouro;
     }
 
-    public int getNumEndereco() {
-        return numEndereco;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNumEndereco(int numEndereco) {
-        this.numEndereco = numEndereco;
+    public void setNumEndereco(int numero) {
+        this.numero = numero;
     }
 
     public String getComplemento() {

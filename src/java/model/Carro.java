@@ -5,22 +5,40 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Raphael
  */
 public class Carro {
-    private String placa;
-    private String modelo;
-    private String chassi;
-    private String ano;
-    private String marca;
-    private String cor;
-    private String ipva;
-    private String seguro;
-    private float valorComprado;
-    private int idCarro;
-    private Estacionamento Estacionamento;
+   private long id;
+   private Modelo modelo;
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+   private String placa;
+   private String chassi;
+   private String ano;
+   private String cor;
+   private Boolean IPVA;
+   private LocalDate dataSeguro;
+   private LocalDate dataGarantia;
+   private double valorCompra;
+   private double valorVenda;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPlaca() {
         return placa;
@@ -28,14 +46,6 @@ public class Carro {
 
     public void setPlaca(String placa) {
         this.placa = placa;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
     }
 
     public String getChassi() {
@@ -54,14 +64,6 @@ public class Carro {
         this.ano = ano;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
     public String getCor() {
         return cor;
     }
@@ -70,43 +72,43 @@ public class Carro {
         this.cor = cor;
     }
 
-    public String getIpva() {
-        return ipva;
+    public Boolean getIPVA() {
+        return IPVA;
     }
 
-    public void setIpva(String ipva) {
-        this.ipva = ipva;
+    public void setIPVA(Boolean IPVA) {
+        this.IPVA = IPVA;
     }
 
-    public String getSeguro() {
-        return seguro;
+    public LocalDate getDataSeguro() {
+        return dataSeguro;
     }
 
-    public void setSeguro(String seguro) {
-        this.seguro = seguro;
+    public void setDataSeguro(LocalDate dataSeguro) {
+        this.dataSeguro = dataSeguro;
     }
 
-    public float getValorComprado() {
-        return valorComprado;
+    public LocalDate getDataGarantia() {
+        return dataGarantia;
     }
 
-    public void setValorComprado(float valorComprado) {
-        this.valorComprado = valorComprado;
+    public void setDataGarantia(LocalDate dataGarantia) {
+        this.dataGarantia = dataGarantia;
     }
 
-    public int getIdCarro() {
-        return idCarro;
+    public double getValorCompra() {
+        return valorCompra;
     }
 
-    public void setIdCarro(int idCarro) {
-        this.idCarro = idCarro;
+    public void setValorCompra(double valorCompra) {
+        this.valorCompra = valorCompra;
     }
 
-    public Estacionamento getEstacionamento() {
-        return Estacionamento;
+    public double getValorVenda() {
+        return valorVenda;
     }
 
-    public void setEstacionamento(Estacionamento Estacionamento) {
-        this.Estacionamento = Estacionamento;
+    public void setValorVenda(double valorVenda) {
+        this.valorVenda = valorVenda;
     }
 }
