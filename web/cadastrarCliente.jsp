@@ -14,13 +14,13 @@
     </h1>
 
     <form action="CADASTRAR">
-    
+    Cliente
     <label>Nome</label>
     <input name="nome" type="text"><br><br>
 
     <label>CPF</label>
     <input name="cpf" type="number"><br><br>
-
+    endereço
     <label>CEP</label>
     <input name="cep" type="number"><br><br>
 
@@ -46,16 +46,10 @@
     
     <label>Telefone p/ contato</label>
     <input name="telefone" type="number"><br><br>   
-    
-    <label>Login</label>
-    <input name="login" type="text"><br><br>
-     
-    <label>Senha</label>
-    <input name="senha" type="password"><br><br>
      
     <label>Email</label>
     <input name="email" type="text"><br><br>
-     
+     conta do banco
     <label>Conta no Banco</label>
     <input name="contabanco" type="number"><br><br>
        
