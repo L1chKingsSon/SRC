@@ -13,13 +13,22 @@ public class Estacionamento {
     private long id;
     private long numeroVagas;
     private Endereco endereco;
-
-    public Estacionamento(long id, long numeroVagas, Endereco endereco) {
+    private int idPrimariaEndereco;
+    
+    public Estacionamento(long id, long numeroVagas, Endereco endereco, int idPrimariaEndereco) {
         this.id = id;
         this.numeroVagas = numeroVagas;
         this.endereco = endereco;
     }
+    
+    public int getIdPrimariaEndereco() {
+        return idPrimariaEndereco;
+    }
 
+    public void setIdPrimariaEndereco(int idPrimariaEndereco) {
+        this.idPrimariaEndereco = idPrimariaEndereco;
+    }
+    
     public long getId() {
         return id;
     }

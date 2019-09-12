@@ -13,6 +13,9 @@ public class Modelo {
     private long id;
     private String nome;
     private Marca marca;
+    private int idPrimariaMarca;
+
+
 
     public Modelo(long id, String nome, Marca marca) {
         this.id = id;
@@ -20,6 +23,14 @@ public class Modelo {
         this.marca = marca;
     }
 
+        public int getIdPrimariaMarca() {
+        return idPrimariaMarca;
+    }
+
+    public void setIdPrimariaMarca(int idPrimariaMarca) {
+        this.idPrimariaMarca = idPrimariaMarca;
+    }
+    
     public long getId() {
         return id;
     }
