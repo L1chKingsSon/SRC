@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.ReservaDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ public class ReservaDAO {
     public static List<Reserva> obterReserva() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Reserva> reserva = new ArrayList<Reserva>();
+        List<Reserva> reservas = new ArrayList<Reserva>();
         Reserva reserva = null;
         try {
             conexao = BD.getConexao();
@@ -29,11 +28,11 @@ public class ReservaDAO {
             while(rs.next())
             {
                 reserva = instanciarReserva(rs);
-                reserva.add(reserva);
+                reservas.add(reserva);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return reservas;
     }
 }

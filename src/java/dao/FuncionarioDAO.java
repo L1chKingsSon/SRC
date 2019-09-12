@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.FuncionarioDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,12 +27,12 @@ public class FuncionarioDAO {
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                Funcionario = instanciarFuncionario(rs);
-                Funcionarios.add(funcionario);
+                funcionario = instanciarFuncionario(rs);
+                funcionarios.add(funcionario);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return funcionarios;
     }
 }

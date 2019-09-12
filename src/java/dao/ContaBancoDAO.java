@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.ContaBancoDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ public class ContaBancoDAO {
     public static List<ContaBanco> obterContaBanco() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Funcioanrio> ContaBancos = new ArrayList<ContaBanco>();
+        List<ContaBanco> contaBancos = new ArrayList<ContaBanco>();
         ContaBanco contaBanco = null;
         try {
             conexao = BD.getConexao();
@@ -28,12 +27,12 @@ public class ContaBancoDAO {
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                ContaBanco = instanciarContaBanco(rs);
-                ContaBancos.add(contaBanco);
+                contaBanco = instanciarContaBanco(rs);
+                contaBancos.add(contaBanco);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return contaBancos;
     }
 }

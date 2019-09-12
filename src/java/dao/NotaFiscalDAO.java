@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.NotaFiscalDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ public class NotaFiscalDAO {
     public static List<NotaFiscal> obterNotaFiscal() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<NotaFiscal> notaFiscais = new ArrayList<NotaFiscal>();
+        List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
         NotaFiscal notaFiscal = null;
         try {
             conexao = BD.getConexao();
@@ -29,11 +28,11 @@ public class NotaFiscalDAO {
             while(rs.next())
             {
                 notaFiscal = instanciarNotaFiscal(rs);
-                notaFiscais.add(notaFiscal);
+                notasFiscais.add(notaFiscal);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return notasFiscais;
     }
 }

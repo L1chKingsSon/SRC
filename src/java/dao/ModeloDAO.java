@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.ModeloDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,12 +27,12 @@ public class ModeloDAO {
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                Modelo = instanciarModelo(rs);
-                Modelos.add(modelo);
+                modelo = instanciarModelo(rs);
+                modelos.add(modelo);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return modelos;
     }
 }

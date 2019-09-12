@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.MarcaDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ public class MarcaDAO {
     public static List<Marca> obterMarca() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Marca> Marcas = new ArrayList<Marca>();
+        List<Marca> marcas = new ArrayList<Marca>();
         Marca marca = null;
         try {
             conexao = BD.getConexao();
@@ -28,12 +27,12 @@ public class MarcaDAO {
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                Marca = instanciarMarca(rs);
-                Marca.add(marca);
+                marca = instanciarMarca(rs);
+                marcas.add(marca);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return marcas;
     }
 }

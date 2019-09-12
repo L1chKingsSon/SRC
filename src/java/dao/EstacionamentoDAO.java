@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.EstacionamentoDAO.instanciarFuncioanrio;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,12 +27,12 @@ public class EstacionamentoDAO {
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                Estacionamento = instanciarEstacionamento(rs);
-                Estacionamentos.add(estacionamento);
+                estacionamento = instanciarEstacionamento(rs);
+                estacionamentos.add(estacionamento);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return estacionamentos;
     }
 }

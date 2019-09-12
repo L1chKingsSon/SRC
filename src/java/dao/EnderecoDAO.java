@@ -6,7 +6,6 @@
 
 package dao;
 
-import static dao.EnderecoDAO.instanciarEndereco;
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.ResultSet;
