@@ -20,7 +20,7 @@
 
     <label>CPF</label>
     <input name="cpf" type="number"><br><br>
-    endere�o
+    Endereço 
     <label>CEP</label>
     <input name="cep" type="number"><br><br>
 
@@ -52,6 +52,13 @@
      conta do banco
     <label>Conta no Banco</label>
     <input name="contabanco" type="number"><br><br>
+
+    <label>Agencia</label>
+    <input name="agencia" type="number"><br><br>
+
+    <label>Tipo de Conta</label><br>
+    <input name="tipoConta" type="radio" value="cc">Corrente<br>
+    <input name="tipoConta" type="radio" value="cp">Poupança<br><br>
        
     <button type="submit">Cadastrar</button>
 </form>    
