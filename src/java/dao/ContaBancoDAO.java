@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package dao;
 
 import static dao.DAO.fecharConexao;
@@ -13,32 +7,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.Endereco;
+import model.ContaBanco;
 
 /**
  *
- * @author Raphael
+ * @author Alisson
  */
-public class EnderecoDAO {
+public class ContaBancoDAO {
 
 
-    public static List<Endereco> obterEnderecos() throws ClassNotFoundException, SQLException {
+    public static List<ContaBanco> obterContaBanco() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Endereco> enderecos = new ArrayList<Endereco>();
-        Endereco endereco = null;
+        List<ContaBanco> contaBancos = new ArrayList<ContaBanco>();
+        ContaBanco contaBanco = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from carro");
             while(rs.next())
             {
-                endereco = instanciarEndereco(rs);
-                enderecos.add(endereco);
+                contaBanco = instanciarContaBanco(rs);
+                contaBancos.add(contaBanco);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return enderecos;
+        return contaBancos;
     }
 }
