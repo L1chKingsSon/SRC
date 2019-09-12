@@ -13,24 +13,24 @@ import java.time.LocalDate;
  */
 public class NotaFiscal {
     private long id;
-
-    public NotaFiscal(long id, LocalDate data, double valor, Item itens, Transacao transacao) {
+    private LocalDate data;
+    private double valor;
+    private Item itens;
+    private Boolean transacao;
+    
+    public NotaFiscal(long id, LocalDate data, double valor, Item itens, Boolean transacao) {
         this.id = id;
         this.data = data;
         this.valor = valor;
         this.itens = itens;
         this.transacao = transacao;
     }
-    private LocalDate data;
-    private double valor;
-    private Item itens;
-    private Transacao transacao;
 
-    public Transacao getTransacao() {
+    public Boolean getTransacao() {
         return transacao;
     }
 
-    public void setTransacao(Transacao transacao) {
+    public void setTransacao(Boolean transacao) {
         this.transacao = transacao;
     }
 

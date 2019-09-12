@@ -13,15 +13,15 @@ public class Marca {
     private long id;
     private String nome;
 
-    public long getId() {
-        return id;
-    }
-
     public Marca(long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
+    public long getId() {
+        return id;
+    }
+    
     public void setId(long id) {
         this.id = id;
     }

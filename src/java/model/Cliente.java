@@ -11,7 +11,7 @@ package model;
  */
 public class Cliente extends Pessoa{
 
-    public Cliente(long id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
-        super(id, nome, cpf, telefone, endereco, contaBanco);
+    public Cliente(long id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int idPrimariaEndereco, int idPrimariaContaBanco) {
+        super(id, nome, cpf, telefone, endereco, contaBanco, idPrimariaEndereco, idPrimariaContaBanco);
     }
 }
