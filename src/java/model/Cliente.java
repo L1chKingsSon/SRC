@@ -10,5 +10,8 @@ package model;
  * @author Raphael
  */
 public class Cliente extends Pessoa{
-    
+
+    public Cliente(long id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
+        super(id, nome, cpf, telefone, endereco, contaBanco);
+    }
 }
