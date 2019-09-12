@@ -14,9 +14,18 @@ public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String telefone;
+
+    public Pessoa(long id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.contaBanco = contaBanco;
+    }
     private Endereco endereco;
     private ContaBanco contaBanco;
-
+    
     public Endereco getEndereco() {
         return endereco;
     }

@@ -16,6 +16,10 @@ public class Item {
     private long id;
     private List<Carro> carros = new ArrayList<Carro>();
 
+    public Item(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

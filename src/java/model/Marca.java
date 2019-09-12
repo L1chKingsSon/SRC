@@ -17,6 +17,11 @@ public class Marca {
         return id;
     }
 
+    public Marca(long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public void setId(long id) {
         this.id = id;
     }

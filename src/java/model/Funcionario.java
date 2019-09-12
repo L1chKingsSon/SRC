@@ -14,6 +14,12 @@ public class Funcionario {
     private String login;
     private String senha;
 
+    public Funcionario(long salario, String login, String senha) {
+        this.salario = salario;
+        this.login = login;
+        this.senha = senha;
+    }
+
     public long getSalario() {
         return salario;
     }

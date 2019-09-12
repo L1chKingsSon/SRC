@@ -14,6 +14,12 @@ public class Estacionamento {
     private long numeroVagas;
     private Endereco endereco;
 
+    public Estacionamento(long id, long numeroVagas, Endereco endereco) {
+        this.id = id;
+        this.numeroVagas = numeroVagas;
+        this.endereco = endereco;
+    }
+
     public long getId() {
         return id;
     }

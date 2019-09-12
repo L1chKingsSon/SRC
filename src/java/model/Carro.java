@@ -15,6 +15,21 @@ public class Carro {
    private long id;
    private Modelo modelo;
 
+    public Carro(long id, Modelo modelo, String placa, String chassi, String ano, String cor, Boolean IPVA, LocalDate dataSeguro, LocalDate dataGarantia, double valorCompra, double valorVenda) {
+        this.id = id;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.chassi = chassi;
+        this.ano = ano;
+        this.cor = cor;
+        this.IPVA = IPVA;
+        this.dataSeguro = dataSeguro;
+        this.dataGarantia = dataGarantia;
+        this.valorCompra = valorCompra;
+        this.valorVenda = valorVenda;
+    }
+   
+
     public Modelo getModelo() {
         return modelo;
     }

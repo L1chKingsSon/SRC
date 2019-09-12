@@ -12,6 +12,14 @@ package model;
 public class ContaBanco {
     private long id;
     private String nome;
+
+    public ContaBanco(long id, String nome, String agencia, String conta, String tipo) {
+        this.id = id;
+        this.nome = nome;
+        this.agencia = agencia;
+        this.conta = conta;
+        this.tipo = tipo;
+    }
     private String agencia;
     private String conta;
     private String tipo;

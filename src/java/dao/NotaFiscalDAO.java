@@ -35,4 +35,14 @@ public class NotaFiscalDAO {
         }
         return notasFiscais;
     }
+    
+    public static NotaFiscal instanciarNotaFiscal(ResultSet rs) throws SQLException
+    {
+        NotaFiscal notaFiscal = new NotaFiscal(rs.getInt("id"), 
+                rs.getDate("data"), 
+                rs.getDouble("valor"),
+                rs.getObject(string, type)
+                
+        )
+    }
 }

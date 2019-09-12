@@ -13,6 +13,14 @@ import java.time.LocalDate;
  */
 public class NotaFiscal {
     private long id;
+
+    public NotaFiscal(long id, LocalDate data, double valor, Item itens, Transacao transacao) {
+        this.id = id;
+        this.data = data;
+        this.valor = valor;
+        this.itens = itens;
+        this.transacao = transacao;
+    }
     private LocalDate data;
     private double valor;
     private Item itens;

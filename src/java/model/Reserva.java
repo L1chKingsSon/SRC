@@ -12,6 +12,13 @@ package model;
 public class Reserva {
     private long id;
     private String cor;
+
+    public Reserva(long id, String cor, Modelo modelo, Cliente cliente) {
+        this.id = id;
+        this.cor = cor;
+        this.modelo = modelo;
+        this.cliente = cliente;
+    }
     private Modelo modelo;
     private Cliente cliente;
 

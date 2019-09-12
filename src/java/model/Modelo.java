@@ -14,6 +14,12 @@ public class Modelo {
     private String nome;
     private Marca marca;
 
+    public Modelo(long id, String nome, Marca marca) {
+        this.id = id;
+        this.nome = nome;
+        this.marca = marca;
+    }
+
     public long getId() {
         return id;
     }

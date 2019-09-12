@@ -11,6 +11,17 @@ package model;
  */
 public class Endereco {
     private long id;
+
+    public Endereco(long id, String cep, String uf, String cidade, String bairro, String logadouro, int numero, String complemento) {
+        this.id = id;
+        this.cep = cep;
+        this.uf = uf;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.logadouro = logadouro;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
     private String cep;
     private String uf;
     private String cidade;
