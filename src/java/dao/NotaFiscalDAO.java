@@ -41,8 +41,10 @@ public class NotaFiscalDAO {
         NotaFiscal notaFiscal = new NotaFiscal(rs.getInt("id"), 
                 rs.getDate("data"), 
                 rs.getDouble("valor"),
-                rs.getObject(string, type)
-                
-        )
+                null,
+                null);
+            notaFiscal.setIdPrimariaItem(rs.getInt("idItem");
+            notaFiscal.setIdPrimariaTransacao("idTransacao");
+            return notaFiscal;
     }
 }

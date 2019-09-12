@@ -19,23 +19,7 @@ import model.Carro;
  * @author Raphael
  */
 public class CarroDAO {
-    
-//         public static Carro instanciarCarro(ResultSet rs) throws SQLException {
-//        Carro carro = new Carro(rs.getInt("idCarro")),
-//                rs.getString("placa"),
-//                rs.getString("chassi"),
-//                rs.getString("ano"),
-//                rs.getString("cor"),
-//                rs.getString("IPVA"),
-//                rs.getString("seguro"),
-//                rs.getString("garantia"),
-//                rs.getString("valorComprado"),
-//                null);
-//                carro.setModelo(rs.getInt("1"));
-//                return carro;
-//    
-//    }
-    
+
     public static List<Carro> obterCarros() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -45,14 +29,48 @@ public class CarroDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from carro");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 carro = instanciarCarro(rs);
                 carros.add(carro);
             }
-            }   finally {
-                fecharConexao(conexao, comando);
-                    }
-            return carros;
+        } finally {
+            fecharConexao(conexao, comando);
         }
+        return carros;
     }
+    
+    /*
+    public Carro(long id, Modelo modelo, String placa, String chassi, String ano, String cor, Boolean IPVA, LocalDate dataSeguro, LocalDate dataGarantia, double valorCompra, double valorVenda) {
+        this.id = id;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.chassi = chassi;
+        this.ano = ano;
+        this.cor = cor;
+        this.IPVA = IPVA;
+        this.dataSeguro = dataSeguro;
+        this.dataGarantia = dataGarantia;
+        this.valorCompra = valorCompra;
+        this.valorVenda = valorVenda;
+    }
+    */
+    
+    public static Carro instanciarCarro(ResultSet rs) throws SQLException
+    {
+        Carro carro = new Carro
+                (
+                        rs.getInt("id"),
+                        null,
+                        rs.getString("placa"),
+                        rs.getString("chassi"),
+                        rs.getString("ano"),
+                        rs.getString("cor"),
+                        rs.getBoolean("IPVA"),
+                        rs.getDate("dataSeguro"),
+                        rs.getDate("dataGarantia"),
+                        rs.getDouble("valor"),
+                        rs.getDouble("valor")
+                );
+        return carro;
+    }
+}

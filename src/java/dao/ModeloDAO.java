@@ -35,4 +35,14 @@ public class ModeloDAO {
         }
         return modelos;
     }
+    
+    public static Modelo instanciarModelo(ResultSet rs) throws SQLException
+    {
+        Modelo modelo = new Modelo(
+                rs.getLong("id"),
+                rs.getString("nome"),
+                null);
+        modelo.setIdPrimariaMarca(rs.getInt("idMarca"));
+        return modelo;
+    }
 }

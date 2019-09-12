@@ -35,4 +35,17 @@ public class ContaBancoDAO {
         }
         return contaBancos;
     }
+
+    public static ContaBanco instanciarContaBanco(ResultSet rs) throws SQLException
+    {
+        ContaBanco contaBanco = new ContaBanco
+                (
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("agencia"),
+                        rs.getString("conta"),
+                        rs.getString("tipo")
+                );
+        return contaBanco;
+    }
 }

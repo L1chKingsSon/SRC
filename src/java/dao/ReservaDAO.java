@@ -35,4 +35,16 @@ public class ReservaDAO {
         }
         return reservas;
     }
+    
+    public static Reserva instanciarReserva(ResultSet rs) throws SQLException
+    {
+        Reserva reserva = new Reserva
+                (
+                        rs.getInt("id"),
+                        rs.getString("cor"),
+                        null,
+                        null
+                );
+        return reserva;
+    }
 }

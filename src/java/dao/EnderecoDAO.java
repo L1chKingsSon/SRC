@@ -41,4 +41,20 @@ public class EnderecoDAO {
         }
         return enderecos;
     }
+    
+    public static Endereco instanciarEndereco(ResultSet rs) throws SQLException
+    {
+        Endereco endereco = new Endereco
+                (
+                       rs.getLong("id"), 
+                       rs.getString("cep"),
+                       rs.getString("uf"), 
+                       rs.getString("cidade"), 
+                       rs.getString("bairro"), 
+                       rs.getString("logadouro"), 
+                       rs.getInt("numero"), 
+                       rs.getString("complement0")
+                );
+        return endereco;
+    }
 }

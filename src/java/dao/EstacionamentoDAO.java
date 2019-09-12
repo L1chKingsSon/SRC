@@ -35,4 +35,16 @@ public class EstacionamentoDAO {
         }
         return estacionamentos;
     }
+    
+    public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException
+    {
+        Estacionamento estacionamento = new Estacionamento
+                (
+                        rs.getInt("id"),
+                        rs.getInt("numeroVagas"),
+                        null
+                );
+        estacionamento.setIdPrimariaEndereco(rs.getInt("idEndereco"));
+        return estacionamento;
+    }
 }
