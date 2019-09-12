@@ -41,5 +41,15 @@ public class ClienteDAO {
                 }
     return clientes;
     }
+    public static Cliente instanciarCliente(ResultSet rs) throws SQLException{
+        Cliente cliente = new Cliente(rs.getInt("codCliente"),
+                rs.getString("nome"),
+                rs.getString("cpf"),
+                rs.getString("telefone"),
+                null,
+                null);
+        cliente.setIdPrimariaEndereco(rs.getInt("endereco"));
+        return cliente;
+    }
 }
 
