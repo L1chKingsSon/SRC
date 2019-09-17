@@ -38,7 +38,7 @@ public class FuncionarioDAO {
     
     
     
-    public static Funcionario instanciarCliente(ResultSet rs) throws SQLException
+    public static Funcionario instanciarFuncionario(ResultSet rs) throws SQLException
     {
         Funcionario funcionario = new Funcionario(rs.getLong("salario"),
                 rs.getString("login"), 
@@ -55,7 +55,7 @@ public class FuncionarioDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery( "select * from funcionario where codFuncionario =" + codFuncionario);
             rs.first();
-            curso = instanciarCurso(rs);
+            funcionario = instanciarFuncionario(rs);
         } finally {
             fecharConexao(conexao, comando);
         }
