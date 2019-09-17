@@ -17,6 +17,8 @@ public class NotaFiscal {
     private double valor;
     private Item itens;
     private Boolean transacao;
+    private int idPrimariaItem;
+    private int idPrimariaTransacao;
     
     public NotaFiscal(long id, LocalDate data, double valor, Item itens, Boolean transacao) {
         this.id = id;
@@ -24,6 +26,16 @@ public class NotaFiscal {
         this.valor = valor;
         this.itens = itens;
         this.transacao = transacao;
+    }
+    
+    public void SetIdPrimariaTransacao(int x)
+    {
+        this.idPrimariaTransacao = x;
+    }
+    
+    public void setIdPrimariaItem(int x)
+    {
+        this.idPrimariaItem = x;
     }
 
     public Boolean getTransacao() {
