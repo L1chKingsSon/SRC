@@ -12,6 +12,9 @@ package model;
 public class ContaBanco {
     private long id;
     private String nome;
+    private String agencia;
+    private String conta;
+    private String tipo;
 
     public ContaBanco(long id, String nome, String agencia, String conta, String tipo) {
         this.id = id;
@@ -20,9 +23,6 @@ public class ContaBanco {
         this.conta = conta;
         this.tipo = tipo;
     }
-    private String agencia;
-    private String conta;
-    private String tipo;
 
     public long getId() {
         return id;

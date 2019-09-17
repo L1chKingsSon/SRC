@@ -12,10 +12,18 @@ import java.time.LocalDate;
  * @author Raphael
  */
 public class Carro {
-   private long id;
-   private Modelo modelo;
-   private int idPrimariaModelo;
-
+    private long id;
+    private Modelo modelo;
+    private int idPrimariaModelo;
+    private String placa;
+    private String chassi;
+    private String ano;
+    private String cor;
+    private Boolean IPVA;
+    private LocalDate dataSeguro;
+    private LocalDate dataGarantia;
+    private double valorCompra;
+    private double valorVenda;
 
     public Carro(long id, Modelo modelo, String placa, String chassi, String ano, String cor, Boolean IPVA, LocalDate dataSeguro, LocalDate dataGarantia, double valorCompra, double valorVenda, int idPrimariaModelo) {
         this.id = id;
@@ -31,7 +39,7 @@ public class Carro {
         this.valorVenda = valorVenda;
         this.idPrimariaModelo = idPrimariaModelo;
     }
-   
+
     public int getIdPrimariaModelo() {
         return idPrimariaModelo;
     }
@@ -39,23 +47,13 @@ public class Carro {
     public void setIdPrimariaModelo(int idPrimariaModelo) {
         this.idPrimariaModelo = idPrimariaModelo;
     }
-   
+
     public Modelo getModelo() {
         return modelo;
     }
-
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
-   private String placa;
-   private String chassi;
-   private String ano;
-   private String cor;
-   private Boolean IPVA;
-   private LocalDate dataSeguro;
-   private LocalDate dataGarantia;
-   private double valorCompra;
-   private double valorVenda;
 
     public long getId() {
         return id;
