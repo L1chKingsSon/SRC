@@ -35,19 +35,5 @@ public class Item {
     public void setCarros(List<Carro> carros) {
         this.carros = carros;
     }
-    public static  Item obterItem(int codItem) throws ClassNotFoundException, SQLException {
-        Connection conexao = null;
-        Statement comando = null;
-        Item item = null;
-        try{
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from item where codItem =" + codItem);
-            rs.first();
-            curso = instanciarCurso(rs);
-        } finally {
-            fecharConexao(conexao, comando);
-        }
-        return item;
-    }
+
 }
