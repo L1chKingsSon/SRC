@@ -74,7 +74,7 @@ public class ModeloDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery( "select * from modelo where codModelo =" + codModelo);
             rs.first();
-            curso = instanciarCurso(rs);
+            modelo = instanciarModelo(rs);
         } finally {
             fecharConexao(conexao, comando);
         }
