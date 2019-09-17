@@ -35,7 +35,27 @@ public class ContaBancoDAO {
         }
         return contaBancos;
     }
-
+    
+    public static ContaBanco obterEndereco(int codContaBanco) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        ContaBanco contaBanco = null;
+        try
+        {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from ContaBanco where idContaBanco = "+ codContaBanco);
+            rs.first();
+            contaBanco = instanciarContaBanco(rs);
+        }finally
+        {
+            fecharConexao(conexao, comando);
+        }
+        
+        return contaBanco;
+    }
+    
     public static ContaBanco instanciarContaBanco(ResultSet rs) throws SQLException
     {
         ContaBanco contaBanco = new ContaBanco

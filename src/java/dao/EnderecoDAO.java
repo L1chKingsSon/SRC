@@ -42,6 +42,27 @@ public class EnderecoDAO {
         return enderecos;
     }
     
+    public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        Endereco endereco = null;
+        try
+        {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from curso where id = "+ codEndereco);
+            rs.first();
+            endereco = instanciarEndereco(rs);
+        }finally
+        {
+            fecharConexao(conexao, comando);
+        }
+        
+        return endereco;
+    }
+    
+    
     public static Endereco instanciarEndereco(ResultSet rs) throws SQLException
     {
         Endereco endereco = new Endereco

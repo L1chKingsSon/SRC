@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import model.Carro;
@@ -71,6 +72,7 @@ public class CarroDAO {
                         rs.getDouble("valor"),
                         rs.getDouble("valor")
                 );
+        carro.setIdPrimariaModelo(rs.getInt("modelo"));
         return carro;
     }
 }

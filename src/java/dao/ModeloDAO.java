@@ -36,6 +36,26 @@ public class ModeloDAO {
         return modelos;
     }
     
+    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        Modelo modelo = null;
+        try
+        {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from modelo where id = "+ codModelo);
+            rs.first();
+            modelo = instanciarModelo(rs);
+        }finally
+        {
+            fecharConexao(conexao, comando);
+        }
+        
+        return modelo;
+    }
+    
     public static Modelo instanciarModelo(ResultSet rs) throws SQLException
     {
         Modelo modelo = new Modelo(

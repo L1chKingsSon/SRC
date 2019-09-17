@@ -36,6 +36,25 @@ public class ReservaDAO {
         return reservas;
     }
     
+    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        Reserva reserva = null;
+        try
+        {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from reserva where idinteresse = "+ codReserva);
+            rs.first();
+            reserva = instanciarReserva(rs);
+        }finally
+        {
+            fecharConexao(conexao, comando);
+        }
+        
+        return reserva;
+    
     public static Reserva instanciarReserva(ResultSet rs) throws SQLException
     {
         Reserva reserva = new Reserva
