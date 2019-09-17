@@ -36,6 +36,8 @@ public class FuncionarioDAO {
         return funcionarios;
     }
     
+    
+    
     public static Funcionario instanciarCliente(ResultSet rs) throws SQLException
     {
         Funcionario funcionario = new Funcionario(rs.getLong("salario"),
