@@ -46,4 +46,19 @@ public class FuncionarioDAO {
                 );
         return funcionario;
     }
+    public static  Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        Funcionario funcionario = null;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery( "select * from funcionario where codFuncionario =" + codFuncionario);
+            rs.first();
+            curso = instanciarCurso(rs);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return funcionario;
+    }
 }

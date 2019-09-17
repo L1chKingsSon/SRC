@@ -65,4 +65,19 @@ public class ModeloDAO {
         modelo.setIdPrimariaMarca(rs.getInt("idMarca"));
         return modelo;
     }
+    public static  Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        Modelo modelo = null;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery( "select * from modelo where codModelo =" + codModelo);
+            rs.first();
+            curso = instanciarCurso(rs);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return modelo;
+    }
 }
