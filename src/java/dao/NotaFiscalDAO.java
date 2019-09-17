@@ -15,8 +15,27 @@ import model.NotaFiscal;
  */
 public class NotaFiscalDAO {
 
-
-    public static List<NotaFiscal> obterNotaFiscal() throws ClassNotFoundException, SQLException {
+public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        NotaFiscal notafiscal = null;
+        try
+        {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from reserva where idinteresse = "+ id);
+            rs.first();
+            notafiscal = instanciarNotaFiscal(rs);
+        }finally
+        {
+            fecharConexao(conexao, comando);
+        }
+        
+        return notafiscal;
+    }
+    
+    public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<NotaFiscal> notasFiscais = new ArrayList<NotaFiscal>();
