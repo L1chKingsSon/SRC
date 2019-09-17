@@ -52,4 +52,19 @@ public class MarcaDAO {
                 );
         return marca;
     }
+    public static  Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        Marca marca = null;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery( "select * from marca where codMarca =" + codMarca);
+            rs.first();
+            curso = instanciarCurso(rs);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return marca;
+    }
 }

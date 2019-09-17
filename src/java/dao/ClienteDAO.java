@@ -52,5 +52,20 @@ public class ClienteDAO {
         cliente.setIdPrimariaEndereco(rs.getInt("endereco"));
         return cliente;
     }
+    public static  Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        Cliente cliente = null;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery( "select * from cliente where codCliente =" + codCliente);
+            rs.first();
+            curso = instanciarCurso(rs);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return cliente;
+    }
 }
 
