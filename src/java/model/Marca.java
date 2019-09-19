@@ -5,6 +5,9 @@
  */
 package model;
 
+import dao.MarcaDAO;
+import java.sql.SQLException;
+
 /**
  *
  * @author Raphael
@@ -33,5 +36,9 @@ public class Marca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
+    public void gravar() throws SQLException, ClassNotFoundException
+    {
+        MarcaDAO.gravar(this);
+    }
 }

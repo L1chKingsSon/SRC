@@ -52,7 +52,7 @@ public class MarcaDAO {
                 );
         return marca;
     }
-    public static  Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
+    public static  Marca obterMarcas(int codMarca) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Marca marca = null;
