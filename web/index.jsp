@@ -13,6 +13,6 @@ and open the template in the editor.
     <body>
         <h1></h1>
             <a href="PesquisaMarcaController">Manter Marcas</a>
-        
+            
     </body>
 </html>
