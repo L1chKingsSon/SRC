@@ -7,6 +7,7 @@ package model;
 
 import dao.MarcaDAO;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -37,8 +38,13 @@ public class Marca {
         this.nome = nome;
     }
     
-    public void gravar() throws SQLException, ClassNotFoundException
-    {
-        MarcaDAO.gravar(this);
+//    public void gravar() throws SQLException, ClassNotFoundException
+//    {
+//        MarcaDAO.gravar(this);
+//    }
+    
+    public static  List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
+        return MarcaDAO.obterMarcas();
+        
     }
 }
