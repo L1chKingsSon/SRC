@@ -7,10 +7,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Marca;
 
 /**
  *
@@ -32,7 +35,11 @@ public class PesquisaMarcaController extends HttpServlet {
         try{
            request.setAttribute("Marcas", Marca.obterMarcas());
            RequestDispatcher view = request.getRequestDispatcher("/pesquisaMarca.jsp");
-           view.foward
+           view.forward(request, response);
+        } catch(ClassNotFoundException e){
+        throw new ServletException(e);
+        } catch (SQLException e){
+            throw new ServletException(e);
         }
     }
 
