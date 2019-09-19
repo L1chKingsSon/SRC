@@ -28,7 +28,7 @@ public class NotaFiscal {
         this.transacao = transacao;
     }
     
-    public void SetIdPrimariaTransacao(int x)
+    public void setIdPrimariaTransacao(int x)
     {
         this.idPrimariaTransacao = x;
     }
