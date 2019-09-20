@@ -14,6 +14,7 @@ and open the template in the editor.
         <h1></h1>
             <a href="PesquisaMarcaController">Manter Marcas</a>
             <a href="PesquisaModeloController">Manter Modelos</a>
+            <a href="PesquisaCarroControler">Manter Carros</a>
             
     </body>
 </html>

@@ -8,6 +8,10 @@
         <servlet-name>PesquisaModeloController</servlet-name>
         <servlet-class>controller.PesquisaModeloController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaCarroController</servlet-name>
+        <servlet-class>controller.PesquisaCarroController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaModeloController</servlet-name>
         <url-pattern>/PesquisaModeloController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaCarroController</servlet-name>
+        <url-pattern>/PesquisaCarroController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

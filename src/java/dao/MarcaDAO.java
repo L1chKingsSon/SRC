@@ -36,13 +36,6 @@ public class MarcaDAO {
         return marcas;
     }
     
-    /*
-    public Marca(long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-    */
-    
     public static Marca instanciarMarca(ResultSet rs) throws SQLException
     {
         Marca marca = new Marca

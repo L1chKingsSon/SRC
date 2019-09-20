@@ -5,7 +5,11 @@
  */
 package model;
 
+import dao.CarroDAO;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -13,21 +17,20 @@ import java.time.LocalDate;
  */
 public class Carro {
     private long id;
-    private Modelo modelo;
-    private int idPrimariaModelo;
     private String placa;
     private String chassi;
     private String ano;
     private String cor;
     private Boolean IPVA;
-    private LocalDate dataSeguro;
-    private LocalDate dataGarantia;
+    private Date dataSeguro;
+    private Date dataGarantia;
     private double valorCompra;
     private double valorVenda;
-
-    public Carro(long id, Modelo modelo, String placa, String chassi, String ano, String cor, Boolean IPVA, LocalDate dataSeguro, LocalDate dataGarantia, double valorCompra, double valorVenda, int idPrimariaModelo) {
+    private Modelo modelo;
+    private int idPrimariaModelo;
+    
+    public Carro(long id, String placa, String chassi, String ano, String cor, Boolean IPVA, Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
         this.id = id;
-        this.modelo = modelo;
         this.placa = placa;
         this.chassi = chassi;
         this.ano = ano;
@@ -37,14 +40,18 @@ public class Carro {
         this.dataGarantia = dataGarantia;
         this.valorCompra = valorCompra;
         this.valorVenda = valorVenda;
-        this.idPrimariaModelo = idPrimariaModelo;
+        this.modelo = modelo;
     }
 
-    public int getIdPrimariaModelo() {
+    public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaModelo != 0) && (this.modelo == null))
+            {
+                this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
+            }
         return idPrimariaModelo;
     }
 
-    public void setIdPrimariaModelo(int idPrimariaModelo) {
+    public void setIdPrimariaModelo(int idPrimariaModelo){
         this.idPrimariaModelo = idPrimariaModelo;
     }
 
@@ -103,19 +110,19 @@ public class Carro {
         this.IPVA = IPVA;
     }
 
-    public LocalDate getDataSeguro() {
+    public Date getDataSeguro() {
         return dataSeguro;
     }
 
-    public void setDataSeguro(LocalDate dataSeguro) {
+    public void setDataSeguro(Date dataSeguro) {
         this.dataSeguro = dataSeguro;
     }
 
-    public LocalDate getDataGarantia() {
+    public Date getDataGarantia() {
         return dataGarantia;
     }
 
-    public void setDataGarantia(LocalDate dataGarantia) {
+    public void setDataGarantia(Date dataGarantia) {
         this.dataGarantia = dataGarantia;
     }
 
@@ -133,5 +140,14 @@ public class Carro {
 
     public void setValorVenda(double valorVenda) {
         this.valorVenda = valorVenda;
+    }
+    
+    public static  List<Carro> obterCarros() throws ClassNotFoundException, SQLException {
+        return CarroDAO.obterCarros();
+    }
+    
+    public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException
+    {
+        return CarroDAO.obterCarro(codCarro);
     }
 }

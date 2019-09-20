@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/model/Marca.java</file>
             <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/dao/CarroDAO.java</file>
-            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/dao/ClienteDAO.java</file>
-            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/controller/PesquisaMarcaController.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/web/pesquisaCarro.jsp</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/model/Modelo.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/controller/PesquisaCarroController.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/src/java/model/Carro.java</file>
             <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/web/index.jsp</file>
             <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC/web/pesquisaMarca.jsp</file>
         </group>

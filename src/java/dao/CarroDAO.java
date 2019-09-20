@@ -40,28 +40,11 @@ public class CarroDAO {
         return carros;
     }
     
-    /*
-    public Carro(long id, Modelo modelo, String placa, String chassi, String ano, String cor, Boolean IPVA, LocalDate dataSeguro, LocalDate dataGarantia, double valorCompra, double valorVenda) {
-        this.id = id;
-        this.modelo = modelo;
-        this.placa = placa;
-        this.chassi = chassi;
-        this.ano = ano;
-        this.cor = cor;
-        this.IPVA = IPVA;
-        this.dataSeguro = dataSeguro;
-        this.dataGarantia = dataGarantia;
-        this.valorCompra = valorCompra;
-        this.valorVenda = valorVenda;
-    }
-    */
-    
     public static Carro instanciarCarro(ResultSet rs) throws SQLException
     {
         Carro carro = new Carro
                 (
-                        rs.getInt("id"),
-                        null,
+                        rs.getLong("id"),
                         rs.getString("placa"),
                         rs.getString("chassi"),
                         rs.getString("ano"),
@@ -70,9 +53,26 @@ public class CarroDAO {
                         rs.getDate("dataSeguro"),
                         rs.getDate("dataGarantia"),
                         rs.getDouble("valor"),
-                        rs.getDouble("valor")
+                        rs.getDouble("valor"),
+                        null
                 );
         carro.setIdPrimariaModelo(rs.getInt("modelo"));
+        return carro;
+    }
+    
+        public static  Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        Carro carro = null;
+        try{
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery( "select * from carro where id =" + codCarro);
+            rs.first();
+            carro = instanciarCarro(rs);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
         return carro;
     }
 }
