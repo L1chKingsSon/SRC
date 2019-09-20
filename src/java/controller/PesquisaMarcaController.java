@@ -33,7 +33,7 @@ public class PesquisaMarcaController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try{
-           request.setAttribute("Marcas", Marca.obterMarcas());
+           request.setAttribute("marcas", Marca.obterMarcas());
            RequestDispatcher view = request.getRequestDispatcher("/pesquisaMarca.jsp");
            view.forward(request, response);
         } catch(ClassNotFoundException e){

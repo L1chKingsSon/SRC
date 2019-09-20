@@ -24,7 +24,7 @@ public class MarcaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from marca");
             while(rs.next())
             {
                 marca = instanciarMarca(rs);
