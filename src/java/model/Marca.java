@@ -45,6 +45,10 @@ public class Marca {
     
     public static  List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
         return MarcaDAO.obterMarcas();
-        
+    }
+    
+    public static Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException
+    {
+        return MarcaDAO.obterMarca(codMarca);
     }
 }

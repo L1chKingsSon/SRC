@@ -16,7 +16,7 @@ import model.Modelo;
 public class ModeloDAO {
 
 
-    public static List<Modelo> obterModelo() throws ClassNotFoundException, SQLException {
+    public static List<Modelo> obterModelos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Modelo> modelos = new ArrayList<Modelo>();
@@ -24,7 +24,7 @@ public class ModeloDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from modelo");
             while(rs.next())
             {
                 modelo = instanciarModelo(rs);
@@ -62,22 +62,7 @@ public class ModeloDAO {
                 rs.getLong("id"),
                 rs.getString("nome"),
                 null);
-        modelo.setIdPrimariaMarca(rs.getInt("idMarca"));
-        return modelo;
-    }
-    public static  Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException {
-        Connection conexao = null;
-        Statement comando = null;
-        Modelo modelo = null;
-        try{
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from modelo where codModelo =" + codModelo);
-            rs.first();
-            modelo = instanciarModelo(rs);
-        } finally {
-            fecharConexao(conexao, comando);
-        }
+        modelo.setIdPrimariaMarca(rs.getInt("id_Marca"));
         return modelo;
     }
 }

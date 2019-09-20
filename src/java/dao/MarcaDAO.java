@@ -59,7 +59,7 @@ public class MarcaDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from marca where codMarca =" + codMarca);
+            ResultSet rs = comando.executeQuery( "select * from marca where id =" + codMarca);
             rs.first();
             marca = instanciarMarca(rs);
         } finally {

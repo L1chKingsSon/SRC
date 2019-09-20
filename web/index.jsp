@@ -13,6 +13,7 @@ and open the template in the editor.
     <body>
         <h1></h1>
             <a href="PesquisaMarcaController">Manter Marcas</a>
+            <a href="PesquisaModeloController">Manter Modelos</a>
             
     </body>
 </html>

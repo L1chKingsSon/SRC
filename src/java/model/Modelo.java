@@ -5,6 +5,10 @@
  */
 package model;
 
+import dao.ModeloDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
@@ -23,7 +27,11 @@ public class Modelo {
         this.marca = marca;
     }
 
-        public int getIdPrimariaMarca() {
+        public int getIdPrimariaMarca() throws ClassNotFoundException, SQLException {
+            if((this.idPrimariaMarca != 0) && (this.marca == null))
+            {
+                this.marca = Marca.obterMarca(this.idPrimariaMarca);
+            }
         return idPrimariaMarca;
     }
 
@@ -54,5 +62,12 @@ public class Modelo {
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
-
+public static  List<Modelo> obterModelos() throws ClassNotFoundException, SQLException {
+        return ModeloDAO.obterModelos();
+    }
+    
+    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException
+    {
+        return ModeloDAO.obterModelo(codModelo);
+    }
 }

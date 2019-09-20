@@ -4,9 +4,17 @@
         <servlet-name>PesquisaMarcaController</servlet-name>
         <servlet-class>controller.PesquisaMarcaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaModeloController</servlet-name>
+        <servlet-class>controller.PesquisaModeloController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaModeloController</servlet-name>
+        <url-pattern>/PesquisaModeloController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
