@@ -50,13 +50,13 @@ public class CarroDAO {
                         rs.getString("ano"),
                         rs.getString("cor"),
                         rs.getBoolean("IPVA"),
-                        rs.getDate("dataSeguro"),
-                        rs.getDate("dataGarantia"),
-                        rs.getDouble("valor"),
-                        rs.getDouble("valor"),
+                        rs.getDate("seguro"),
+                        rs.getDate("garantia"),
+                        rs.getDouble("valorComprado"),
+                        rs.getDouble("valorVenda"),
                         null
                 );
-        carro.setIdPrimariaModelo(rs.getInt("modelo"));
+        carro.setIdPrimariaModelo(rs.getInt("id_Modelo"));
         return carro;
     }
     

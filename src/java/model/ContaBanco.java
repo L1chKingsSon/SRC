@@ -5,6 +5,10 @@
  */
 package model;
 
+import dao.ContaBancoDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
@@ -16,12 +20,12 @@ public class ContaBanco {
     private String conta;
     private String tipo;
 
-    public ContaBanco(long id, String nome, String agencia, String conta, String tipo) {
+    public ContaBanco(long id, String agencia, String conta, String tipo, String nome) {
         this.id = id;
-        this.nome = nome;
         this.agencia = agencia;
         this.conta = conta;
         this.tipo = tipo;
+        this.nome = nome;
     }
 
     public long getId() {
@@ -63,5 +67,12 @@ public class ContaBanco {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+public static  List<ContaBanco> obterContas() throws ClassNotFoundException, SQLException {
+        return ContaBancoDAO.obterContas();
+    }
+    
+    public static ContaBanco obterConta(int codConta) throws ClassNotFoundException, SQLException
+    {
+        return ContaBancoDAO.obterConta(codConta);
+    }
 }

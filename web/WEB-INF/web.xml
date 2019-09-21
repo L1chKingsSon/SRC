@@ -12,6 +12,10 @@
         <servlet-name>PesquisaCarroController</servlet-name>
         <servlet-class>controller.PesquisaCarroController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaContaBancoController</servlet-name>
+        <servlet-class>controller.PesquisaContaBancoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaCarroController</servlet-name>
         <url-pattern>/PesquisaCarroController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaContaBancoController</servlet-name>
+        <url-pattern>/PesquisaContaBancoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
