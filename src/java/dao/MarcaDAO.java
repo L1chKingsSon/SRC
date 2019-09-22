@@ -36,13 +36,6 @@ public class MarcaDAO {
         return marcas;
     }
     
-    /*
-    public Marca(long id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-    */
-    
     public static Marca instanciarMarca(ResultSet rs) throws SQLException
     {
         Marca marca = new Marca
@@ -59,7 +52,7 @@ public class MarcaDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from marca where codMarca =" + codMarca);
+            ResultSet rs = comando.executeQuery( "select * from marca where id =" + codMarca);
             rs.first();
             marca = instanciarMarca(rs);
         } finally {

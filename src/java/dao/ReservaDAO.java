@@ -24,7 +24,7 @@ public class ReservaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from reserva");
             while(rs.next())
             {
                 reserva = instanciarReserva(rs);
@@ -45,7 +45,7 @@ public class ReservaDAO {
         {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from reserva where idinteresse = "+ codReserva);
+            ResultSet rs = comando.executeQuery("select * from reserva where id = "+ codReserva);
             rs.first();
             reserva = instanciarReserva(rs);
         }finally
@@ -54,6 +54,7 @@ public class ReservaDAO {
         }
         
         return reserva;
+    }
     
     public static Reserva instanciarReserva(ResultSet rs) throws SQLException
     {

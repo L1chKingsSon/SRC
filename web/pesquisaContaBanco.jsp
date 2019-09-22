@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PesquisaMarca
-    Created on : 19/09/2019, 09:05:39
+    Document   : pesquisaContaBanco
+    Created on : 21/09/2019, 13:13:02
     Author     : Raphael
 --%>
 
@@ -14,16 +14,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Pesquisa de marcas</h1>
+        <h1>Pesquisa de Contas de Banco</h1>
         <table border="1">
             <tr>
-                <th>Código da marca</th>
-                <th>Nome da marca</th>
+                <th>id da conta</th>
+                <th>agência da conta</th>
             </tr>
-            <c:forEach items="${marcas}" var="marca">
+            <c:forEach items="${contas}" var="contabanco">
                 <tr>
-                    <td><c:out value="${marca.id}" /></td>
-                    <td><c:out value="${marca.nome}" /></td>
+                    <td><c:out value="${contabanco.id}" /></td>
+                    <td><c:out value="${contabanco.agencia}" /></td>
                 </tr>
             </c:forEach>
         </table>

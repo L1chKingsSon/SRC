@@ -43,7 +43,7 @@ public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, 
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from notafiscal");
             while(rs.next())
             {
                 notaFiscal = instanciarNotaFiscal(rs);

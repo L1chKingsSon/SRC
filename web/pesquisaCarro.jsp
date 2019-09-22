@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PesquisaMarca
-    Created on : 19/09/2019, 09:05:39
+    Document   : pesquisaCarro
+    Created on : 20/09/2019, 14:58:44
     Author     : Raphael
 --%>
 
@@ -14,17 +14,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Pesquisa de marcas</h1>
+        <h1>Pesquisa de Carros</h1>
         <table border="1">
             <tr>
-                <th>Código da marca</th>
-                <th>Nome da marca</th>
+                <th>Código do carro</th>
+                <th>Placa do carro</th>
+                <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
-            <c:forEach items="${marcas}" var="marca">
+            <c:forEach items="${carros}" var="carro">
                 <tr>
-                    <td><c:out value="${marca.id}" /></td>
-                    <td><c:out value="${marca.nome}" /></td>
-                </tr>
+                    <td><c:out value="${carro.id}" /></td>
+                    <td><c:out value="${carro.placa}" /></td>
+                </tr> 
             </c:forEach>
         </table>
     </body>

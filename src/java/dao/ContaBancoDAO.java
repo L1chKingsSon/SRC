@@ -16,44 +16,44 @@ import model.ContaBanco;
 public class ContaBancoDAO {
 
 
-    public static List<ContaBanco> obterContaBanco() throws ClassNotFoundException, SQLException {
+    public static List<ContaBanco> obterContas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<ContaBanco> contaBancos = new ArrayList<ContaBanco>();
+        List<ContaBanco> contas = new ArrayList<ContaBanco>();
         ContaBanco contaBanco = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from contabanco");
             while(rs.next())
             {
                 contaBanco = instanciarContaBanco(rs);
-                contaBancos.add(contaBanco);
+                contas.add(contaBanco);
             }
         }   finally {
             fecharConexao(conexao, comando);
         }
-        return contaBancos;
+        return contas;
     }
     
-    public static ContaBanco obterEndereco(int codContaBanco) throws ClassNotFoundException, SQLException
+    public static ContaBanco obterConta(int codContaBanco) throws ClassNotFoundException, SQLException
     {
         Connection conexao = null;
         Statement comando = null;
-        ContaBanco contaBanco = null;
+        ContaBanco conta = null;
         try
         {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from ContaBanco where idContaBanco = "+ codContaBanco);
+            ResultSet rs = comando.executeQuery("select * from contabanco where id =" + codContaBanco);
             rs.first();
-            contaBanco = instanciarContaBanco(rs);
+            conta = instanciarContaBanco(rs);
         }finally
         {
             fecharConexao(conexao, comando);
         }
         
-        return contaBanco;
+        return conta;
     }
     
     public static ContaBanco instanciarContaBanco(ResultSet rs) throws SQLException
@@ -61,26 +61,11 @@ public class ContaBancoDAO {
         ContaBanco contaBanco = new ContaBanco
                 (
                         rs.getInt("id"),
-                        rs.getString("nome"),
                         rs.getString("agencia"),
                         rs.getString("conta"),
-                        rs.getString("tipo")
+                        rs.getString("tipo"),
+                        rs.getString("nome")
                 );
-        return contaBanco;
-    }
-    public static  ContaBanco obterContaBanco(int codContaBanco) throws ClassNotFoundException, SQLException {
-        Connection conexao = null;
-        Statement comando = null;
-        ContaBanco contaBanco = null;
-        try{
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from contaBanco where codContaBanco =" + codContaBanco);
-            rs.first();
-            curso = instanciarCurso(rs);
-        } finally {
-            fecharConexao(conexao, comando);
-        }
         return contaBanco;
     }
 }
