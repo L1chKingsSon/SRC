@@ -12,16 +12,20 @@
 <h1>
         Cadastrar Modelo e/ou Marca
     </h1>
-    <form action="CADASTRAR">
+    <form action="ManterModeloController?acao=confirmarOperacao&Operacao&operacao">
         <label>Nome do Modelo</label>
         <input type="text" name="modelo">
 
         <button type="submit">Cadastrar</button>
     </form>
+    <br><br>
+    <form action="ManterMarcaController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterMarca">
+        <table border="1">
+            <tr>
+                <td>Nome da Marca</td>
+                <td><input type="text" name="txtId" value="${marca.nome}"></td>
+        </table>
 
-    <form action="CADASTRAR">
-        <label>Nome da Marca</label>
-        <input type="text" name="marca">
 
         <button type="submit">Cadastrar</button>
     </form>
