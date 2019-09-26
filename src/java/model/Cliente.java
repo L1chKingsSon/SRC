@@ -15,4 +15,8 @@ public class Cliente extends Pessoa{
         super(id, nome, cpf, telefone, endereco, contaBanco, idPrimariaEndereco, idPrimariaContaBanco);
     }
 
+    public void setIDPrimariaContaBanco(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

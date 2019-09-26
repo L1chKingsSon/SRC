@@ -16,6 +16,10 @@
         <servlet-name>PesquisaContaBancoController</servlet-name>
         <servlet-class>controller.PesquisaContaBancoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterEnderecoController</servlet-name>
+        <servlet-class>controller.ManterEnderecoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaContaBancoController</servlet-name>
         <url-pattern>/PesquisaContaBancoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterEnderecoController</servlet-name>
+        <url-pattern>/ManterEnderecoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

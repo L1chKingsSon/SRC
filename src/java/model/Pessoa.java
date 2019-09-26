@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Raphael
@@ -31,7 +33,7 @@ public abstract class Pessoa {
 
     }
 
-    public int getIdPrimariaEndereco() {
+    public int getIdPrimariaEndereco() throws ClassNotFoundException, SQLException {
         if((this.idPrimariaEndereco != 0) && (this.endereco == null))
         {
             this.endereco = Endereco.obterEndereco(this.idPrimariaEndereco);
