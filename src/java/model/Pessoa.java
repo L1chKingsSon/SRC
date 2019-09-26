@@ -5,12 +5,14 @@
  */
 package model;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Raphael
  */
 public abstract class Pessoa {
-    private long id;
+    private int id;
     private String nome;
     private String cpf;
     private String telefone;
@@ -19,7 +21,7 @@ public abstract class Pessoa {
     private int idPrimariaEndereco;
     private int idPrimariaContaBanco;
     
-    public Pessoa(long id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int idPrimariaEndereco, int idPrimariaContaBanco) {
+    public Pessoa(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int idPrimariaEndereco, int idPrimariaContaBanco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -29,6 +31,26 @@ public abstract class Pessoa {
         this.idPrimariaEndereco = idPrimariaEndereco;
         this.idPrimariaContaBanco = idPrimariaContaBanco;
 
+    }
+
+    public int getIdPrimariaEndereco() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaEndereco != 0) && (this.endereco == null))
+        {
+            this.endereco = Endereco.obterEndereco(this.idPrimariaEndereco);
+        }
+        return idPrimariaEndereco;
+    }
+
+    public void setIdPrimariaEndereco(int idPrimariaEndereco) {
+        this.idPrimariaEndereco = idPrimariaEndereco;
+    }
+
+    public int getIdPrimariaContaBanco() {
+        return idPrimariaContaBanco;
+    }
+
+    public void setIdPrimariaContaBanco(int idPrimariaContaBanco) {
+        this.idPrimariaContaBanco = idPrimariaContaBanco;
     }
 
     
@@ -44,7 +66,7 @@ public abstract class Pessoa {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -44,13 +44,14 @@ public class ClienteDAO {
     }
     
     public static Cliente instanciarCliente(ResultSet rs) throws SQLException{
-        Cliente cliente = new Cliente(rs.getInt("codCliente"),
+        Cliente cliente = new Cliente(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("cpf"),
                 rs.getString("telefone"),
                 null,
                 null);
-        cliente.setIdPrimariaEndereco(rs.getInt("endereco"));
+        cliente.setIdPrimariaEndereco(rs.getInt("id_endereco"));
+        cliente.setIDPrimariaContaBanco(rs.getInt("id_contaBanco"));
         return cliente;
     }
     public static  Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
@@ -62,7 +63,7 @@ public class ClienteDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery( "select * from cliente where codCliente =" + codCliente);
             rs.first();
-            curso = instanciarCurso(rs);
+            cliente = instanciarCliente(rs);
         } finally {
             fecharConexao(conexao, comando);
         }
