@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -13,14 +14,14 @@ import java.time.LocalDate;
  */
 public class NotaFiscal {
     private long id;
-    private LocalDate data;
+    private Date data;
     private double valor;
     private Item itens;
     private Boolean transacao;
     private int idPrimariaItem;
     private int idPrimariaTransacao;
     
-    public NotaFiscal(long id, LocalDate data, double valor, Item itens, Boolean transacao) {
+    public NotaFiscal(long id, Date data, double valor, Item itens, Boolean transacao) {
         this.id = id;
         this.data = data;
         this.valor = valor;
@@ -54,11 +55,11 @@ public class NotaFiscal {
         this.id = id;
     }
 
-    public LocalDate getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -77,4 +78,5 @@ public class NotaFiscal {
     public void setItens(Item itens) {
         this.itens = itens;
     }
+
 }
