@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +28,7 @@ public class ManterModeloController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -37,7 +37,7 @@ public class ManterModeloController extends HttpServlet {
         {
             prepararOperacao(request, response);
         }
-        }
+    }
     
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException

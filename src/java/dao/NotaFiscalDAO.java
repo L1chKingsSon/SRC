@@ -63,7 +63,7 @@ public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, 
                 null,
                 null);
             notaFiscal.setIdPrimariaItem(rs.getInt("idItem"));
-            notaFiscal.setIdPrimariaTransacao("idTransacao");
+            notaFiscal.setIdPrimariaTransacao(rs.getInt("idTransacao"));
             return notaFiscal;
     }
 }

@@ -5,13 +5,18 @@
         <group>
             <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaMarca.jsp</file>
             <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaModelo.jsp</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/FuncionarioDAO.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/model/Pessoa.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterModeloController.java</file>
             <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaCliente.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaContaBanco.jsp</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/model/Cliente.java</file>
             <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/PesquisaMarcaController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterEnderecoController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaEndereco.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/NotaFiscalDAO.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarModeloMarca.jsp</file>
             <file>file:/C:/Users/jafar/Git/SRC/src/java/model/NotaFiscal.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaContaBanco.jsp</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/NotaFiscalDAO.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarReserva.jsp</file>
         </group>
     </open-files>
 </project-private>

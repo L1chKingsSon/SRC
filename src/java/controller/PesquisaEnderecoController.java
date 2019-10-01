@@ -6,19 +6,20 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Carro;
+import model.Endereco;
 
 /**
  *
- * @author Raphael
+ * @author jafar
  */
-public class PesquisaCarroController extends HttpServlet {
+public class PesquisaEnderecoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,12 +29,13 @@ public class PesquisaCarroController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         try{
-           request.setAttribute("carros", Carro.obterCarros());
-           RequestDispatcher view = request.getRequestDispatcher("/pesquisaCarro.jsp");
+           request.setAttribute("endereco", Endereco.obterEnderecos());
+           RequestDispatcher view = request.getRequestDispatcher("/pesquisaEndereco.jsp");
            view.forward(request, response);
         } catch(ClassNotFoundException e){
         throw new ServletException(e);

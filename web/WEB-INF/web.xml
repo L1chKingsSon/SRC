@@ -24,6 +24,14 @@
         <servlet-name>ManterModeloController</servlet-name>
         <servlet-class>controller.ManterModeloController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaEnderecoController</servlet-name>
+        <servlet-class>controller.PesquisaEnderecoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaClienteController</servlet-name>
+        <servlet-class>controller.PesquisaClienteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>ManterModeloController</servlet-name>
         <url-pattern>/ManterModeloController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaEnderecoController</servlet-name>
+        <url-pattern>/PesquisaEnderecoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaClienteController</servlet-name>
+        <url-pattern>/PesquisaClienteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
