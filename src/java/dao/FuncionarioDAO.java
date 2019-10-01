@@ -16,7 +16,7 @@ import model.Funcionario;
 public class FuncionarioDAO {
 
 
-    public static List<Funcionario> obterFuncionario() throws ClassNotFoundException, SQLException {
+    public static List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
@@ -40,7 +40,7 @@ public class FuncionarioDAO {
     
     public static Funcionario instanciarFuncionario(ResultSet rs) throws SQLException
     {
-        Funcionario funcionario = new Funcionario(rs.getLong("salario"),
+        Funcionario funcionario = new Funcionario(rs.getFloat("salario"),
                 rs.getString("login"), 
                 rs.getString("senha")
                 );

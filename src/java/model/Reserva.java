@@ -5,6 +5,10 @@
  */
 package model;
 
+import dao.ReservaDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
@@ -55,5 +59,13 @@ public class Reserva {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    public static  List<Reserva> obterReservas() throws ClassNotFoundException, SQLException {
+        return ReservaDAO.obterReservas();
+    }
+    
+    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException
+    {
+        return ReservaDAO.obterReserva(codReserva);
     }
 }

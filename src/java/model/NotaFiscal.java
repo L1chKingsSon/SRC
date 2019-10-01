@@ -5,8 +5,11 @@
  */
 package model;
 
+import dao.NotaFiscalDAO;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -78,5 +81,12 @@ public class NotaFiscal {
     public void setItens(Item itens) {
         this.itens = itens;
     }
-
+    public static  List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
+        return NotaFiscalDAO.obterNotasFiscais();
+    }
+    
+    public static NotaFiscal obterNotaFiscal(int codNotaFiscal) throws ClassNotFoundException, SQLException
+    {
+        return NotaFiscalDAO.obterNotaFiscal(codNotaFiscal);
+    }
 }
