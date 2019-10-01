@@ -5,6 +5,10 @@
  */
 package model;
 
+import dao.ClienteDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
@@ -17,6 +21,10 @@ public class Cliente extends Pessoa{
 
     public void setIDPrimariaContaBanco(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static  List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
+        return ClienteDAO.obterClientes();
     }
 
 }
