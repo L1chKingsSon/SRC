@@ -2,6 +2,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -65,4 +66,22 @@ public class ModeloDAO {
         modelo.setIdPrimariaMarca(rs.getInt("id_Marca"));
         return modelo;
     }
+    public static void gravar(Modelo modelo) throws ClassNotFoundException, SQLException
+    {
+	Connection conexao = null;
+	PreparedStatement comando = null;
+	try{
+		conexao = BD.getConexao();
+		comando = conexao.prepareStatement(
+			"insert into modelo (id, nome, id_marca) "+
+			"values (?,?,?)");
+		comando.setLong(1, modelo.getId());
+		comando.setString(2, modelo.getNome());
+                comando.setLong(3, modelo.getMarca().getId());
+		comando.executeUpdate();
+	} finally {
+		fecharConexao(conexao, comando);
+	}
+    }
+    
 }
