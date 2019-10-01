@@ -32,26 +32,26 @@ public class ManterEnderecoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")){
+        if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
     }
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        try{
+            throws ServletException, IOException {
+        try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             RequestDispatcher view = request.getRequestDispatcher("/manterEndereco.jsp");
             view.forward(request, response);
-        } catch (ServletException e){
+        } catch (ServletException e) {
             throw e;
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new ServletException(e);
         }
-        
+
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

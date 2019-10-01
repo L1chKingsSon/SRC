@@ -31,13 +31,13 @@ public class PesquisaCarroController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-           request.setAttribute("carros", Carro.obterCarros());
-           RequestDispatcher view = request.getRequestDispatcher("/pesquisaCarro.jsp");
-           view.forward(request, response);
-        } catch(ClassNotFoundException e){
-        throw new ServletException(e);
-        } catch (SQLException e){
+        try {
+            request.setAttribute("carros", Carro.obterCarros());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaCarro.jsp");
+            view.forward(request, response);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }

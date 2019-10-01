@@ -14,6 +14,7 @@ import java.util.List;
  * @author Raphael
  */
 public class Endereco {
+
     private long id;
     private String cep;
     private String uf;
@@ -22,7 +23,7 @@ public class Endereco {
     private String logradouro;
     private int numero;
     private String complemento;
-    
+
     public Endereco(long id, String cep, String uf, String cidade, String bairro, String logadouro, int numero, String complemento) {
         this.id = id;
         this.cep = cep;
@@ -34,14 +35,14 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    
     public long getId() {
         return id;
     }
-    
+
     public void setId(long id) {
         this.id = id;
     }
+
     public String getCep() {
         return cep;
     }
@@ -97,12 +98,12 @@ public class Endereco {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-    
+
     public static List<Endereco> obterEnderecos() throws ClassNotFoundException, SQLException {
         return EnderecoDAO.obterEnderecos();
     }
-     public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException
-    {
+
+    public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException {
         return EnderecoDAO.obterEndereco(codEndereco);
     }
 }

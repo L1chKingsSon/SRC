@@ -12,6 +12,7 @@ import java.sql.SQLException;
  * @author Raphael
  */
 public abstract class Pessoa {
+
     private int id;
     private String nome;
     private String cpf;
@@ -20,7 +21,7 @@ public abstract class Pessoa {
     private ContaBanco contaBanco;
     private int idPrimariaEndereco;
     private int idPrimariaContaBanco;
-    
+
     public Pessoa(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int idPrimariaEndereco, int idPrimariaContaBanco) {
         this.id = id;
         this.nome = nome;
@@ -34,8 +35,7 @@ public abstract class Pessoa {
     }
 
     public int getIdPrimariaEndereco() throws ClassNotFoundException, SQLException {
-        if((this.idPrimariaEndereco != 0) && (this.endereco == null))
-        {
+        if ((this.idPrimariaEndereco != 0) && (this.endereco == null)) {
             this.endereco = Endereco.obterEndereco(this.idPrimariaEndereco);
         }
         return idPrimariaEndereco;
@@ -53,7 +53,6 @@ public abstract class Pessoa {
         this.idPrimariaContaBanco = idPrimariaContaBanco;
     }
 
-    
     public Endereco getEndereco() {
         return endereco;
     }
@@ -61,7 +60,7 @@ public abstract class Pessoa {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public long getId() {
         return id;
     }

@@ -15,26 +15,23 @@ import model.NotaFiscal;
  */
 public class NotaFiscalDAO {
 
-public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, SQLException
-    {
+    public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         NotaFiscal notafiscal = null;
-        try
-        {
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from reserva where idinteresse = "+ id);
+            ResultSet rs = comando.executeQuery("select * from reserva where idinteresse = " + id);
             rs.first();
             notafiscal = instanciarNotaFiscal(rs);
-        }finally
-        {
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
         return notafiscal;
     }
-    
+
     public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -44,26 +41,24 @@ public static NotaFiscal obterNotaFiscal(int id) throws ClassNotFoundException, 
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from notafiscal");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 notaFiscal = instanciarNotaFiscal(rs);
                 notasFiscais.add(notaFiscal);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return notasFiscais;
     }
-    
-    public static NotaFiscal instanciarNotaFiscal(ResultSet rs) throws SQLException
-    {
-        NotaFiscal notaFiscal = new NotaFiscal(rs.getInt("id"), 
-                rs.getDate("data"), 
+
+    public static NotaFiscal instanciarNotaFiscal(ResultSet rs) throws SQLException {
+        NotaFiscal notaFiscal = new NotaFiscal(rs.getInt("id"),
+                rs.getDate("data"),
                 rs.getDouble("valor"),
                 null,
                 null);
-            notaFiscal.setIdPrimariaItem(rs.getInt("idItem"));
-            notaFiscal.setIdPrimariaTransacao(rs.getInt("idTransacao"));
-            return notaFiscal;
+        notaFiscal.setIdPrimariaItem(rs.getInt("idItem"));
+        notaFiscal.setIdPrimariaTransacao(rs.getInt("idTransacao"));
+        return notaFiscal;
     }
 }

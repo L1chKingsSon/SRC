@@ -32,28 +32,26 @@ public class ManterModeloController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-           String acao = request.getParameter("acao");
-        if(acao.equals("prepararOperacao"))
-        {
+        String acao = request.getParameter("acao");
+        if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
     }
-    
+
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, SQLException
-    {
+            throws ServletException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("marcas", Marca.obterMarcas());
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
             view.forward(request, response);
-    } catch(ServletException e){
-        throw e;
-    } catch(IOException e){
-        throw new ServletException(e);
-    } catch(ClassNotFoundException e){
-        throw new ServletException(e);
-    }
+        } catch (ServletException e) {
+            throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

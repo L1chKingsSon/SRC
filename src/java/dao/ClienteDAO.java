@@ -19,31 +19,28 @@ import model.Cliente;
  * @author jafar
  */
 public class ClienteDAO {
-    
-    public static List<Cliente> obterClientes() throws ClassNotFoundException, SQLException{
-    Connection conexao = null;
-    Statement comando = null;
-    List<Cliente> clientes = new ArrayList<Cliente>();
-    Cliente cliente = null;
-    
-    try
-    {
-        conexao = BD.getConexao();
-        comando = conexao.createStatement();
-        ResultSet rs = comando.executeQuery ("select * from cliente");
-        while(rs.next())
-        {
-            cliente = instanciarCliente(rs);
-            clientes.add(cliente);
+
+    public static List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        Cliente cliente = null;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from cliente");
+            while (rs.next()) {
+                cliente = instanciarCliente(rs);
+                clientes.add(cliente);
+            }
+        } finally {
+            fecharConexao(conexao, comando);
         }
-    }finally
-        {
-                fecharConexao(conexao,comando);
-                }
-    return clientes;
+        return clientes;
     }
-    
-    public static Cliente instanciarCliente(ResultSet rs) throws SQLException{
+
+    public static Cliente instanciarCliente(ResultSet rs) throws SQLException {
         Cliente cliente = new Cliente(rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("cpf"),
@@ -54,14 +51,15 @@ public class ClienteDAO {
         cliente.setIDPrimariaContaBanco(rs.getInt("id_contaBanco"));
         return cliente;
     }
+
     public static Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Cliente cliente = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from cliente where codCliente =" + codCliente);
+            ResultSet rs = comando.executeQuery("select * from cliente where codCliente =" + codCliente);
             rs.first();
             cliente = instanciarCliente(rs);
         } finally {
@@ -70,4 +68,3 @@ public class ClienteDAO {
         return cliente;
     }
 }
-

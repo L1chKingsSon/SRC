@@ -14,6 +14,7 @@ import java.util.List;
  * @author Raphael
  */
 public class Marca {
+
     private int id;
     private String nome;
 
@@ -25,7 +26,7 @@ public class Marca {
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -37,18 +38,20 @@ public class Marca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
 //    public void gravar() throws SQLException, ClassNotFoundException
 //    {
 //        MarcaDAO.gravar(this);
 //    }
-    
-    public static  List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
+    public static List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
         return MarcaDAO.obterMarcas();
     }
-    
-    public static Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException
-    {
+
+    public static Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
         return MarcaDAO.obterMarca(codMarca);
+    }
+
+    public void gravar() throws ClassNotFoundException, SQLException {
+        MarcaDAO.gravar(this);
     }
 }

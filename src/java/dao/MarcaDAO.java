@@ -16,7 +16,6 @@ import model.Marca;
  */
 public class MarcaDAO {
 
-
     public static List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -26,34 +25,32 @@ public class MarcaDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from marca");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 marca = instanciarMarca(rs);
                 marcas.add(marca);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return marcas;
     }
-    
-    public static Marca instanciarMarca(ResultSet rs) throws SQLException
-    {
-        Marca marca = new Marca
-                (
-                        rs.getInt("id"),
-                        rs.getString("nome")
-                );
+
+    public static Marca instanciarMarca(ResultSet rs) throws SQLException {
+        Marca marca = new Marca(
+                rs.getInt("id"),
+                rs.getString("nome")
+        );
         return marca;
     }
-    public static  Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
+
+    public static Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Marca marca = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from marca where id =" + codMarca);
+            ResultSet rs = comando.executeQuery("select * from marca where id =" + codMarca);
             rs.first();
             marca = instanciarMarca(rs);
         } finally {
@@ -61,20 +58,20 @@ public class MarcaDAO {
         }
         return marca;
     }
-    public static void gravar(Marca marca) throws ClassNotFoundException, SQLException
-    {
-	Connection conexao = null;
-	PreparedStatement comando = null;
-	try{
-		conexao = BD.getConexao();
-		comando = conexao.prepareStatement(
-			"insert into marca (id, nome) "+
-			"values (?,?)");
-		comando.setInt(1, marca.getId());
-		comando.setString(2, marca.getNome());
-		comando.executeUpdate();
-	} finally {
-		fecharConexao(conexao, comando);
-	}
+
+    public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into marca (id, nome) "
+                    + "values (?,?)");
+            comando.setInt(1, marca.getId());
+            comando.setString(2, marca.getNome());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
     }
 }

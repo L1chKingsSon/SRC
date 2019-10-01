@@ -16,6 +16,7 @@ import java.util.List;
  * @author Raphael
  */
 public class NotaFiscal {
+
     private long id;
     private Date data;
     private double valor;
@@ -23,7 +24,7 @@ public class NotaFiscal {
     private Boolean transacao;
     private int idPrimariaItem;
     private int idPrimariaTransacao;
-    
+
     public NotaFiscal(long id, Date data, double valor, Item itens, Boolean transacao) {
         this.id = id;
         this.data = data;
@@ -31,14 +32,12 @@ public class NotaFiscal {
         this.itens = itens;
         this.transacao = transacao;
     }
-    
-    public void setIdPrimariaTransacao(int x)
-    {
+
+    public void setIdPrimariaTransacao(int x) {
         this.idPrimariaTransacao = x;
     }
-    
-    public void setIdPrimariaItem(int x)
-    {
+
+    public void setIdPrimariaItem(int x) {
         this.idPrimariaItem = x;
     }
 
@@ -81,12 +80,12 @@ public class NotaFiscal {
     public void setItens(Item itens) {
         this.itens = itens;
     }
-    public static  List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
+
+    public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
         return NotaFiscalDAO.obterNotasFiscais();
     }
-    
-    public static NotaFiscal obterNotaFiscal(int codNotaFiscal) throws ClassNotFoundException, SQLException
-    {
+
+    public static NotaFiscal obterNotaFiscal(int codNotaFiscal) throws ClassNotFoundException, SQLException {
         return NotaFiscalDAO.obterNotaFiscal(codNotaFiscal);
     }
 }

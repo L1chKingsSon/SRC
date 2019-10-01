@@ -14,12 +14,11 @@ import java.util.List;
  * @author Raphael
  */
 public class Modelo {
+
     private long id;
     private String nome;
     private Marca marca;
     private int idPrimariaMarca;
-
-
 
     public Modelo(long id, String nome, Marca marca) {
         this.id = id;
@@ -27,18 +26,17 @@ public class Modelo {
         this.marca = marca;
     }
 
-        public int getIdPrimariaMarca() throws ClassNotFoundException, SQLException {
-            if((this.idPrimariaMarca != 0) && (this.marca == null))
-            {
-                this.marca = Marca.obterMarca(this.idPrimariaMarca);
-            }
+    public int getIdPrimariaMarca() throws ClassNotFoundException, SQLException {
+        if ((this.idPrimariaMarca != 0) && (this.marca == null)) {
+            this.marca = Marca.obterMarca(this.idPrimariaMarca);
+        }
         return idPrimariaMarca;
     }
 
     public void setIdPrimariaMarca(int idPrimariaMarca) {
         this.idPrimariaMarca = idPrimariaMarca;
     }
-    
+
     public long getId() {
         return id;
     }
@@ -62,12 +60,12 @@ public class Modelo {
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
-public static  List<Modelo> obterModelos() throws ClassNotFoundException, SQLException {
+
+    public static List<Modelo> obterModelos() throws ClassNotFoundException, SQLException {
         return ModeloDAO.obterModelos();
     }
-    
-    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException
-    {
+
+    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException {
         return ModeloDAO.obterModelo(codModelo);
     }
 }

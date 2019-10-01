@@ -13,7 +13,8 @@ import java.util.List;
  *
  * @author Raphael
  */
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa {
+
     private float salario;
     private String login;
     private String senha;
@@ -48,11 +49,12 @@ public class Funcionario extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public static  List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
+
+    public static List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
         return FuncionarioDAO.obterFuncionarios();
     }
-    
-    public static  Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
+
+    public static Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
         return FuncionarioDAO.obterFuncionario(codFuncionario);
     }
 }
