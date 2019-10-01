@@ -39,35 +39,33 @@ public class CarroDAO {
         }
         return carros;
     }
-    
-    public static Carro instanciarCarro(ResultSet rs) throws SQLException
-    {
-        Carro carro = new Carro
-                (
-                        rs.getLong("id"),
-                        rs.getString("placa"),
-                        rs.getString("chassi"),
-                        rs.getString("ano"),
-                        rs.getString("cor"),
-                        rs.getBoolean("IPVA"),
-                        rs.getDate("seguro"),
-                        rs.getDate("garantia"),
-                        rs.getDouble("valorComprado"),
-                        rs.getDouble("valorVenda"),
-                        null
-                );
+
+    public static Carro instanciarCarro(ResultSet rs) throws SQLException {
+        Carro carro = new Carro(
+                rs.getLong("id"),
+                rs.getString("placa"),
+                rs.getString("chassi"),
+                rs.getString("ano"),
+                rs.getString("cor"),
+                rs.getBoolean("IPVA"),
+                rs.getDate("seguro"),
+                rs.getDate("garantia"),
+                rs.getDouble("valorComprado"),
+                rs.getDouble("valorVenda"),
+                null
+        );
         carro.setIdPrimariaModelo(rs.getInt("id_Modelo"));
         return carro;
     }
-    
-        public static  Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
+
+    public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Carro carro = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from carro where id =" + codCarro);
+            ResultSet rs = comando.executeQuery("select * from carro where id =" + codCarro);
             rs.first();
             carro = instanciarCarro(rs);
         } finally {

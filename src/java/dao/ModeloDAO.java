@@ -16,7 +16,6 @@ import model.Modelo;
  */
 public class ModeloDAO {
 
-
     public static List<Modelo> obterModelos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -26,39 +25,34 @@ public class ModeloDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from modelo");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 modelo = instanciarModelo(rs);
                 modelos.add(modelo);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return modelos;
     }
-    
-    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException
-    {
+
+    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Modelo modelo = null;
-        try
-        {
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from modelo where id = "+ codModelo);
+            ResultSet rs = comando.executeQuery("select * from modelo where id = " + codModelo);
             rs.first();
             modelo = instanciarModelo(rs);
-        }finally
-        {
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
         return modelo;
     }
-    
-    public static Modelo instanciarModelo(ResultSet rs) throws SQLException
-    {
+
+    public static Modelo instanciarModelo(ResultSet rs) throws SQLException {
         Modelo modelo = new Modelo(
                 rs.getLong("id"),
                 rs.getString("nome"),
@@ -66,22 +60,22 @@ public class ModeloDAO {
         modelo.setIdPrimariaMarca(rs.getInt("id_Marca"));
         return modelo;
     }
-    public static void gravar(Modelo modelo) throws ClassNotFoundException, SQLException
-    {
-	Connection conexao = null;
-	PreparedStatement comando = null;
-	try{
-		conexao = BD.getConexao();
-		comando = conexao.prepareStatement(
-			"insert into modelo (id, nome, id_marca) "+
-			"values (?,?,?)");
-		comando.setLong(1, modelo.getId());
-		comando.setString(2, modelo.getNome());
-                comando.setLong(3, modelo.getMarca().getId());
-		comando.executeUpdate();
-	} finally {
-		fecharConexao(conexao, comando);
-	}
+
+    public static void gravar(Modelo modelo) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into modelo (id, nome, id_marca) "
+                    + "values (?,?,?)");
+            comando.setLong(1, modelo.getId());
+            comando.setString(2, modelo.getNome());
+            comando.setLong(3, modelo.getMarca().getId());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
     }
-    
+
 }

@@ -12,5 +12,5 @@ package model;
 public enum NivelAcesso {
     ADMIN,
     FUNCIONARIO;
-    
+
 }

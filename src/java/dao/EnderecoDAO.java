@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dao;
 
 import static dao.DAO.fecharConexao;
@@ -21,7 +20,6 @@ import model.Endereco;
  */
 public class EnderecoDAO {
 
-
     public static List<Endereco> obterEnderecos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -31,51 +29,44 @@ public class EnderecoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from carro");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 endereco = instanciarEndereco(rs);
                 enderecos.add(endereco);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return enderecos;
     }
-    
-    public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException
-    {
+
+    public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Endereco endereco = null;
-        try
-        {
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from curso where id = "+ codEndereco);
+            ResultSet rs = comando.executeQuery("select * from curso where id = " + codEndereco);
             rs.first();
             endereco = instanciarEndereco(rs);
-        }finally
-        {
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
         return endereco;
     }
-    
-    
-    public static Endereco instanciarEndereco(ResultSet rs) throws SQLException
-    {
-        Endereco endereco = new Endereco
-                (
-                       rs.getLong("id"), 
-                       rs.getString("cep"),
-                       rs.getString("uf"), 
-                       rs.getString("cidade"), 
-                       rs.getString("bairro"), 
-                       rs.getString("logadouro"), 
-                       rs.getInt("numero"), 
-                       rs.getString("complement0")
-                );
+
+    public static Endereco instanciarEndereco(ResultSet rs) throws SQLException {
+        Endereco endereco = new Endereco(
+                rs.getLong("id"),
+                rs.getString("cep"),
+                rs.getString("uf"),
+                rs.getString("cidade"),
+                rs.getString("bairro"),
+                rs.getString("logadouro"),
+                rs.getInt("numero"),
+                rs.getString("complement0")
+        );
         return endereco;
     }
 }

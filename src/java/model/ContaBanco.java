@@ -14,6 +14,7 @@ import java.util.List;
  * @author Raphael
  */
 public class ContaBanco {
+
     private long id;
     private String nome;
     private String agencia;
@@ -67,12 +68,12 @@ public class ContaBanco {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-public static  List<ContaBanco> obterContas() throws ClassNotFoundException, SQLException {
+
+    public static List<ContaBanco> obterContas() throws ClassNotFoundException, SQLException {
         return ContaBancoDAO.obterContas();
     }
-    
-    public static ContaBanco obterConta(int codConta) throws ClassNotFoundException, SQLException
-    {
+
+    public static ContaBanco obterConta(int codConta) throws ClassNotFoundException, SQLException {
         return ContaBancoDAO.obterConta(codConta);
     }
 }

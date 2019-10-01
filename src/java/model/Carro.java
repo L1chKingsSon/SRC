@@ -16,6 +16,7 @@ import java.util.List;
  * @author Raphael
  */
 public class Carro {
+
     private long id;
     private String placa;
     private String chassi;
@@ -28,7 +29,7 @@ public class Carro {
     private double valorVenda;
     private Modelo modelo;
     private int idPrimariaModelo;
-    
+
     public Carro(long id, String placa, String chassi, String ano, String cor, Boolean IPVA, Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
@@ -44,20 +45,20 @@ public class Carro {
     }
 
     public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
-        if((this.idPrimariaModelo != 0) && (this.modelo == null))
-            {
-                this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
-            }
+        if ((this.idPrimariaModelo != 0) && (this.modelo == null)) {
+            this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
+        }
         return idPrimariaModelo;
     }
 
-    public void setIdPrimariaModelo(int idPrimariaModelo){
+    public void setIdPrimariaModelo(int idPrimariaModelo) {
         this.idPrimariaModelo = idPrimariaModelo;
     }
 
     public Modelo getModelo() {
         return modelo;
     }
+
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
@@ -141,13 +142,12 @@ public class Carro {
     public void setValorVenda(double valorVenda) {
         this.valorVenda = valorVenda;
     }
-    
-    public static  List<Carro> obterCarros() throws ClassNotFoundException, SQLException {
+
+    public static List<Carro> obterCarros() throws ClassNotFoundException, SQLException {
         return CarroDAO.obterCarros();
     }
-    
-    public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException
-    {
+
+    public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
         return CarroDAO.obterCarro(codCarro);
     }
 }

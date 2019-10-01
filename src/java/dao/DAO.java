@@ -14,17 +14,15 @@ import java.sql.Statement;
  * @author Raphael
  */
 public class DAO {
+
     public static void fecharConexao(Connection conexao, Statement comando)
-            throws SQLException
-            {
-                if(comando != null)
-                {
-                    comando.close();
-                }
-                if(conexao != null)
-                {
-                conexao.close();
-                }
-            }
-            
+            throws SQLException {
+        if (comando != null) {
+            comando.close();
+        }
+        if (conexao != null) {
+            conexao.close();
+        }
+    }
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Raphael
  */
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa {
 
     public Cliente(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int idPrimariaEndereco, int idPrimariaContaBanco) {
         super(id, nome, cpf, telefone, endereco, contaBanco, idPrimariaEndereco, idPrimariaContaBanco);
@@ -22,14 +22,13 @@ public class Cliente extends Pessoa{
     public void setIDPrimariaContaBanco(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public static  List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
+
+    public static List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
         return ClienteDAO.obterClientes();
     }
-    
-    public static  Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
+
+    public static Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
         return ClienteDAO.obterCliente(codCliente);
     }
-    
 
 }

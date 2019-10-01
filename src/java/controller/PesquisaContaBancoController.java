@@ -5,7 +5,6 @@ package controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -33,13 +32,13 @@ public class PesquisaContaBancoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-           request.setAttribute("contas", ContaBanco.obterContas());
-           RequestDispatcher view = request.getRequestDispatcher("/pesquisaContaBanco.jsp");
-           view.forward(request, response);
-        } catch(ClassNotFoundException e){
-        throw new ServletException(e);
-        } catch (SQLException e){
+        try {
+            request.setAttribute("contas", ContaBanco.obterContas());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaContaBanco.jsp");
+            view.forward(request, response);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }

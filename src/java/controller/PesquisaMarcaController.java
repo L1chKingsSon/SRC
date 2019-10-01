@@ -32,13 +32,13 @@ public class PesquisaMarcaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-           request.setAttribute("marcas", Marca.obterMarcas());
-           RequestDispatcher view = request.getRequestDispatcher("/pesquisaMarca.jsp");
-           view.forward(request, response);
-        } catch(ClassNotFoundException e){
-        throw new ServletException(e);
-        } catch (SQLException e){
+        try {
+            request.setAttribute("marcas", Marca.obterMarcas());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaMarca.jsp");
+            view.forward(request, response);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }

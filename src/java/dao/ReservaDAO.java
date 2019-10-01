@@ -15,7 +15,6 @@ import model.Reserva;
  */
 public class ReservaDAO {
 
-
     public static List<Reserva> obterReservas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -25,46 +24,40 @@ public class ReservaDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from reserva");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 reserva = instanciarReserva(rs);
                 reservas.add(reserva);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return reservas;
     }
-    
-    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException
-    {
+
+    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Reserva reserva = null;
-        try
-        {
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from reserva where id = "+ codReserva);
+            ResultSet rs = comando.executeQuery("select * from reserva where id = " + codReserva);
             rs.first();
             reserva = instanciarReserva(rs);
-        }finally
-        {
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
         return reserva;
     }
-    
-    public static Reserva instanciarReserva(ResultSet rs) throws SQLException
-    {
-        Reserva reserva = new Reserva
-                (
-                        rs.getInt("id"),
-                        rs.getString("cor"),
-                        null,
-                        null
-                );
+
+    public static Reserva instanciarReserva(ResultSet rs) throws SQLException {
+        Reserva reserva = new Reserva(
+                rs.getInt("id"),
+                rs.getString("cor"),
+                null,
+                null
+        );
         return reserva;
     }
 }

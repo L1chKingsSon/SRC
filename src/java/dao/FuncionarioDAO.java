@@ -15,7 +15,6 @@ import model.Funcionario;
  */
 public class FuncionarioDAO {
 
-
     public static List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -25,35 +24,32 @@ public class FuncionarioDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from carro");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 funcionario = instanciarFuncionario(rs);
                 funcionarios.add(funcionario);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return funcionarios;
     }
-    
-    
-    
-    public static Funcionario instanciarFuncionario(ResultSet rs) throws SQLException
-    {
+
+    public static Funcionario instanciarFuncionario(ResultSet rs) throws SQLException {
         Funcionario funcionario = new Funcionario(rs.getFloat("salario"),
-                rs.getString("login"), 
+                rs.getString("login"),
                 rs.getString("senha")
-                );
+        );
         return funcionario;
     }
-    public static  Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
+
+    public static Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Funcionario funcionario = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery( "select * from funcionario where codFuncionario =" + codFuncionario);
+            ResultSet rs = comando.executeQuery("select * from funcionario where codFuncionario =" + codFuncionario);
             rs.first();
             funcionario = instanciarFuncionario(rs);
         } finally {

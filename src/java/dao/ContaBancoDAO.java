@@ -15,7 +15,6 @@ import model.ContaBanco;
  */
 public class ContaBancoDAO {
 
-
     public static List<ContaBanco> obterContas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -25,47 +24,41 @@ public class ContaBancoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("Select * from contabanco");
-            while(rs.next())
-            {
+            while (rs.next()) {
                 contaBanco = instanciarContaBanco(rs);
                 contas.add(contaBanco);
             }
-        }   finally {
+        } finally {
             fecharConexao(conexao, comando);
         }
         return contas;
     }
-    
-    public static ContaBanco obterConta(int codContaBanco) throws ClassNotFoundException, SQLException
-    {
+
+    public static ContaBanco obterConta(int codContaBanco) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         ContaBanco conta = null;
-        try
-        {
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from contabanco where id =" + codContaBanco);
             rs.first();
             conta = instanciarContaBanco(rs);
-        }finally
-        {
+        } finally {
             fecharConexao(conexao, comando);
         }
-        
+
         return conta;
     }
-    
-    public static ContaBanco instanciarContaBanco(ResultSet rs) throws SQLException
-    {
-        ContaBanco contaBanco = new ContaBanco
-                (
-                        rs.getInt("id"),
-                        rs.getString("agencia"),
-                        rs.getString("conta"),
-                        rs.getString("tipo"),
-                        rs.getString("nome")
-                );
+
+    public static ContaBanco instanciarContaBanco(ResultSet rs) throws SQLException {
+        ContaBanco contaBanco = new ContaBanco(
+                rs.getInt("id"),
+                rs.getString("agencia"),
+                rs.getString("conta"),
+                rs.getString("tipo"),
+                rs.getString("nome")
+        );
         return contaBanco;
     }
 }
