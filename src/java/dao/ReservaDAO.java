@@ -16,7 +16,7 @@ import model.Reserva;
 public class ReservaDAO {
 
 
-    public static List<Reserva> obterReserva() throws ClassNotFoundException, SQLException {
+    public static List<Reserva> obterReservas() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Reserva> reservas = new ArrayList<Reserva>();

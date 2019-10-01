@@ -54,7 +54,7 @@ public class ClienteDAO {
         cliente.setIDPrimariaContaBanco(rs.getInt("id_contaBanco"));
         return cliente;
     }
-    public static  Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
+    public static Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Cliente cliente = null;

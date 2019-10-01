@@ -5,6 +5,10 @@
  */
 package model;
 
+import dao.EstacionamentoDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
@@ -52,4 +56,12 @@ public class Estacionamento {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    public static  List<Estacionamento> obterEstacionamentos() throws ClassNotFoundException, SQLException {
+        return EstacionamentoDAO.obterEstacionamentos();
+    }
+    
+    public static  Estacionamento obterEstacionamento(int codEstacionamento) throws ClassNotFoundException, SQLException {
+        return EstacionamentoDAO.obterEstacionamento(codEstacionamento);
+    }
+    
 }

@@ -16,7 +16,7 @@ import model.Estacionamento;
 public class EstacionamentoDAO {
 
 
-    public static List<Estacionamento> obterEstacionamento() throws ClassNotFoundException, SQLException {
+    public static List<Estacionamento> obterEstacionamentos() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         List<Estacionamento> estacionamentos = new ArrayList<Estacionamento>();

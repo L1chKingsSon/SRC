@@ -26,5 +26,10 @@ public class Cliente extends Pessoa{
     public static  List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
         return ClienteDAO.obterClientes();
     }
+    
+    public static  Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
+        return ClienteDAO.obterCliente(codCliente);
+    }
+    
 
 }

@@ -5,12 +5,16 @@
  */
 package model;
 
+import dao.FuncionarioDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Raphael
  */
 public class Funcionario extends Pessoa{
-    private long salario;
+    private float salario;
     private String login;
     private String senha;
 
@@ -21,7 +25,7 @@ public class Funcionario extends Pessoa{
         this.senha = senha;
     }
 
-    public long getSalario() {
+    public float getSalario() {
         return salario;
     }
 
@@ -44,5 +48,11 @@ public class Funcionario extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    public static  List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
+        return FuncionarioDAO.obterFuncionarios();
+    }
     
+    public static  Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
+        return FuncionarioDAO.obterFuncionario(codFuncionario);
+    }
 }
