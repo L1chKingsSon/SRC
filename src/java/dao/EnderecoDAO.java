@@ -46,7 +46,7 @@ public class EnderecoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from curso where id = " + codEndereco);
+            ResultSet rs = comando.executeQuery("select * from endereco where id = " + codEndereco);
             rs.first();
             endereco = instanciarEndereco(rs);
         } finally {

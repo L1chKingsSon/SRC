@@ -2,6 +2,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,5 +57,26 @@ public class FuncionarioDAO {
             fecharConexao(conexao, comando);
         }
         return funcionario;
+    }
+    
+    public static void gravar(Funcionario funcionario) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into funcionario (id, salario, login, senha, "
+                    + "NivelAcesso, nome, CPF, telefone, "
+                    + "id_Conta_Banco, id_Endereco) "
+                    + "values (?,?,?,?,?,?,?,?,?,?)");
+            comando.setLong(1, funcionario.getId());
+            comando.setFloat(2, funcionario.getSalario());
+            comando.setString(3, funcionario.getLogin());
+            comando.setString(4, funcionario.getSenha());
+            comando.setNull()
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
     }
 }
