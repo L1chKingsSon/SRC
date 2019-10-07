@@ -5,13 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Listar Clientes</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body>        
+        <h1>Pesquisa de Clientes</h1>
+        <table border="1">
+            <tr>
+                <th>id do cliente</th>
+                <th>nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+            </tr>
+            <c:forEach items="${clientes}" var="clientes">
+                <tr>
+                    <td><c:out value="${clientes.id}" /></td>
+                    <td><c:out value="${clientes.nome}" /></td>
+                    <td><c:out value="${clientes.cpf}" /></td>
+                    <td><c:out value="${clientes.telefone}" /></td>
+                </tr>
+            </c:forEach>
     </body>
 </html>
