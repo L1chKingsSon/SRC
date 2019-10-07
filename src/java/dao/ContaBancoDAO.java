@@ -2,6 +2,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,5 +61,24 @@ public class ContaBancoDAO {
                 rs.getString("nome")
         );
         return contaBanco;
+    }
+    
+        public static void gravar(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into contabanco (id, agencia, conta, tipo, nome) "
+                    + "values (?,?,?,?,?,?)");
+            comando.setLong(1, contaBanco.getId());
+            comando.setString(2, contaBanco.getAgencia());
+            comando.setLong(1, contaBanco.getId());
+            comando.setLong(1, contaBanco.getId());
+            comando.setLong(1, contaBanco.getId());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
     }
 }

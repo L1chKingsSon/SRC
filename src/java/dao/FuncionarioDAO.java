@@ -66,14 +66,18 @@ public class FuncionarioDAO {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
                     "insert into funcionario (id, salario, login, senha, "
-                    + "NivelAcesso, nome, CPF, telefone, "
+                    + "nome, CPF, telefone, "
                     + "id_Conta_Banco, id_Endereco) "
-                    + "values (?,?,?,?,?,?,?,?,?,?)");
+                    + "values (?,?,?,?,?,?,?,?,?)");
             comando.setLong(1, funcionario.getId());
             comando.setFloat(2, funcionario.getSalario());
             comando.setString(3, funcionario.getLogin());
             comando.setString(4, funcionario.getSenha());
-            comando.setNull()
+            comando.setString(5, funcionario.getNome());
+            comando.setString(6, funcionario.getCpf());
+            comando.setString(7, funcionario.getTelefone());
+            comando.setLong(8, funcionario.getContaBanco().getId());
+            comando.setLong(9, funcionario.getEndereco().getId());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);
