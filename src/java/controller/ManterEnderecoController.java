@@ -52,10 +52,7 @@ public class ManterEnderecoController extends HttpServlet {
 
     }
     
-    <><><>public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response){
-        String operacao = request.getParameter("operacao");
-        int codEndereco = Integer.parseInt(request.getParameter(""))
-    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
