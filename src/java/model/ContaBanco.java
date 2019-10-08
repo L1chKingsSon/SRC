@@ -76,4 +76,11 @@ public class ContaBanco {
     public static ContaBanco obterConta(int codConta) throws ClassNotFoundException, SQLException {
         return ContaBancoDAO.obterConta(codConta);
     }
+    
+    public void gravar() 
+            throws 
+            ClassNotFoundException, 
+            SQLException {
+        ContaBancoDAO.gravar(this);
+    }
 }

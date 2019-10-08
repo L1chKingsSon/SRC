@@ -73,9 +73,9 @@ public class ContaBancoDAO {
                     + "values (?,?,?,?,?,?)");
             comando.setLong(1, contaBanco.getId());
             comando.setString(2, contaBanco.getAgencia());
-            comando.setLong(1, contaBanco.getId());
-            comando.setLong(1, contaBanco.getId());
-            comando.setLong(1, contaBanco.getId());
+            comando.setString(3, contaBanco.getConta());
+            comando.setString(4, contaBanco.getTipo());
+            comando.setString(5, contaBanco.getNome());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

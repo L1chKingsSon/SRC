@@ -20,7 +20,7 @@
 
     <label>CPF</label>
     <input name="cpf" type="number"><br><br>
-    Endereço 
+    Endereco 
     <label>CEP</label>
     <input name="cep" type="number"><br><br>
 
@@ -58,7 +58,7 @@
 
     <label>Tipo de Conta</label><br>
     <input name="tipoConta" type="radio" value="cc">Corrente<br>
-    <input name="tipoConta" type="radio" value="cp">Poupança<br><br>
+    <input name="tipoConta" type="radio" value="cp">Poupanca<br><br>
        
     <button type="submit">Cadastrar</button>
 </form>    

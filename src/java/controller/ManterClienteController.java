@@ -13,12 +13,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ContaBanco;
+import model.Endereco;
 
 /**
  *
  * @author jafar
  */
-public class ManterEnderecoController extends HttpServlet {
+public class ManterClienteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,31 +32,27 @@ public class ManterEnderecoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
     }
-
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    
+        public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, SQLException, ClassNotFoundException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            RequestDispatcher view = request.getRequestDispatcher("/manterEndereco.jsp");
+            request.setAttribute("endereco", Endereco.obterEnderecos());
+            request.setAttribute("contaBanco", ContaBanco.obterContas());
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
         } catch (IOException e) {
             throw new ServletException(e);
         }
-
-    }
-    
-    <><><>public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response){
-        String operacao = request.getParameter("operacao");
-        int codEndereco = Integer.parseInt(request.getParameter(""))
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
