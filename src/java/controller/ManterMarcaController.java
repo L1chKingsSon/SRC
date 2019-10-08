@@ -6,12 +6,13 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Marca;
 
 /**
  *
@@ -27,15 +28,51 @@ public class ManterMarcaController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")) {
+        if(acao.equals("confirmarOperacao"))
+        {
+            confirmarOperacao(request, response);
+        } 
+        else if (acao.equals("prepararOperacao"))
+        {
             prepararOperacao(request, response);
         }
     }
-
+    
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException
+    {
+        String operacao = request.getParameter("operacao");
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        
+        try{
+           Marca marca = new Marca(id, nome);
+           if(operacao.equals("Incluir"))
+           {
+               try
+               {
+               marca.gravar();
+               } catch(ClassNotFoundException e)
+               {
+                   throw new ServletException(e);
+               }
+           }
+           RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
+           view.forward(request, response);
+           } catch (IOException e)
+           {
+               throw new ServletException(e);
+           } catch(SQLException e)
+           {
+               throw new ServletException(e);
+           }
+        }
+ 
+    
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
         try {
