@@ -20,17 +20,22 @@
     </form>
     <br><br>
     <form action="ManterMarcaController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterMarca">
-        <table border="1">
+        <table border="1"> 
+            <tr>
+                <td>ID da marca</td>
+                <td><input type="number" name="txtId" value="${marca.id}"></td>
+            </tr>
             <tr>
                 <td>Nome da Marca</td>
-                <td><input type="text" name="txtId" value="${marca.nome}"></td>
-        </table>
+                <td><input type="text" name="txtNome" value="${marca.nome}"></td>
+            </tr>
+        </table
 
 
         <button type="submit">Cadastrar</button>
     </form>
 
-    <form action="CADASTRAR">
+<!--    <form action="CADASTRAR">
         <label>Nome da Marca</label>
         <input type="text" name="marca">
 
@@ -38,7 +43,7 @@
         <input type="text" name="modelo">
 
         <button type="submit">Cadastrar</button>
-    </form>
+    </form>-->
     
 </body>
 </html>
