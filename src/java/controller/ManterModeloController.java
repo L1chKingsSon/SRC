@@ -33,8 +33,14 @@ public class ManterModeloController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")) {
+        if (acao.equals("confirmarOperacao"))
+        {
+            confirmarOperacao(request, response);
+                    
+        } else if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
+        
+            
         }
     }
 
