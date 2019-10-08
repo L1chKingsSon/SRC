@@ -57,4 +57,11 @@ public class Funcionario extends Pessoa {
     public static Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
         return FuncionarioDAO.obterFuncionario(codFuncionario);
     }
+
+    public void gravar()
+            throws 
+            ClassNotFoundException,
+            SQLException {
+        FuncionarioDAO.gravar(this);
+    }
 }
