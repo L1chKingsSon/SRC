@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,7 @@ public class ManterMarcaController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException
     {
         String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
         int id = Integer.parseInt(request.getParameter("txtId"));
         String nome = request.getParameter("txtNome");
         
@@ -99,7 +102,11 @@ public class ManterMarcaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -113,7 +120,11 @@ public class ManterMarcaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

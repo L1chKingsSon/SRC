@@ -45,8 +45,8 @@ public class ClienteDAO {
                 rs.getString("nome"),
                 rs.getString("cpf"),
                 rs.getString("telefone"),
-                null,
-                null);
+                0,
+        0);
         cliente.setIdPrimariaEndereco(rs.getInt("id_endereco"));
         cliente.setIDPrimariaContaBanco(rs.getInt("id_contaBanco"));
         return cliente;

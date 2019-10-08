@@ -34,16 +34,6 @@
 
         <button type="submit">Cadastrar</button>
     </form>
-
-<!--    <form action="CADASTRAR">
-        <label>Nome da Marca</label>
-        <input type="text" name="marca">
-
-        <label>Nome da Modelo</label>
-        <input type="text" name="modelo">
-
-        <button type="submit">Cadastrar</button>
-    </form>-->
     
 </body>
 </html>
