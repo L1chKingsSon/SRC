@@ -22,13 +22,13 @@ public abstract class Pessoa {
     private int idPrimariaEndereco;
     private int idPrimariaContaBanco;
 
-    public Pessoa(int id, String nome, String cpf, String telefone, int idPrimariaEndereco, int idPrimariaContaBanco) {
+    public Pessoa(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.idPrimariaEndereco = idPrimariaEndereco;
-        this.idPrimariaContaBanco = idPrimariaContaBanco;
+        this.endereco = endereco;
+        this.contaBanco = contaBanco;
 
     }
 

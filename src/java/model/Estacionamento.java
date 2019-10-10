@@ -20,7 +20,7 @@ public class Estacionamento {
     private Endereco endereco;
     private int idPrimariaEndereco;
 
-    public Estacionamento(long id, long numeroVagas, Endereco endereco, int idPrimariaEndereco) {
+    public Estacionamento(long id, long numeroVagas, Endereco endereco) {
         this.id = id;
         this.numeroVagas = numeroVagas;
         this.endereco = endereco;

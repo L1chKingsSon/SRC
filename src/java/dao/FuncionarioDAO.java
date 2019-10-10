@@ -36,13 +36,21 @@ public class FuncionarioDAO {
     }
 
     public static Funcionario instanciarFuncionario(ResultSet rs) throws SQLException {
-        Funcionario funcionario = new Funcionario(rs.getFloat("salario"),
+        Funcionario funcionario = new Funcionario(rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getString("cpf"),
+                rs.getString("telefone"),
+                null,
+                null,
+                rs.getLong("salario"),
                 rs.getString("login"),
                 rs.getString("senha")
         );
+        funcionario.setIdPrimariaEndereco(rs.getInt("id_endereco"));
+        funcionario.setIdPrimariaContaBanco(rs.getInt("id_contaBanco"));
         return funcionario;
     }
-
+    
     public static Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
