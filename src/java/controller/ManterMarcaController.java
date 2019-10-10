@@ -64,7 +64,7 @@ public class ManterMarcaController extends HttpServlet {
                    throw new ServletException(e);
                }
            }
-           RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
+           RequestDispatcher view = request.getRequestDispatcher("PesquisaMarcaController");
            view.forward(request, response);
            } catch (IOException e)
            {
