@@ -48,6 +48,7 @@ public class ManterMarcaController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException
     {
         String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
         int id = Integer.parseInt(request.getParameter("txtId"));
         String nome = request.getParameter("txtNome");
         
@@ -63,7 +64,7 @@ public class ManterMarcaController extends HttpServlet {
                    throw new ServletException(e);
                }
            }
-           RequestDispatcher view = request.getRequestDispatcher("PesquisaCursoController");
+           RequestDispatcher view = request.getRequestDispatcher("PesquisaMarcaController");
            view.forward(request, response);
            } catch (IOException e)
            {
