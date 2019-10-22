@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Marca;
+import model.Modelo;
 
 /**
  *
@@ -31,18 +32,46 @@ public class ManterModeloController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
-        if (acao.equals("confirmarOperacao"))
-        {
+        if (acao.equals("confirmarOperacao")) {
             confirmarOperacao(request, response);
-                    
+
         } else if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
-        
-            
+
+        }
+    }
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        int marcaCarro = Integer.parseInt(request.getParameter("select_marca"));
+
+        try {
+            Marca marca = null;
+            if (marcaCarro != 0) {
+                marca = Marca.obterMarca(marcaCarro);
+            }
+            Modelo modelo = new Modelo(id, nome, marca);
+            if (operacao.equals("Incluir")) {
+                try {
+                    modelo.gravar();
+                } catch (ClassNotFoundException e) {
+                    throw new ServletException(e);
+                }
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaModeloController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
 
@@ -78,6 +107,8 @@ public class ManterModeloController extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ManterModeloController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterModeloController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -95,6 +126,8 @@ public class ManterModeloController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(ManterModeloController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterModeloController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

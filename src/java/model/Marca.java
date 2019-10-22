@@ -55,4 +55,8 @@ public class Marca {
     public void gravar() throws ClassNotFoundException, SQLException {
         MarcaDAO.gravar(this);
     }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        MarcaDAO.excluir(this);
+    }
 }

@@ -18,13 +18,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Marca;
+import model.ContaBanco;
 
 /**
  *
- * @author Raphael
+ * @author jafar
  */
-public class ManterMarcaController extends HttpServlet {
+public class ManterContaBancoController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,30 +50,27 @@ public class ManterMarcaController extends HttpServlet {
         }
     }
     
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException
     {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-        int id = Integer.parseInt(request.getParameter("txtId"));
-        String nome = request.getParameter("txtNome");
+        
+        CRIAR CADASTRO CONTA BANCO
+
         
         try{
-           Marca marca = new Marca(id, nome);
+           ContaBanco contaBanco = new ContaBanco(id, agencia, conta, tipo, nome);
            if(operacao.equals("Incluir"))
            {
                try
                {
-               marca.gravar();
+               contaBanco.gravar();
                } catch(ClassNotFoundException e)
                {
                    throw new ServletException(e);
                }
-           } else{
-               if(operacao.equals("Excluir")){
-                   marca.excluir();
-               }
            }
-           RequestDispatcher view = request.getRequestDispatcher("PesquisaMarcaController");
+           RequestDispatcher view = request.getRequestDispatcher("PesquisaContaBancoController");
            view.forward(request, response);
            } catch (IOException e)
            {
@@ -84,19 +81,29 @@ public class ManterMarcaController extends HttpServlet {
            }
         }
  
-
+   public static void excluir(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
+       Connection conexao = null;
+       Statement comando = null;
+       String stringSQL;
+       
+       try{
+           conexao = BD.getConexao();
+           comando = conexao.createStatement();
+           stringSQL = "delete from contabanco where id ="
+                    +contaBanco.getId();
+           comando.execute(stringSQL);
+       } finally {
+           fecharConexao(conexao, comando);
+       }
+   }
+        
     
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, ClassNotFoundException, SQLException {
+            throws ServletException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            if(!operacao.equals("Incluir")){
-                int idMarca = Integer.parseInt(request.getParameter("idMarca"));
-                Marca marca = Marca.obterMarca(idMarca);
-                request.setAttribute("marca", marca); //nome que vai devolver para o browser
-            }
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarContaBanco.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -120,9 +127,9 @@ public class ManterMarcaController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterContaBancoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterContaBancoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -140,9 +147,9 @@ public class ManterMarcaController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterContaBancoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterMarcaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterContaBancoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
