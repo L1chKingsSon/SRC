@@ -24,6 +24,8 @@
                 <tr>
                     <td><c:out value="${marca.id}" /></td>
                     <td><c:out value="${marca.nome}" /></td>
+                    <td><a href="ManterMarcaController?acao=prepararOperacao&operacao=Editar&idMarca=<c:out value="${marca.idMarca}"/>">Editar</a></td>
+                    <td><a href="ManterMarcaController?acao=prepararOperacao&operacao=Excluir&idMarca=<c:out value="${marca.idMarca}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
