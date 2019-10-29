@@ -58,22 +58,6 @@ public class MarcaDAO {
         }
         return marca;
     }
-
-    public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
-        Connection conexao = null;
-        PreparedStatement comando = null;
-        try {
-            conexao = BD.getConexao();
-            comando = conexao.prepareStatement(
-                    "insert into marca (id, nome) "
-                    + "values (?,?)");
-            comando.setInt(1, marca.getId());
-            comando.setString(2, marca.getNome());
-            comando.executeUpdate();
-        } finally {
-            fecharConexao(conexao, comando);
-        }
-    }
     
         public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
         Connection conexao = null;

@@ -78,6 +78,28 @@ public class ModeloDAO {
         }
     }
     
+        public static void alterar(Modelo modelo) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update modelo set "
+                    + "nome = '" + modelo.getNome() + "'";
+            if(modelo.getMarca() == null){
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + modelo.getMarca().getId();
+            }
+            stringSQL = stringSQL + "where id = " + modelo.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+    
         public static void excluir(Modelo modelo) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;

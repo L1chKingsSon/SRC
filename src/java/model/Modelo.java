@@ -75,4 +75,11 @@ public class Modelo {
             SQLException {
         ModeloDAO.gravar(this);
     }
+    
+    public void alterar() 
+            throws 
+            ClassNotFoundException, 
+            SQLException {
+        ModeloDAO.alterar(this);
+    }
 }
