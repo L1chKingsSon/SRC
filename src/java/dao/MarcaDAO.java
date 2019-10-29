@@ -74,8 +74,24 @@ public class MarcaDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+        public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into marca (id, nome) "
+                    + "values (?,?)");
+            comando.setInt(1, marca.getId());
+            comando.setString(2, marca.getNome());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 
-    public static void excluir(Marca marca) throws ClassNotFoundException, SQLException {
+    public static void alterar(Marca marca) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
@@ -83,8 +99,9 @@ public class MarcaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from marca where id ="
-                    + marca.getId();
+            stringSQL = "update marca set "
+                    + "nome = '" + marca.getNome() + "'";
+            stringSQL = stringSQL + "where id = " + marca.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
