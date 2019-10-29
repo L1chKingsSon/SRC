@@ -59,4 +59,8 @@ public class Marca {
     public void excluir() throws ClassNotFoundException, SQLException{
         MarcaDAO.excluir(this);
     }
+    
+    public void alterar() throws ClassNotFoundException, SQLException{
+        MarcaDAO.alterar(this);
+    }
 }

@@ -69,10 +69,7 @@ public class Modelo {
         return ModeloDAO.obterModelo(codModelo);
     }
     
-    public void gravar() 
-            throws 
-            ClassNotFoundException, 
-            SQLException {
+    public void gravar() throws ClassNotFoundException, SQLException {
         ModeloDAO.gravar(this);
     }
 }

@@ -75,11 +75,11 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public String getLogadouro() {
+    public String getLogradouro() {
         return logradouro;
     }
 
-    public void setLogadouro(String logadouro) {
+    public void setLogradouro(String logadouro) {
         this.logradouro = logadouro;
     }
 
@@ -107,10 +107,14 @@ public class Endereco {
         return EnderecoDAO.obterEndereco(codEndereco);
     }
     
-    public void gravar()
-            throws 
-            ClassNotFoundException,
-            SQLException {
+    public void gravar() throws ClassNotFoundException, SQLException {
         EnderecoDAO.gravar(this);
+    }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        EnderecoDAO.excluir(this);
+    }
+    public void alterar() throws ClassNotFoundException, SQLException{
+        EnderecoDAO.alterar(this);
     }
 }

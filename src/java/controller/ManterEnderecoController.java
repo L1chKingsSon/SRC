@@ -30,7 +30,7 @@ public class ManterEnderecoController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
@@ -51,6 +51,10 @@ public class ManterEnderecoController extends HttpServlet {
                     endereco.gravar();
                 } catch (ClassNotFoundException e) {
                     throw new ServletException(e);
+                }
+            } else{
+                if(operacao.equals("Editar")){
+                    endereco.alterar();
                 }
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaEnderecoController");

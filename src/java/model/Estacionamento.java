@@ -65,5 +65,5 @@ public class Estacionamento {
     public static Estacionamento obterEstacionamento(int codEstacionamento) throws ClassNotFoundException, SQLException {
         return EstacionamentoDAO.obterEstacionamento(codEstacionamento);
     }
-
+    
 }

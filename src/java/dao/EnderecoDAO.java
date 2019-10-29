@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Endereco;
+import model.Marca;
 
 /**
  *
@@ -85,10 +86,32 @@ public class EnderecoDAO {
             comando.setString(3, endereco.getUf());
             comando.setString(4, endereco.getCidade());
             comando.setString(5, endereco.getBairro());
-            comando.setString(6, endereco.getLogadouro());
+            comando.setString(6, endereco.getLogradouro());
             comando.setString(7, endereco.getNumero());
             comando.setString(8, endereco.getComplemento());
             comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+        
+        public static void alterar(Endereco endereco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update endereco set cep = '" + endereco.getCep() + "', "
+                    + "uf = '" + endereco.getUf() + "', "
+                    + "cidade = '" + endereco.getCidade() + "', "
+                    + "bairro = '" + endereco.getBairro() + "', "
+                    + "logradouro = '" + endereco.getLogradouro() + "', "
+                    + "numero = '" + endereco.getNumero() + "', "
+                    + "complemento = '" + endereco.getComplemento() + "'";
+            stringSQL = stringSQL + "where id = " + endereco.getId();
+            comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
         }
