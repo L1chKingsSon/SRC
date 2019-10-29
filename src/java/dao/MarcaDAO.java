@@ -58,8 +58,8 @@ public class MarcaDAO {
         }
         return marca;
     }
-    
-        public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
+
+    public static void gravar(Marca marca) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
         try {
