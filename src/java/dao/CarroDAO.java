@@ -83,8 +83,17 @@ public class CarroDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update carro set "
-                    + "cor = '" + carro.getCor() + "'"
-                    + "";
+                    + "cor = '" + carro.getCor() + "', "
+                    + "placa = '" + carro.getPlaca() + "', "
+                    + "chassi = '" + carro.getChassi() + "', "
+                    + "ano = '" + carro.getAno() + "', "
+                    + "IPVA = '" + carro.getIPVA()+ "', "
+                    + "seguro = '" + carro.getDataSeguro()+ "', "
+                    + "garantia = '" + carro.getDataGarantia()+ "', "
+                    + "valorComprado = " + carro.getValorCompra()+ "', "
+                    + "id_Modelo ="
+                    
+                    ;
             if(modelo.getMarca() == null){
                 stringSQL = stringSQL + null;
             } else {
