@@ -91,15 +91,13 @@ public class CarroDAO {
                     + "seguro = '" + carro.getDataSeguro()+ "', "
                     + "garantia = '" + carro.getDataGarantia()+ "', "
                     + "valorComprado = " + carro.getValorCompra()+ "', "
-                    + "id_Modelo ="
-                    
-                    ;
-            if(modelo.getMarca() == null){
-                stringSQL = stringSQL + null;
+                    + "id_Modelo =";
+            if(carro.getModelo() == null){
+                stringSQL += null;
             } else {
-                stringSQL = stringSQL + modelo.getMarca().getId();
+                stringSQL += carro.getModelo().getId();
             }
-            stringSQL = stringSQL + "where id = " + modelo.getId();
+            stringSQL = stringSQL + "where id = " + carro.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
