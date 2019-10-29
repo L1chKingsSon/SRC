@@ -116,4 +116,21 @@ public class EnderecoDAO {
             fecharConexao(conexao, comando);
         }
     }
+        
+        
+        public static void excluir(Endereco endereco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from endereco where id ="
+                    + endereco.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 }
