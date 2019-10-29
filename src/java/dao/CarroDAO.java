@@ -73,4 +73,27 @@ public class CarroDAO {
         }
         return carro;
     }
+    
+        public static void alterar(Carro carro) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update carro set "
+                    + "cor = '" + carro.getCor() + "'"
+                    + "";
+            if(modelo.getMarca() == null){
+                stringSQL = stringSQL + null;
+            } else {
+                stringSQL = stringSQL + modelo.getMarca().getId();
+            }
+            stringSQL = stringSQL + "where id = " + modelo.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 }

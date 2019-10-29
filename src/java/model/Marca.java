@@ -39,11 +39,7 @@ public class Marca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-//    public void gravar() throws SQLException, ClassNotFoundException
-//    {
-//        MarcaDAO.gravar(this);
-//    }
+    
     public static List<Marca> obterMarcas() throws ClassNotFoundException, SQLException {
         return MarcaDAO.obterMarcas();
     }

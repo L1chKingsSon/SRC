@@ -91,5 +91,21 @@ public class MarcaDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+        public static void excluir(Marca marca) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from marca where id ="
+                    + marca.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 
 }
