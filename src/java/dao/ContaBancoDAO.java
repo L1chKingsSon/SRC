@@ -81,4 +81,40 @@ public class ContaBancoDAO {
             fecharConexao(conexao, comando);
         }
     }
+        
+        public static void alterar(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update contabanco set "
+                    + "agencia = '" + contaBanco.getAgencia()+ "'"
+                    + "conta = '" + contaBanco.getConta()+ "'"
+                    + "tipo = '" + contaBanco.getTipo()+ "'"
+                    + "nome = '" + contaBanco.getNome() + "'";
+            stringSQL = stringSQL + "where id = " + contaBanco.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+        
+        public static void excluir(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from contabanco where id ="
+                    + contaBanco.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 }
