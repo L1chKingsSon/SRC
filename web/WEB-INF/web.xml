@@ -44,6 +44,10 @@
         <servlet-name>ManterContaBancoController</servlet-name>
         <servlet-class>controller.ManterContaBancoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterCarroController</servlet-name>
+        <servlet-class>controller.ManterCarroController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ManterContaBancoController</servlet-name>
         <url-pattern>/ManterContaBancoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterCarroController</servlet-name>
+        <url-pattern>/ManterCarroController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

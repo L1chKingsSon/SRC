@@ -40,70 +40,65 @@ public class ManterContaBancoController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
-        if(acao.equals("confirmarOperacao"))
-        {
+        if (acao.equals("confirmarOperacao")) {
             confirmarOperacao(request, response);
-        } 
-        else if (acao.equals("prepararOperacao"))
-        {
+        } else if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
     }
-    
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException
-    {
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-        
-        CRIAR CADASTRO CONTA BANCO
 
-        
-        try{
-           ContaBanco contaBanco = new ContaBanco(id, agencia, conta, tipo, nome);
-           if(operacao.equals("Incluir"))
-           {
-               try
-               {
-               contaBanco.gravar();
-               } catch(ClassNotFoundException e)
-               {
-                   throw new ServletException(e);
-               }
-           }
-           RequestDispatcher view = request.getRequestDispatcher("PesquisaContaBancoController");
-           view.forward(request, response);
-           } catch (IOException e)
-           {
-               throw new ServletException(e);
-           } catch(SQLException e)
-           {
-               throw new ServletException(e);
-           }
+        int id = Integer.parseInt(request.getParameter("idcontabanco"));
+        String agencia = request.getParameter("agencia");
+        String conta = request.getParameter("contabanco");
+        String tipo = request.getParameter("tipoConta");
+        String nome = request.getParameter("nome");
+
+        try {
+            ContaBanco contaBanco = new ContaBanco(id, agencia, conta, tipo, nome);
+            if (operacao.equals("Incluir")) {
+                try {
+                    contaBanco.gravar();
+                } catch (ClassNotFoundException e) {
+                    throw new ServletException(e);
+                }
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaContaBancoController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
- 
-   public static void excluir(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
-       Connection conexao = null;
-       Statement comando = null;
-       String stringSQL;
-       
-       try{
-           conexao = BD.getConexao();
-           comando = conexao.createStatement();
-           stringSQL = "delete from contabanco where id ="
-                    +contaBanco.getId();
-           comando.execute(stringSQL);
-       } finally {
-           fecharConexao(conexao, comando);
-       }
-   }
-        
-    
+    }
+
+    public static void excluir(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from contabanco where id ="
+                    + contaBanco.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+//    O cadastro da conta do banco esta no cadastro de funcionario, favor observar como colocar
+//    duas vezes um cadastro mas em paginas diferentes com o mesmo requestdispatcher
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarContaBanco.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarFuncionario.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;

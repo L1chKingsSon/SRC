@@ -7,19 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Endereco;
+import model.Marca;
+import model.Modelo;
 
 /**
  *
  * @author jafar
  */
-public class ManterEnderecoController extends HttpServlet {
+public class ManterCarroController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,61 +31,49 @@ public class ManterEnderecoController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        String operacao = request.getParameter("operacao");
-        request.setAttribute("operacao", operacao);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        String acao = request.getParameter("acao");
+        if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
 
-        int id = Integer.parseInt(request.getParameter("idendereco"));
-        String cep = request.getParameter("cep");
-        String uf = request.getParameter("uf");
-        String cidade = request.getParameter("cidade");
-        String bairro = request.getParameter("bairro");
-        String logradouro = request.getParameter("logradouro");
-        String numero = request.getParameter("numero");
-        String complemento = request.getParameter("complemento");
-
-        try {
-            Endereco endereco = new Endereco(id, cep, uf, cidade, bairro, logradouro, numero, complemento);
-
-            if (operacao.equals("Incluir")) {
-                try {
-                    endereco.gravar();
-                } catch (ClassNotFoundException e) {
-                    throw new ServletException(e);
-                }
-            }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaEnderecoController");
-            view.forward(request, response);
-        } catch (IOException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
-            throw new ServletException(e);
+        } else if (acao.equals("prepararOperacao")) {
+            prepararOperacao(request, response);
 
         }
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")) {
-            prepararOperacao(request, response);
-        }
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+        
+        int id = Integer.parseInt(request.getParameter("idcarro"));
+        String placa = request.getParameter("placa");
+        String chassi = request.getParameter("chassi");
+        String ano = request.getParameter("ano");
+        String cor = request.getParameter("cor");
+        float ipva = Float.parseFloat(request.getParameter("ipva"));
+        Date seguro = Date.parse(request.getParameter("dataseguro"));
+        
     }
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
-            request.setAttribute("operacao", operacao);
-            RequestDispatcher view = request.getRequestDispatcher("/manterEndereco.jsp");
+            request.setAttribute("modelos", Modelo.obterModelos());
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarCarro.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
         } catch (IOException e) {
             throw new ServletException(e);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

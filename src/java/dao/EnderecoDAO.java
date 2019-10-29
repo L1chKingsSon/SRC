@@ -65,7 +65,7 @@ public class EnderecoDAO {
                 rs.getString("cidade"),
                 rs.getString("bairro"),
                 rs.getString("logadouro"),
-                rs.getInt("numero"),
+                rs.getString("numero"),
                 rs.getString("complement0")
         );
         return endereco;
@@ -86,7 +86,7 @@ public class EnderecoDAO {
             comando.setString(4, endereco.getCidade());
             comando.setString(5, endereco.getBairro());
             comando.setString(6, endereco.getLogadouro());
-            comando.setInt(7, endereco.getNumero());
+            comando.setString(7, endereco.getNumero());
             comando.setString(8, endereco.getComplemento());
             comando.executeUpdate();
         } finally {

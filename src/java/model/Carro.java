@@ -21,7 +21,7 @@ public class Carro {
     private String chassi;
     private String ano;
     private String cor;
-    private Boolean IPVA;
+    private float IPVA;
     private Date seguro;
     private Date garantia;
     private double valorComprado;
@@ -29,7 +29,7 @@ public class Carro {
     private Modelo modelo;
     private int idPrimariaModelo;
 
-    public Carro(long id, String placa, String chassi, String ano, String cor, Boolean IPVA, Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
+    public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA, Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
         this.chassi = chassi;
@@ -102,11 +102,11 @@ public class Carro {
         this.cor = cor;
     }
 
-    public Boolean getIPVA() {
+    public float getIPVA() {
         return IPVA;
     }
 
-    public void setIPVA(Boolean IPVA) {
+    public void setIPVA(float IPVA) {
         this.IPVA = IPVA;
     }
 

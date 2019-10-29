@@ -33,6 +33,25 @@ public class ManterFuncionarioController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) {
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+
+        int id = Integer.parseInt(request.getParameter("idfuncionario"));
+        String nome = request.getParameter("nome");
+        String cpf = request.getParameter("cpf");
+        String telefone = request.getParameter("telefone");
+        float salario = Float.parseFloat(request.getParameter("salario"));
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+
+        try {
+
+            Funcionario funcionario = new Funcionario(id, nome, cpf, telefone, endereco,
+                    contaBanco, salario, login, senha);
+        }
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
@@ -40,8 +59,8 @@ public class ManterFuncionarioController extends HttpServlet {
             prepararOperacao(request, response);
         }
     }
-    
-        public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException, ClassNotFoundException {
         try {
             String operacao = request.getParameter("operacao");

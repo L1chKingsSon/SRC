@@ -77,5 +77,21 @@ public class ModeloDAO {
             fecharConexao(conexao, comando);
         }
     }
+    
+        public static void excluir(Modelo modelo) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from modelo where id ="
+                    + modelo.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 
 }
