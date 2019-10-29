@@ -47,7 +47,7 @@ public class CarroDAO {
                 rs.getString("chassi"),
                 rs.getString("ano"),
                 rs.getString("cor"),
-                rs.getBoolean("IPVA"),
+                rs.getFloat("IPVA"),
                 rs.getDate("seguro"),
                 rs.getDate("garantia"),
                 rs.getDouble("valorComprado"),

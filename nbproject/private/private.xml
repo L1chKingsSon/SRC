@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jafar/Git/SRC/web/pesquisaMarca.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterModeloController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/ModeloDAO.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterMarcaController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/PesquisaMarcaController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/dao/MarcaDAO.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/src/java/model/Carro.java</file>
+            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarCarro.jsp</file>
+            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarModeloMarca.jsp</file>
         </group>
     </open-files>
 </project-private>
