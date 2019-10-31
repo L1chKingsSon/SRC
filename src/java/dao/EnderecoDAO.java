@@ -117,6 +117,7 @@ public class EnderecoDAO {
         }
     }
         
+        
         public static void excluir(Endereco endereco) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
@@ -131,6 +132,5 @@ public class EnderecoDAO {
         } finally {
             fecharConexao(conexao, comando);
         }
-    }     
-            
+    }
 }
