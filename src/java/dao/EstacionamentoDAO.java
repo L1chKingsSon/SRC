@@ -67,22 +67,45 @@ public class EstacionamentoDAO {
         estacionamento.setIdPrimariaEndereco(rs.getInt("idEndereco"));
         return estacionamento;
     }
-    
-    public static void alterar(Estacionamento estacionamento) throws ClassNotFoundException, SQLException{
+
+    public static void alterar(Estacionamento estacionamento) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
-        
-        try{
+
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update estacionamento set "
-                    + "nome = '" + estacionamento.getNome() + "'";
-            stringSQL = stringSQL + "where id = " + estacionamento.getId();
+                    + "numeroVagas = '" + estacionamento.getNumeroVagas()+ "' "
+                    + "id_endereco = ";
+            if(estacionamento.getEndereco() == null){
+                stringSQL += null;
+            } else {
+                stringSQL += estacionamento.getEndereco().getId();
+            }
+            stringSQL = stringSQL + "where idEstacionamento = " + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
         }
+    }
+    
+    
+        public static void excluir(Estacionamento estacionamento) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from estacionamento where idEstacionamento ="
+                    + estacionamento.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
         }
     }
+    
 }
