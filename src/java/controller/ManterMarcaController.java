@@ -50,7 +50,7 @@ public class ManterMarcaController extends HttpServlet {
         }
     }
     
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException
     {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
@@ -68,11 +68,16 @@ public class ManterMarcaController extends HttpServlet {
                {
                    throw new ServletException(e);
                }
-           } else{
-               if(operacao.equals("Excluir")){
-                   marca.excluir();
-               }
            }
+           else if(operacao.equals("Excluir"))
+           {
+                marca.excluir();
+           }
+           else if(operacao.equals("Editar"))
+           {
+               marca.alterar();
+           }
+           
            RequestDispatcher view = request.getRequestDispatcher("PesquisaMarcaController");
            view.forward(request, response);
            } catch (IOException e)
@@ -92,7 +97,7 @@ public class ManterMarcaController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             if(!operacao.equals("Incluir")){
-                int idMarca = Integer.parseInt(request.getParameter("idMarca"));
+                int idMarca = Integer.parseInt(request.getParameter("id"));
                 Marca marca = Marca.obterMarca(idMarca);
                 request.setAttribute("marca", marca); //nome que vai devolver para o browser
             }
