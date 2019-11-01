@@ -25,8 +25,13 @@
                 <tr>
                     <td><c:out value="${modelo.id}" /></td>
                     <td><c:out value="${modelo.nome}" /></td>
+                    <td><a href="ManterModeloController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${modelo.id}"/>">Editar</a></td>
+                    <td><a href="ManterModeloController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${modelo.id}"/>">Excluir</a></td>                    
                 </tr> 
             </c:forEach>
         </table>
+        <form action="ManterModeloController?acao=prepararOperacao&operacao=Incluir" method="post">
+            <input type="submit" name="btnIncluir" value="Incluir">
+        </form>        
     </body>
 </html>

@@ -67,7 +67,7 @@ public class ModeloDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
-                    "insert into modelo (id, nome, id_marca) "
+                    "insert into modelo (id, nome, id_Marca) "
                     + "values (?,?,?)");
             comando.setLong(1, modelo.getId());
             comando.setString(2, modelo.getNome());

@@ -17,13 +17,25 @@
         <h1>Pesquisa de Endereços</h1>
         <table border="1">
             <tr>
-                <th>id da conta</th>
-                <th>agência da conta</th>
+                <th>ID do endereço</th>
+                <th>CEP</th>
+                <th>UF</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Logradouro</th>
+                <th>Numero</th>
+                <th>Complemento</th>
             </tr>
-            <c:forEach items="${contas}" var="contabanco">
+            <c:forEach items="${enderecos}" var="endereco">
                 <tr>
-                    <td><c:out value="${contabanco.id}" /></td>
-                    <td><c:out value="${contabanco.agencia}" /></td>
+                    <td><c:out value="${enderecos.id}" /></td>
+                    <td><c:out value="${enderecos.cep}" /></td>
+                    <td><c:out value="${enderecos.uf}" /></td>
+                    <td><c:out value="${enderecos.cidade}" /></td>
+                    <td><c:out value="${enderecos.bairro}" /></td>
+                    <td><c:out value="${enderecos.logradouro}" /></td>
+                    <td><c:out value="${enderecos.numero}" /></td>
+                    <td><c:out value="${enderecos.complemento}" /></td>
                 </tr>
             </c:forEach>
         </table>

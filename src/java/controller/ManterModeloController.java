@@ -49,8 +49,8 @@ public class ManterModeloController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-        int id = Integer.parseInt(request.getParameter("txtId"));
-        String nome = request.getParameter("txtNome");
+        int id = Integer.parseInt(request.getParameter("idmodelo"));
+        String nome = request.getParameter("modelo");
         int marcaCarro = Integer.parseInt(request.getParameter("select_marca"));
 
         try {
@@ -64,6 +64,14 @@ public class ManterModeloController extends HttpServlet {
                     modelo.gravar();
                 } catch (ClassNotFoundException e) {
                     throw new ServletException(e);
+                }
+            } else {
+                if(operacao.equals("Editar")){
+                    modelo.alterar();
+                } else {
+                    if(operacao.equals("Excluir")){
+                        modelo.excluir();
+                    }
                 }
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaModeloController");
@@ -80,6 +88,11 @@ public class ManterModeloController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("marcas", Marca.obterMarcas());
+            if(!operacao.equals("Incluir")){
+                int idmodelo = Integer.parseInt(request.getParameter("id"));
+                Modelo modelo = Modelo.obterModelo(idmodelo);
+                request.setAttribute("modelo", modelo);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

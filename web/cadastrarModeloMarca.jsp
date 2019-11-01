@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -12,7 +15,7 @@
         <h1>
             Cadastrar Modelo e/ou Marca
         </h1>
-        <form action="ManterModeloController?acao=confirmarOperacao&Operacao&operacao">
+        <form action="ManterModeloController?acao=confirmarOperacao&Operacao&operacao=${operacao}" method="post" name="frmManterModelo">
             <table border="1">
                 <tr>
                     <td>ID do Modelo</td>
@@ -28,10 +31,11 @@
                     <td>
                         Marca do modelo
                     </td>
-                    <td><select name="select_marca" id="marca" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>>
+                    <td><select name="select_marca" id="marca" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
                             <c:forEach items="${marcas}" var="marca">
-                                <option value="${marca.id}" <c:if test="${modelo.marca.id == marca.id}"> selected</c:if>>${marca.nome}</option>
+                                <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
+                            </c:forEach>
                         </select>
                 </tr>
 
@@ -50,7 +54,7 @@
                 <td><input type="text" name="txtNome" value="${marca.nome}"></td>
             </tr>
             <tr >
-                <td colspan="2"><button type="submit">Cadastrar</button></td>
+                <td colspan="2"><button type="submit">Submit</button></td>
             </tr>
         </table
 

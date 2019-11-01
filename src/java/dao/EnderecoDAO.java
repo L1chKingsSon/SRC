@@ -30,7 +30,7 @@ public class EnderecoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from endereco");
             while (rs.next()) {
                 endereco = instanciarEndereco(rs);
                 enderecos.add(endereco);
@@ -65,9 +65,9 @@ public class EnderecoDAO {
                 rs.getString("uf"),
                 rs.getString("cidade"),
                 rs.getString("bairro"),
-                rs.getString("logadouro"),
+                rs.getString("logradouro"),
                 rs.getString("numero"),
-                rs.getString("complement0")
+                rs.getString("complemento")
         );
         return endereco;
     }

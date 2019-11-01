@@ -79,4 +79,12 @@ public class Modelo {
             SQLException {
         ModeloDAO.alterar(this);
     }
+    
+    public void excluir() 
+            throws 
+            ClassNotFoundException, 
+            SQLException {
+        ModeloDAO.excluir(this);
+    }    
+    
 }
