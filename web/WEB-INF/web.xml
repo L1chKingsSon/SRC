@@ -21,6 +21,10 @@
         <servlet-class>controller.ManterMarcaController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ManterEnderecoController</servlet-name>
+        <servlet-class>controller.ManterEnderecoController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ManterModeloController</servlet-name>
         <servlet-class>controller.ManterModeloController</servlet-class>
     </servlet>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>ManterMarcaController</servlet-name>
         <url-pattern>/ManterMarcaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterEnderecoController</servlet-name>
+        <url-pattern>/ManterEnderecoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterModeloController</servlet-name>

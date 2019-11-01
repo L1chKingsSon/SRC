@@ -34,14 +34,14 @@ public class ManterEnderecoController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
-        int id = Integer.parseInt(request.getParameter("idendereco"));
-        String cep = request.getParameter("cep");
-        String uf = request.getParameter("uf");
-        String cidade = request.getParameter("cidade");
-        String bairro = request.getParameter("bairro");
-        String logradouro = request.getParameter("logradouro");
-        String numero = request.getParameter("numero");
-        String complemento = request.getParameter("complemento");
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String cep = request.getParameter("txtCep");
+        String uf = request.getParameter("txtUf");
+        String cidade = request.getParameter("txtCidade");
+        String bairro = request.getParameter("txtBairro");
+        String logradouro = request.getParameter("txtLogradouro");
+        String numero = request.getParameter("txtNumero");
+        String complemento = request.getParameter("txtComplemento");
 
         try {
             Endereco endereco = new Endereco(id, cep, uf, cidade, bairro, logradouro, numero, complemento);
@@ -80,7 +80,7 @@ public class ManterEnderecoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            RequestDispatcher view = request.getRequestDispatcher("/manterEndereco.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarEndereco.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;

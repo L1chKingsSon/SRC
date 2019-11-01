@@ -25,19 +25,26 @@
                 <th>Logradouro</th>
                 <th>Numero</th>
                 <th>Complemento</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
             <c:forEach items="${enderecos}" var="endereco">
                 <tr>
-                    <td><c:out value="${enderecos.id}" /></td>
-                    <td><c:out value="${enderecos.cep}" /></td>
-                    <td><c:out value="${enderecos.uf}" /></td>
-                    <td><c:out value="${enderecos.cidade}" /></td>
-                    <td><c:out value="${enderecos.bairro}" /></td>
-                    <td><c:out value="${enderecos.logradouro}" /></td>
-                    <td><c:out value="${enderecos.numero}" /></td>
-                    <td><c:out value="${enderecos.complemento}" /></td>
+                    <td><c:out value="${endereco.id}" /></td>
+                    <td><c:out value="${endereco.cep}" /></td>
+                    <td><c:out value="${endereco.uf}" /></td>
+                    <td><c:out value="${endereco.cidade}" /></td>
+                    <td><c:out value="${endereco.bairro}" /></td>
+                    <td><c:out value="${endereco.logradouro}" /></td>
+                    <td><c:out value="${endereco.numero}" /></td>
+                    <td><c:out value="${endereco.complemento}" /></td>
+                    <td><a href="ManterEnderecoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${endereco.id}"/>">Editar</a></td>
+                    <td><a href="ManterEnderecoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${endereco.id}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
+         <form action="ManterEnderecoController?acao=prepararOperacao&operacao=Incluir" method="post">
+            <input type="submit" name="btnIncluir" value="Incluir">
+        </form>
     </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cadastrar Modelo e/ou Marca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+<h1>
+        Cadastrar Endereco
+    </h1>
+    <form action="ManterEnderecoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterEndereco">
+        <table border="1"> 
+            <tr>
+                <td>ID do endereco</td>
+                <td><input type="number" name="txtId" value="${endereco.id}"></td>
+            </tr>
+            <tr>
+                <td>cep</td>
+                <td><input type="text" name="txtCep" value="${endereco.cep}"></td>
+            </tr>
+            <tr>
+                <td>uf</td>
+                <td><input type="text" name="txtUF" value="${endereco.uf}"></td>
+            </tr>
+            <tr>
+                <td>cidade</td>
+                <td><input type="text" name="txtCidade" value="${endereco.cidade}"></td>
+            </tr>
+            <tr>
+                <td>bairro</td>
+                <td><input type="text" name="txtBairro" value="${endereco.bairro}"></td>
+            </tr>
+            <tr>
+                <td>logradouro</td>
+                <td><input type="text" name="txtLogradouro" value="${endereco.logradouro}"></td>
+            </tr>
+            <tr>
+                <td>numero</td>
+                <td><input type="text" name="txtNumero" value="${endereco.numero}"></td>
+            </tr>
+            <tr>
+                <td>complemento</td>
+                <td><input type="text" name="txtComplemento" value="${endereco.complemento}"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Cadastrar</button></td>
+            </tr>
+        </table
+
+
+
+    </form>
+    
+</body>
+</html>
