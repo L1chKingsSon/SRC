@@ -21,6 +21,8 @@
                 <th>nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
             <c:forEach items="${clientes}" var="clientes">
                 <tr>
@@ -28,7 +30,13 @@
                     <td><c:out value="${clientes.nome}" /></td>
                     <td><c:out value="${clientes.cpf}" /></td>
                     <td><c:out value="${clientes.telefone}" /></td>
+                    <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${cliente.id}"/>">Editar</a></td>
+                    <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${cliente.id}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
+        </table>
+        <form action="ManterClienteController?acao=prepararOperacao&operacao=Incluir" method="post">
+            <input type="submit" name="btnIncluir" value="Incluir">
+        </form>
     </body>
 </html>

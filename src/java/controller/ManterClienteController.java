@@ -40,22 +40,32 @@ public class ManterClienteController extends HttpServlet {
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
+        else if (acao.equals("prepararOperacao"))
+        {
+            prepararOperacao(request, response);
+        }
     }
     
         public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, SQLException, ClassNotFoundException {
-        try {
-            String operacao = request.getParameter("operacao");
-            request.setAttribute("operacao", operacao);
-            request.setAttribute("endereco", Endereco.obterEnderecos());
-            request.setAttribute("contaBanco", ContaBanco.obterContas());
+            throws ServletException, SQLException, ClassNotFoundException, IOException {
+//        try {
+//            String operacao = request.getParameter("operacao");
+//            request.setAttribute("operacao", operacao);
+//            if(!operacao.equals("Incluir")){
+//                int id
+//                request.setAttribute("endereco", Endereco.obterEnderecos());
+//                request.setAttribute("contaBanco", ContaBanco.obterContas());
+//                
+//            try{
+//                Cliente cliente = new Cliente()
+//            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
-        } catch (ServletException e) {
-            throw e;
-        } catch (IOException e) {
-            throw new ServletException(e);
-        }
+//        } catch (ServletException e) {
+//            throw e;
+//        } catch (IOException e) {
+//            throw new ServletException(e);
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

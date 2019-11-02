@@ -51,14 +51,14 @@ public class ManterContaBancoController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
-        int id = Integer.parseInt(request.getParameter("idcontabanco"));
-        String agencia = request.getParameter("agencia");
-        String conta = request.getParameter("contabanco");
-        String tipo = request.getParameter("tipoConta");
-        String nome = request.getParameter("nome");
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        String agencia = request.getParameter("txtAgencia");
+        String conta = request.getParameter("txtConta");
+        String tipo = request.getParameter("txtTipo");
 
         try {
-            ContaBanco contaBanco = new ContaBanco(id, agencia, conta, tipo, nome);
+            ContaBanco contaBanco = new ContaBanco(id, nome, agencia, conta, tipo);
             if (operacao.equals("Incluir")) {
                 try {
                     contaBanco.gravar();
@@ -66,6 +66,14 @@ public class ManterContaBancoController extends HttpServlet {
                     throw new ServletException(e);
                 }
             }
+            else if(operacao.equals("Excluir"))
+           {
+                contaBanco.excluir();
+           }
+           else if(operacao.equals("Editar"))
+           {
+               contaBanco.alterar();
+           }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaContaBancoController");
             view.forward(request, response);
         } catch (IOException e) {
@@ -75,21 +83,6 @@ public class ManterContaBancoController extends HttpServlet {
         }
     }
 
-    public static void excluir(ContaBanco contaBanco) throws ClassNotFoundException, SQLException {
-        Connection conexao = null;
-        Statement comando = null;
-        String stringSQL;
-
-        try {
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            stringSQL = "delete from contabanco where id ="
-                    + contaBanco.getId();
-            comando.execute(stringSQL);
-        } finally {
-            fecharConexao(conexao, comando);
-        }
-    }
 
 //    O cadastro da conta do banco esta no cadastro de funcionario, favor observar como colocar
 //    duas vezes um cadastro mas em paginas diferentes com o mesmo requestdispatcher
@@ -98,7 +91,7 @@ public class ManterContaBancoController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarFuncionario.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarContaBanco.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
