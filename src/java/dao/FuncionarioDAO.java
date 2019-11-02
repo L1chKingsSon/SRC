@@ -24,7 +24,7 @@ public class FuncionarioDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from funcionario");
             while (rs.next()) {
                 funcionario = instanciarFuncionario(rs);
                 funcionarios.add(funcionario);
