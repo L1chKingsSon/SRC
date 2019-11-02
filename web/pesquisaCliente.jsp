@@ -21,8 +21,7 @@
                 <th>nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+                <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${clientes}" var="clientes">
                 <tr>

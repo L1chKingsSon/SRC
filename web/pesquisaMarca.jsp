@@ -19,6 +19,7 @@
             <tr>
                 <th>Código da marca</th>
                 <th>Nome da marca</th>
+                <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${marcas}" var="marca">
                 <tr>

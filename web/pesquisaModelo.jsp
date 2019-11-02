@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Listar Modelos</title>
     </head>
     <body>
         <h1>Pesquisa de modelos</h1>
@@ -19,6 +19,7 @@
             <tr>
                 <th>Código do modelo</th>
                 <th>Nome do modelo</th>
+                <th colspan="2">Ação</th>
                 <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
             <c:forEach items="${modelos}" var="modelo">

@@ -15,18 +15,24 @@
         <title>Listar Estacionamentos</title>
     </head>
     <body>
-        <h1>Pesquisa de Carros</h1>
+        <h1>Pesquisa de Estacionamentos</h1>
         <table border="1">
             <tr>
                 <th>Código do Estacionamento</th>
                 <th>Numero de vagas</th>
+                <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${estacionamentos}" var="estacionamento">
                 <tr>
                     <td><c:out value="${estacionamento.idEstacionamento}" /></td>
                     <td><c:out value="${estacionamento.numeroVagas}" /></td>
+                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${estacionamento.idEstacionamento}"/>">Editar</a></td>
+                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${modelo.idEstacionamento}"/>">Excluir</a></td> 
                 </tr> 
             </c:forEach>
         </table>
+        <form action="ManterEstacionamentoController?acao=prepararOperacao&operacao=Incluir" method="post">
+            <input type="submit" name="btnIncluir" value="Incluir">
+        </form>           
     </body>
 </html>

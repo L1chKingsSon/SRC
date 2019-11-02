@@ -23,7 +23,7 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from carro");
+            ResultSet rs = comando.executeQuery("Select * from estacionamento");
             while (rs.next()) {
                 estacionamento = instanciarEstacionamento(rs);
                 estacionamentos.add(estacionamento);
@@ -60,11 +60,11 @@ public class EstacionamentoDAO {
 
     public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException {
         Estacionamento estacionamento = new Estacionamento(
-                rs.getInt("id"),
+                rs.getInt("idEstacionamento"),
                 rs.getInt("numeroVagas"),
                 null
         );
-        estacionamento.setIdPrimariaEndereco(rs.getInt("idEndereco"));
+        estacionamento.setIdPrimariaEndereco(rs.getInt("id_endereco"));
         return estacionamento;
     }
 
@@ -84,7 +84,7 @@ public class EstacionamentoDAO {
             } else {
                 stringSQL += estacionamento.getEndereco().getId();
             }
-            stringSQL = stringSQL + "where idEstacionamento = " + estacionamento.getId();
+            stringSQL = stringSQL + "where idEstacionamento = " + estacionamento.getIdEstacionamento();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
@@ -101,7 +101,7 @@ public class EstacionamentoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "delete from estacionamento where idEstacionamento ="
-                    + estacionamento.getId();
+                    + estacionamento.getIdEstacionamento();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

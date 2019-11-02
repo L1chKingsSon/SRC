@@ -25,8 +25,7 @@
                 <th>Logradouro</th>
                 <th>Numero</th>
                 <th>Complemento</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+                <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${enderecos}" var="endereco">
                 <tr>

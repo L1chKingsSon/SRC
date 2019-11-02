@@ -15,13 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Estacionamento;
+import model.Funcionario;
 
 /**
  *
  * @author jafar
  */
-public class PesquisaEstacionamentoController extends HttpServlet {
+public class PesquisaFuncionarioController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,12 +33,11 @@ public class PesquisaEstacionamentoController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * @throws java.sql.SQLException
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaEstacionamento.jsp");
+            request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaFuncionario.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -62,7 +61,7 @@ public class PesquisaEstacionamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -80,7 +79,7 @@ public class PesquisaEstacionamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -21,8 +21,7 @@
                 <th>agência da conta</th>
                 <th>numero da conta</th>
                 <th>nome do dono</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+                <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${contas}" var="contabanco">
                 <tr>

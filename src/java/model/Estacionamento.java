@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class Estacionamento {
 
-    private long id;
+    private long idEstacionamento;
     private long numeroVagas;
     private Endereco endereco;
     private int idPrimariaEndereco;
 
-    public Estacionamento(long id, long numeroVagas, Endereco endereco) {
-        this.id = id;
+    public Estacionamento(long idEstacionamento, long numeroVagas, Endereco endereco) {
+        this.idEstacionamento = idEstacionamento;
         this.numeroVagas = numeroVagas;
         this.endereco = endereco;
     }
@@ -34,12 +34,12 @@ public class Estacionamento {
         this.idPrimariaEndereco = idPrimariaEndereco;
     }
 
-    public long getId() {
-        return id;
+    public long getIdEstacionamento() {
+        return idEstacionamento;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdEstacionamento(long idEstacionamento) {
+        this.idEstacionamento = idEstacionamento;
     }
 
     public long getNumeroVagas() {

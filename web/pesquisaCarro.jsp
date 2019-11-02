@@ -19,6 +19,7 @@
             <tr>
                 <th>Código do carro</th>
                 <th>Placa do carro</th>
+                <th colspan="2">Ação</th>
                 <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
             <c:forEach items="${carros}" var="carro">
