@@ -49,9 +49,9 @@ public class ManterModeloController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-        int id = Integer.parseInt(request.getParameter("idmodelo"));
-        String nome = request.getParameter("modelo");
-        int marcaCarro = Integer.parseInt(request.getParameter("select_marca"));
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        int marcaCarro = Integer.parseInt(request.getParameter("txtSelect_marca"));
 
         try {
             Marca marca = null;
@@ -87,6 +87,7 @@ public class ManterModeloController extends HttpServlet {
             throws ServletException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
+            request.setAttribute("operacao", operacao);
             request.setAttribute("marcas", Marca.obterMarcas());
             if(!operacao.equals("Incluir")){
                 int idmodelo = Integer.parseInt(request.getParameter("id"));

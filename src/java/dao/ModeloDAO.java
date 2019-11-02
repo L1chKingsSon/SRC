@@ -54,7 +54,7 @@ public class ModeloDAO {
 
     public static Modelo instanciarModelo(ResultSet rs) throws SQLException {
         Modelo modelo = new Modelo(
-                rs.getLong("id"),
+                rs.getInt("id"),
                 rs.getString("nome"),
                 null);
         modelo.setIdPrimariaMarca(rs.getInt("id_Marca"));
@@ -69,9 +69,9 @@ public class ModeloDAO {
             comando = conexao.prepareStatement(
                     "insert into modelo (id, nome, id_Marca) "
                     + "values (?,?,?)");
-            comando.setLong(1, modelo.getId());
+            comando.setInt(1, modelo.getId());
             comando.setString(2, modelo.getNome());
-            comando.setLong(3, modelo.getMarca().getId());
+            comando.setInt(3, modelo.getMarca().getId());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

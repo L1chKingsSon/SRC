@@ -15,12 +15,12 @@ import java.util.List;
  */
 public class Modelo {
 
-    private long id;
+    private int id;
     private String nome;
     private Marca marca;
     private int idPrimariaMarca;
 
-    public Modelo(long id, String nome, Marca marca) {
+    public Modelo(int id, String nome, Marca marca) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
@@ -37,11 +37,11 @@ public class Modelo {
         this.idPrimariaMarca = idPrimariaMarca;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
