@@ -1,30 +1,30 @@
 <%-- 
-    Document   : pesquisaCarro
-    Created on : 20/09/2019, 14:58:44
-    Author     : Raphael
+    Document   : pesquisaEstacionamento
+    Created on : 02/11/2019, 03:02:04
+    Author     : jafar
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listar Carros</title>
+        <title>Listar Estacionamentos</title>
     </head>
     <body>
         <h1>Pesquisa de Carros</h1>
         <table border="1">
             <tr>
-                <th>Código do carro</th>
-                <th>Placa do carro</th>
-                <!--<th>Nome da marca a qual pertence</th>-->
+                <th>Código do Estacionamento</th>
+                <th>Numero de vagas</th>
             </tr>
-            <c:forEach items="${carros}" var="carro">
+            <c:forEach items="${estacionamentos}" var="estacionamento">
                 <tr>
-                    <td><c:out value="${carro.id}" /></td>
-                    <td><c:out value="${carro.placa}" /></td>
+                    <td><c:out value="${estacionamento.idEstacionamento}" /></td>
+                    <td><c:out value="${estacionamento.numeroVagas}" /></td>
                 </tr> 
             </c:forEach>
         </table>
