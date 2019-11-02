@@ -90,8 +90,8 @@ public class ManterModeloController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             request.setAttribute("marcas", Marca.obterMarcas());
             if(!operacao.equals("Incluir")){
-                int idmodelo = Integer.parseInt(request.getParameter("id"));
-                Modelo modelo = Modelo.obterModelo(idmodelo);
+                int idModelo = Integer.parseInt(request.getParameter("id"));
+                Modelo modelo = Modelo.obterModelo(idModelo);
                 request.setAttribute("modelo", modelo);
             }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
