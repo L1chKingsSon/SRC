@@ -60,6 +60,14 @@
         <servlet-name>PesquisaFuncionarioController</servlet-name>
         <servlet-class>controller.PesquisaFuncionarioController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <servlet-class>controller.PesquisaReservaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaNotaFiscalController</servlet-name>
+        <servlet-class>controller.PesquisaNotaFiscalController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>PesquisaFuncionarioController</servlet-name>
         <url-pattern>/PesquisaFuncionarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <url-pattern>/PesquisaReservaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaNotaFiscalController</servlet-name>
+        <url-pattern>/PesquisaNotaFiscalController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

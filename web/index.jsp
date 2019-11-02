@@ -29,5 +29,10 @@ and open the template in the editor.
             <a href="PesquisaEstacionamentoController">Manter Estacionamentos</a>
             <br>
             <a href="PesquisaFuncionarioController">Manter Funcionarios</a>
+            <br>
+            <a href="PesquisaReservaController">Manter Reservas</a>
+            <br>
+            <a href="PesquisaNotaFiscalController">Manter Notas Fiscais</a>
+            
     </body>
 </html>
