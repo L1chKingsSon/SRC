@@ -87,13 +87,15 @@ public class ModeloDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update modelo set "
-                    + "nome = '" + modelo.getNome() + "'";
+                    + "nome = '" + modelo.getNome() + "', ";
             if(modelo.getMarca() == null){
-                stringSQL = stringSQL + null;
+                stringSQL = stringSQL + "id_Marca = null";
             } else {
-                stringSQL = stringSQL + modelo.getMarca().getId();
+                stringSQL = stringSQL + "id_Marca = '" + modelo.getMarca().getId();
+                stringSQL = stringSQL + "'";
+
             }
-            stringSQL = stringSQL + "where id = " + modelo.getId();
+            stringSQL = stringSQL + " where id = " + modelo.getId() + ";";
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

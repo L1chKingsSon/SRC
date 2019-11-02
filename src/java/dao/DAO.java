@@ -20,9 +20,6 @@ public class DAO {
         if (comando != null) {
             comando.close();
         }
-        if (conexao != null) {
-            conexao.close();
-        }
     }
 
 }
