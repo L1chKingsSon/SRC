@@ -29,7 +29,8 @@ public class Carro {
     private Modelo modelo;
     private int idPrimariaModelo;
 
-    public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA, Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
+    public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA,
+            Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
         this.chassi = chassi;

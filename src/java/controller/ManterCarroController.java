@@ -9,12 +9,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Marca;
+import model.Carro;
 import model.Modelo;
 
 /**
@@ -49,22 +51,55 @@ public class ManterCarroController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-        
+
         int id = Integer.parseInt(request.getParameter("idcarro"));
         String placa = request.getParameter("placa");
         String chassi = request.getParameter("chassi");
         String ano = request.getParameter("ano");
         String cor = request.getParameter("cor");
         float ipva = Float.parseFloat(request.getParameter("ipva"));
-        Date seguro = Date.parse(request.getParameter("dataseguro"));
+        Long seguro = Date.parse(request.getParameter("dataSeguro"));
+        int modelo = Integer.parseInt(request.getParameter(""))
         
-    }
+        try {
+            Modelo modelo = null;
+            if (marcaCarro != 0) {
+                marca = Marca.obterMarca(marcaCarro);
+            }
+            Modelo modelo = new Modelo(id, nome, marca);
+            if (operacao.equals("Incluir")) {
+                try {
+                    modelo.gravar();
+                } catch (ClassNotFoundException e) {
+                    throw new ServletException(e);
+                }
+            } else {
+                if (operacao.equals("Editar")) {
+                    modelo.alterar();
+                } else {
+                    if (operacao.equals("Excluir")) {
+                        modelo.excluir();
+                    }
+                }
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaCarroController");
+            view.forward(request, response);
+
+        }
+
+    
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("modelos", Modelo.obterModelos());
+            if (!operacao.equals("Incluir")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                Carro carro = Carro.obterCarro(id);
+                request.setAttribute("carro", carro);
+
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCarro.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -88,7 +123,13 @@ public class ManterCarroController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterCarroController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterCarroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -102,7 +143,13 @@ public class ManterCarroController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterCarroController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterCarroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
