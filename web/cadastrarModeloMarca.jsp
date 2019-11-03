@@ -1,7 +1,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -15,7 +16,7 @@
         <h1>
             Cadastrar Modelo e/ou Marca
         </h1>
-        <form action="ManterModeloController?acao=confirmarOperacao&Operacao&operacao=${operacao}" method="post" name="frmManterModelo">
+        <form action="ManterModeloController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterModelo">
             <table border="1">
                 <tr>
                     <td>ID do Modelo</td>

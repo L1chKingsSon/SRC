@@ -30,8 +30,20 @@ public class ManterEnderecoController extends HttpServlet {
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
      */
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
+        String acao = request.getParameter("acao");
+        if(acao.equals("confirmarOperacao"))
+        {
+            confirmarOperacao(request, response);
+        } else if (acao.equals("prepararOperacao")) {
+            prepararOperacao(request, response);
+        }
+    }
+
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
@@ -57,6 +69,10 @@ public class ManterEnderecoController extends HttpServlet {
             } else{
                 if(operacao.equals("Editar")){
                     endereco.alterar();
+                } else {
+                    if(operacao.equals("Excluir")){
+                        endereco.excluir();
+                    }
                 }
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaEnderecoController");
@@ -69,23 +85,16 @@ public class ManterEnderecoController extends HttpServlet {
         }
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
-        String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")) {
-            prepararOperacao(request, response);
-        }
-        else if(acao.equals("confirmarOperacao"))
-        {
-            confirmarOperacao(request, response);
-        }
-    }
-
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            if(!operacao.equals("Incluir")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                Endereco endereco = Endereco.obterEndereco(id);
+                request.setAttribute("endereco", endereco);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarEndereco.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
@@ -109,7 +118,11 @@ public class ManterEnderecoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            processRequest(request, response);
+            try {
+                processRequest(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ManterEnderecoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterEnderecoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -127,7 +140,11 @@ public class ManterEnderecoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            processRequest(request, response);
+            try {
+                processRequest(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ManterEnderecoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterEnderecoController.class.getName()).log(Level.SEVERE, null, ex);
         }
