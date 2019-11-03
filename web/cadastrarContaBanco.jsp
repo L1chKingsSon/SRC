@@ -25,23 +25,23 @@
         <table border="1"> 
             <tr>
                 <td>ID da Conta</td>
-                <td><input type="number" name="txtId" value="${conta.id}"></td>
+                <td><input type="number" name="txtId" value="${contaBanco.id}"></td>
             </tr>
             <tr>
                 <td>Nome do Dono da conta</td>
-                <td><input type="text" name="txtNome" value="${conta.nome}"></td>
+                <td><input type="text" name="txtNome" value="${contaBanco.nome}"></td>
             </tr>
             <tr>
                 <td>Agência da Conta</td>
-                <td><input type="text" name="txtAgencia" value="${conta.agencia}"></td>
+                <td><input type="text" name="txtAgencia" value="${contaBanco.agencia}"></td>
             </tr>
             <tr>
                 <td>Número da Conta</td>
-                <td><input type="text" name="txtConta" value="${conta.conta}"></td>
+                <td><input type="text" name="txtConta" value="${contaBanco.conta}"></td>
             </tr>
             <tr>
                 <td>Tipo da Conta</td>
-                <td><input type="text" name="txtTipo" value="${conta.tipo}"></td>
+                <td><input type="text" name="txtTipo" value="${contaBanco.tipo}"></td>
             </tr>
             <tr >
                 <td colspan="2"><button type="submit">Submit</button></td>

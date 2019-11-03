@@ -91,10 +91,10 @@ public class ContaBancoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update contabanco set "
-                    + "agencia = '" + contaBanco.getAgencia()+ "'"
-                    + "conta = '" + contaBanco.getConta()+ "'"
-                    + "tipo = '" + contaBanco.getTipo()+ "'"
-                    + "nome = '" + contaBanco.getNome() + "'";
+                    + "agencia = '" + contaBanco.getAgencia()+ "', "
+                    + "conta = '" + contaBanco.getConta()+ "', "
+                    + "tipo = '" + contaBanco.getTipo()+ "', "
+                    + "nome = '" + contaBanco.getNome() + "' ";
             stringSQL = stringSQL + "where id = " + contaBanco.getId();
             comando.execute(stringSQL);
         } finally {

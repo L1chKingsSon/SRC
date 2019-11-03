@@ -87,10 +87,15 @@ public class ManterContaBancoController extends HttpServlet {
 //    O cadastro da conta do banco esta no cadastro de funcionario, favor observar como colocar
 //    duas vezes um cadastro mas em paginas diferentes com o mesmo requestdispatcher
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException {
+            throws ServletException, ClassNotFoundException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
+            if(!operacao.equals("Incluir")){
+                int id = Integer.parseInt(request.getParameter("id"));
+                ContaBanco contaBanco = ContaBanco.obterConta(id);
+                request.setAttribute("contaBanco", contaBanco);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarContaBanco.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
