@@ -52,13 +52,13 @@ public class ManterContaBancoController extends HttpServlet {
         request.setAttribute("operacao", operacao);
 
         int id = Integer.parseInt(request.getParameter("txtId"));
-        String nome = request.getParameter("txtNome");
         String agencia = request.getParameter("txtAgencia");
         String conta = request.getParameter("txtConta");
         String tipo = request.getParameter("txtTipo");
+        String nome = request.getParameter("txtNome");
 
         try {
-            ContaBanco contaBanco = new ContaBanco(id, nome, agencia, conta, tipo);
+            ContaBanco contaBanco = new ContaBanco(id, agencia, conta, tipo, nome);
             if (operacao.equals("Incluir")) {
                 try {
                     contaBanco.gravar();

@@ -16,13 +16,13 @@
     <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario">
     Funcionario
     <label>ID Funcionario</label>
-    <input name="idfuncionario" type="text" value="${funcionario.id}"><br><br>
+    <input name="txtId" type="text" value="${funcionario.id}"><br><br>
     
     <label>Nome</label>
-    <input name="nome" type="text" value="${funcionario.nome}"><br><br>
+    <input name="txtNome" type="text" value="${funcionario.nome}"><br><br>
 
     <label>CPF</label>
-    <input name="cpf" type="number" value="${funcionario.cpf}"><br><br>
+    <input name="txtCpf" type="number" value="${funcionario.cpf}"><br><br>
     Endereco
 <!--    <label>ID Endereco</label>
     <input name="idendereco" type="number" value="${endereco.id}"><br><br>
@@ -71,17 +71,17 @@
 
     Dados de Login<br>
     <label>Nome para Login</label>d
-    <input type="text" name="login"><br><br>
+    <input type="text" name="txtLogin" value="${funcionario.login}"><br><br>
 
     <label>Senha</label>
-    <input type="password" name="senha"><br><br>
+    <input type="password" name="txtSenha" value="${funcionario.senha}"><br><br>
 
     <label>Salario</label>
-    <input type="number"><br><br>
+    <input type="number" name="txtSalario" value="${funcionario.salario}"><br><br>
     
     <label>Nivel de acesso</label>
-    <input type="enum" >
-       
+    <input type="checkbox" name="txtNivelAcesso" value="Admin" <c:if test="${funcionario.nivelAcesso == true}">checked</c:if>><br>
+  
     <button type="submit">Cadastrar</button>
 </form>    
 </body>

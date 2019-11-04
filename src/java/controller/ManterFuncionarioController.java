@@ -34,17 +34,28 @@ public class ManterFuncionarioController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        String acao = request.getParameter("acao");
+        if (acao.equals("prepararOperacao")) {
+            prepararOperacao(request, response);
+        }else if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
+
+        }
+    }
+    
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException{
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
-        int id = Integer.parseInt(request.getParameter("idfuncionario"));
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("cpf");
-        String telefone = request.getParameter("telefone");
-        long salario = Long.parseLong(request.getParameter("salario"));
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        String cpf = request.getParameter("txtCpf");
+        String telefone = request.getParameter("txtTelefone");
+        long salario = Long.parseLong(request.getParameter("txtSalario"));
+        String login = request.getParameter("txtLogin");
+        String senha = request.getParameter("txtSenha");
         Boolean nivelAcesso = Boolean.parseBoolean(request.getParameter("nivelAcesso"));
         int enderecoid = Integer.parseInt(request.getParameter("txtEndereco"));
         int contaBancoid = Integer.parseInt(request.getParameter("txtConta"));
@@ -73,26 +84,29 @@ public class ManterFuncionarioController extends HttpServlet {
             } else if(operacao.equals("Excluir")){
                 funcionario.excluir();
             }
-        } catch (SQLException e){
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFuncionarioController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-        String acao = request.getParameter("acao");
-        if (acao.equals("prepararOperacao")) {
-            prepararOperacao(request, response);
-        }
-    }
+
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException, ClassNotFoundException {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("endereco", Endereco.obterEnderecos());
-            request.setAttribute("contaBanco", ContaBanco.obterContas());
+            request.setAttribute("enderecos", Endereco.obterEnderecos());
+            request.setAttribute("contasBanco", ContaBanco.obterContas());
+            if(!operacao.equals("Incluir")){
+                int idFuncionario = Integer.parseInt(request.getParameter("id"));
+                Funcionario funcionario = Funcionario.obterFuncionario(idFuncionario);
+                request.setAttribute("funcionario", funcionario);
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarFuncionario.jsp");
             view.forward(request, response);
         } catch (ServletException e) {

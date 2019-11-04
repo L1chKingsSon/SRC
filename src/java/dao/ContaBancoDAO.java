@@ -69,7 +69,7 @@ public class ContaBancoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
-                    "insert into contabanco (id, nome, agencia, conta, tipo) "
+                    "insert into contabanco (id, agencia, conta, tipo, nome) "
                     + "values (?,?,?,?,?)");
             comando.setLong(1, contaBanco.getId());
             comando.setString(2, contaBanco.getAgencia());
