@@ -49,7 +49,7 @@ public class ManterClienteController extends HttpServlet {
     
         public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException, ClassNotFoundException, IOException {
-
+        try{
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("enderecos", Endereco.obterEnderecos());
@@ -58,14 +58,15 @@ public class ManterClienteController extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("txtId"));
                 Cliente cliente = Cliente.obterCliente(id);
                 request.setAttribute("cliente", cliente);
-
+            }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
-//        } catch (ServletException e) {
-//            throw e;
-//        } catch (IOException e) {
-//            throw new ServletException(e);
-//        }
+            
+        } catch (ServletException e) {
+            throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        }
     }
         
         public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException{
