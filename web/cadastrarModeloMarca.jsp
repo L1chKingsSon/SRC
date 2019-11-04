@@ -49,7 +49,7 @@
         <table border="1"> 
             <tr>
                 <td>ID da marca</td>
-                <td><input type="number" name="txtId" value="${marca.id}"></td>
+                <td><input type="number" name="txtId" value="${marca.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Nome da Marca</td>

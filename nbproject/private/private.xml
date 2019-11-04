@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jafar/Git/SRC/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterModeloController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarNotaFiscal.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarCliente.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterNotaFiscalController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/web/cadastrarModeloMarca.jsp</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/model/Item.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/controller/ManterClienteController.java</file>
-            <file>file:/C:/Users/jafar/Git/SRC/src/java/model/NotaFiscal.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC%20certo/SRCA/src/java/controller/ManterFuncionarioController.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC%20certo/SRCA/src/java/model/Funcionario.java</file>
+            <file>file:/D:/Users/Raphael/NetBeansProjects/Sistema%20de%20Revenda%20de%20Carros/SRC%20certo/SRCA/src/java/dao/FuncionarioDAO.java</file>
         </group>
     </open-files>
 </project-private>
