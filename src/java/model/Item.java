@@ -14,27 +14,57 @@ import java.util.List;
  */
 public class Item {
 
-    private long id;
-    private List<Carro> carros = new ArrayList<Carro>();
+    private int id;
+    private Carro carro;
+    private NotaFiscal notaFiscal;
+    private int idPrimariaNotaFiscal;
+    private int idPrimariaCarro;
 
-    public Item(long id) {
+    public Item(int id, Carro carro, NotaFiscal notaFiscal) {
         this.id = id;
+        this.carro = carro;
+        this.notaFiscal = notaFiscal;
     }
 
     public long getId() {
         return id;
     }
+    
+    public Carro getCarro(){
+        return carro;
+    }
+    
+    public void setCarro(Carro carro){
+        this.carro = carro;
+    }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public List<Carro> getCarros() {
-        return carros;
+    public int getIdPrimariaNotaFiscal() {
+        return idPrimariaNotaFiscal;
     }
 
-    public void setCarros(List<Carro> carros) {
-        this.carros = carros;
+    public void setIdPrimariaNotaFiscal(int idPrimariaNotaFiscal) {
+        this.idPrimariaNotaFiscal = idPrimariaNotaFiscal;
     }
 
+    public NotaFiscal getNotaFiscal() {
+        return notaFiscal;
+    }
+
+    public void setNotaFiscal(NotaFiscal notaFiscal) {
+        this.notaFiscal = notaFiscal;
+    }
+
+    public int getIdPrimariaCarro() {
+        return idPrimariaCarro;
+    }
+
+    public void setIdPrimariaCarro(int idPrimariaCarro) {
+        this.idPrimariaCarro = idPrimariaCarro;
+    }
+    
+    
 }
