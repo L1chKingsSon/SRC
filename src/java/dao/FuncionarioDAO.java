@@ -76,8 +76,8 @@ public class FuncionarioDAO {
             comando = conexao.prepareStatement(
                     "insert into funcionario (id, salario, login, senha, "
                     + "nome, cpf, telefone, "
-                    + "id_Conta_Banco, id_Endereco) "
-                    + "values (?,?,?,?,?,?,?,?,?)");
+                    + "id_Conta_Banco, id_Endereco, nivelAcesso) "
+                    + "values (?,?,?,?,?,?,?,?,?,?)");
             comando.setLong(1, funcionario.getId());
             comando.setFloat(2, funcionario.getSalario());
             comando.setString(3, funcionario.getLogin());

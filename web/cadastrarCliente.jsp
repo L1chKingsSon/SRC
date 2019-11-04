@@ -53,7 +53,7 @@
             <tr>
                 <td>Endereco</td>
                 <td>
-                    <select name="txtSelect_endereco" id="endereoo">
+                    <select name="txtSelect_endereco" id="endereco">
                             <option value="0" <c:if test="${cliente.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${cliente.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}</option>

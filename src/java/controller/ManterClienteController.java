@@ -61,9 +61,56 @@ public class ManterClienteController extends HttpServlet {
 
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
-            
+//        } catch (ServletException e) {
+//            throw e;
+//        } catch (IOException e) {
+//            throw new ServletException(e);
+//        }
+    }
+        
+        public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException{
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        String cpf = request.getParameter("txtCpf");
+        String telefone = request.getParameter("txtTelefone");
+        int enderecoid = Integer.parseInt(request.getParameter("txtSelect_Endereco"));
+        int contaBancoid = Integer.parseInt(request.getParameter("txtSelect_ContaBanco"));
+        
+        try {
+            Endereco endereco = null;
+            if(enderecoid != 0)
+            {
+                endereco = Endereco.obterEndereco(enderecoid);
             }
+            ContaBanco contabanco = null;
+            if(contaBancoid != 0)
+            {
+                contabanco = ContaBanco.obterConta(contaBancoid);
+            }
+            Cliente cliente = new Cliente(id, nome, cpf, telefone, endereco, contabanco);
+            if(operacao.equals("Incluir")){
+                try{
+                    cliente.gravar();
+                } catch (ClassNotFoundException e){
+                    throw new ServletException(e);
+                }
+            } else if(operacao.equals("Editar"))
+            {
+                cliente.alterar();
+            } else if(operacao.equals("Excluir")){
+                cliente.excluir();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
