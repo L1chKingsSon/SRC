@@ -1,3 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,18 +72,43 @@
     <input name="tipoConta" type="radio" value="${contaBanco.tipo}">Corrente<br>
     <input name="tipoConta" type="radio" value="${contaBanco.tipo}">Poupanca<br><br>-->
 
-    Dados de Login<br>
+    <br>
+    
+    <label>Telefone</label>
+    <input type="text" name="txtTelefone" value="${funcionario.telefone}"><br><br>
+    
+    <label>Salario</label>
+    <input type="number" name="txtSalario" value="${funcionario.salario}"><br><br>
+    
     <label>Nome para Login</label>d
     <input type="text" name="txtLogin" value="${funcionario.login}"><br><br>
 
     <label>Senha</label>
     <input type="password" name="txtSenha" value="${funcionario.senha}"><br><br>
 
-    <label>Salario</label>
-    <input type="number" name="txtSalario" value="${funcionario.salario}"><br><br>
-    
+
     <label>Nivel de acesso</label>
-    <input type="checkbox" name="txtNivelAcesso" value="Admin" <c:if test="${funcionario.nivelAcesso == true}">checked</c:if>><br>
+    
+    <input type="checkbox" name="txtNivelAcesso" value="Admin" id="Admin" <c:if test="${funcionario.nivelAcesso == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+    <br><br>
+    
+    <!--<input type="checkbox" name="txtNivelAcesso" value="Admin" <c:if test="${funcionario.nivelAcesso == true}"> checked </c:if> > <br>
+  -->
+  <label>Endereco<label>
+    <select name="txtSelect_Endereco" id="endereco">
+                            <option value="0" <c:if test="${funcionario.endereco.id == null}"> selected</c:if></option>
+                            <c:forEach items="${enderecos}" var="endereco">
+                                <option value="${endereco.id}" <c:if test="${funcionario.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, ${endereco.numero}, ${endereco.complemento} </option>
+                            </c:forEach>
+                        </select>
+                            <br><br>
+                            <label>Conta do banco</label>
+    <select name="txtSelect_ContaBanco" id="contaBanco">
+                            <option value="0" <c:if test="${funcionario.contaBanco.id == null}"> selected</c:if></option>
+                            <c:forEach items="${contasBanco}" var="contaBanco">
+                                <option value="${contaBanco.id}" <c:if test="${funcionario.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>conta: ${contaBanco.conta}, agencia: ${contaBanco.agencia}</option>
+                            </c:forEach>
+                        </select>
   
     <button type="submit">Cadastrar</button>
 </form>    

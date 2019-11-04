@@ -88,9 +88,9 @@ public class CarroDAO {
                     + "chassi = '" + carro.getChassi() + "', "
                     + "ano = '" + carro.getAno() + "', "
                     + "IPVA = '" + carro.getIPVA()+ "', "
-                    + "seguro = '" + carro.getDataSeguro()+ "', "
-                    + "garantia = '" + carro.getDataGarantia()+ "', "
-                    + "valorComprado = " + carro.getValorCompra()+ "', "
+                    + "seguro = '" + carro.getSeguro()+ "', "
+                    + "garantia = '" + carro.getGarantia()+ "', "
+                    + "valorComprado = " + carro.getValorComprado()+ "', "
                     + "id_Modelo =";
             if(carro.getModelo() == null){
                 stringSQL += null;

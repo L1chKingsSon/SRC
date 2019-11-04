@@ -48,5 +48,6 @@
                 </tr> 
             </c:forEach>
         </table>
+         <td colspan="2"><button type="submit">Submit</button></td>
     </body>
 </html>

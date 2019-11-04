@@ -28,6 +28,28 @@ public class Reserva {
         this.modelo = modelo;
         this.cliente = cliente;
     }
+    
+    public int getIdPrimariaCliente() throws ClassNotFoundException, SQLException {
+        if ((this.idPrimariaCliente != 0) && (this.cliente == null)) {
+            this.cliente = Cliente.obterCliente(this.idPrimariaCliente);
+        }
+        return idPrimariaCliente;
+    }
+
+    public void setIdPrimariaCliente(int idPrimariaCliente) {
+        this.idPrimariaCliente = idPrimariaCliente;
+    }
+    
+    public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
+        if ((this.idPrimariaModelo != 0) && (this.modelo == null)) {
+            this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
+        }
+        return idPrimariaModelo;
+    }
+
+    public void setIdPrimariaMarca(int idPrimariaModelo) {
+        this.idPrimariaModelo = idPrimariaModelo;
+    }
 
     public long getId() {
         return id;

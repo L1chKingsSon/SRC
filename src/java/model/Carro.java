@@ -30,16 +30,16 @@ public class Carro {
     private int idPrimariaModelo;
 
     public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA,
-            Date dataSeguro, Date dataGarantia, double valorCompra, double valorVenda, Modelo modelo) {
+            Date seguro, Date garantia, double valorComprado, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
         this.chassi = chassi;
         this.ano = ano;
         this.cor = cor;
         this.IPVA = IPVA;
-        this.seguro = dataSeguro;
-        this.garantia = dataGarantia;
-        this.valorComprado = valorCompra;
+        this.seguro = seguro;
+        this.garantia = garantia;
+        this.valorComprado = valorComprado;
         this.valorVenda = valorVenda;
         this.modelo = modelo;
     }
@@ -111,28 +111,28 @@ public class Carro {
         this.IPVA = IPVA;
     }
 
-    public Date getDataSeguro() {
+    public Date getSeguro() {
         return seguro;
     }
 
-    public void setDataSeguro(Date dataSeguro) {
-        this.seguro = dataSeguro;
+    public void setSeguro(Date seguro) {
+        this.seguro = seguro;
     }
 
-    public Date getDataGarantia() {
+    public Date getGarantia() {
         return garantia;
     }
 
-    public void setDataGarantia(Date dataGarantia) {
-        this.garantia = dataGarantia;
+    public void setGarantia(Date garantia) {
+        this.garantia = garantia;
     }
 
-    public double getValorCompra() {
+    public double getValorComprado() {
         return valorComprado;
     }
 
-    public void setValorCompra(double valorCompra) {
-        this.valorComprado = valorCompra;
+    public void setValorComprado(double valorComprado) {
+        this.valorComprado = valorComprado;
     }
 
     public double getValorVenda() {

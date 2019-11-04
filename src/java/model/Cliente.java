@@ -19,9 +19,6 @@ public class Cliente extends Pessoa {
         super(id, nome, cpf, telefone, endereco, contaBanco);
     }
 
-    public void setIDPrimariaContaBanco(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public static List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
         return ClienteDAO.obterClientes();
@@ -31,4 +28,19 @@ public class Cliente extends Pessoa {
         return ClienteDAO.obterCliente(codCliente);
     }
 
+    
+     public void gravar()
+            throws 
+            ClassNotFoundException,
+            SQLException {
+        ClienteDAO.gravar(this);
+    }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        ClienteDAO.excluir(this);
+    }
+    
+    public void alterar() throws ClassNotFoundException, SQLException{
+        ClienteDAO.alterar(this);
+    }
 }

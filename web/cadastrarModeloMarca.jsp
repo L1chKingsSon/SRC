@@ -38,6 +38,7 @@
                                 <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
                             </c:forEach>
                         </select>
+                    <td>
                 </tr>
 
                 <button type="submit" >Cadastrar</button>

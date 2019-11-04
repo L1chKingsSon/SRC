@@ -95,8 +95,8 @@ public class ManterReservaController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-//            request.setAttribute("clientes", Cliente.obterClientes());
-//            request.setAttribute("modelos", Modelo.obterModelos());
+            request.setAttribute("clientes", Cliente.obterClientes());
+            request.setAttribute("modelos", Modelo.obterModelos());
             if(!operacao.equals("Incluir")){
                 int idReserva = Integer.parseInt(request.getParameter("id"));
                 Reserva reserva = Reserva.obterReserva(idReserva);

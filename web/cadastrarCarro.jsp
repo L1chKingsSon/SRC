@@ -28,7 +28,7 @@
     <input type="text" name="valorIPVA" placeholder="valor do IPVA"><br><br>
     <label>Seguro:</label>
     <input type="radio" name="seguro" value="true"> Tem
-    <input type="radio" name="seguro" value="false"> Não tem <br>
+    <input type="radio" name="seguro" value="false"> Não tem <brss>
     <label>Se tiver seguro, até quando:</label>
     <input type="date" name="dataSeguro"><br><br>
     <label>Cliente</label>
