@@ -20,7 +20,6 @@ public class NotaFiscal {
     private long id;
     private Date data;
     private double valor;
-    private Item itens;
     private Boolean transacao;
     private int idPrimariaItem;
     private int idPrimariaTransacao;
@@ -29,7 +28,6 @@ public class NotaFiscal {
         this.id = id;
         this.data = data;
         this.valor = valor;
-        this.itens = itens;
         this.transacao = transacao;
     }
 
@@ -71,14 +69,6 @@ public class NotaFiscal {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public Item getItens() {
-        return itens;
-    }
-
-    public void setItens(Item itens) {
-        this.itens = itens;
     }
 
     public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
