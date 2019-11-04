@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.ContaBanco;
 import model.Endereco;
+import model.Funcionario;
 
 /**
  *
@@ -33,7 +34,7 @@ public class ManterFuncionarioController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException{
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
@@ -41,14 +42,39 @@ public class ManterFuncionarioController extends HttpServlet {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String telefone = request.getParameter("telefone");
-        float salario = Float.parseFloat(request.getParameter("salario"));
+        long salario = Long.parseLong(request.getParameter("salario"));
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-
+        Boolean nivelAcesso = Boolean.parseBoolean(request.getParameter("nivelAcesso"));
+        int enderecoid = Integer.parseInt(request.getParameter("txtEndereco"));
+        int contaBancoid = Integer.parseInt(request.getParameter("txtConta"));
+        
         try {
-
-            Funcionario funcionario = new Funcionario(id, nome, cpf, telefone, endereco,
-                    contaBanco, salario, login, senha);
+            Endereco endereco = null;
+            if(enderecoid != 0)
+            {
+                endereco = Endereco.obterEndereco(enderecoid);
+            }
+            ContaBanco contabanco = null;
+            if(contaBancoid != 0)
+            {
+                contabanco = ContaBanco.obterConta(contaBancoid);
+            }
+            Funcionario funcionario = new Funcionario(id, nome, cpf, telefone, endereco, contabanco, salario, login, senha, nivelAcesso);
+            if(operacao.equals("Incluir")){
+                try{
+                    funcionario.gravar();
+                } catch (ClassNotFoundException e){
+                    throw new ServletException(e);
+                }
+            } else if(operacao.equals("Editar"))
+            {
+                funcionario.alterar();
+            } else if(operacao.equals("Excluir")){
+                funcionario.excluir();
+            }
+        } catch (SQLException e){
+            throw new ServletException(e);
         }
     }
 

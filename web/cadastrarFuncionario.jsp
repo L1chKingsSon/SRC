@@ -24,7 +24,7 @@
     <label>CPF</label>
     <input name="cpf" type="number" value="${funcionario.cpf}"><br><br>
     Endereco
-    <label>ID Endereco</label>
+<!--    <label>ID Endereco</label>
     <input name="idendereco" type="number" value="${endereco.id}"><br><br>
     
     <label>CEP</label>
@@ -67,10 +67,10 @@
 
     <label>Tipo de Conta</label><br>
     <input name="tipoConta" type="radio" value="${contaBanco.tipo}">Corrente<br>
-    <input name="tipoConta" type="radio" value="${contaBanco.tipo}">Poupanca<br><br>
+    <input name="tipoConta" type="radio" value="${contaBanco.tipo}">Poupanca<br><br>-->
 
     Dados de Login<br>
-    <label>Nome para Login</label>
+    <label>Nome para Login</label>d
     <input type="text" name="login"><br><br>
 
     <label>Senha</label>
@@ -78,6 +78,9 @@
 
     <label>Salario</label>
     <input type="number"><br><br>
+    
+    <label>Nivel de acesso</label>
+    <input type="enum" >
        
     <button type="submit">Cadastrar</button>
 </form>    

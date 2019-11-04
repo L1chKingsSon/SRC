@@ -32,12 +32,12 @@
                 <tr>
                     <td><c:out value="${funcionario.id}" /></td>
                     <td><c:out value="${funcionario.nome}" /></td>
-                    <td><c:out value="${funcionario.CPF}" /></td>
+                    <td><c:out value="${funcionario.cpf}" /></td>
                     <td><c:out value="${funcionario.telefone}" /></td>
                     <td><c:out value="${funcionario.salario}" /></td>
                     <td><c:out value="${funcionario.login}" /></td>
                     <td><c:out value="${funcionario.senha}" /></td>
-                    <td><c:out value="${funcionario.NivelAcesso}" /></td>
+                    <td><c:out value="${funcionario.nivelAcesso}" /></td>
                     <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${funcionario.id}"/>">Editar</a></td>
                     <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${funcionario.id}"/>">Excluir</a></td>
                 </tr>

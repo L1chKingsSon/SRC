@@ -18,12 +18,14 @@ public class Funcionario extends Pessoa {
     private float salario;
     private String login;
     private String senha;
+    private Boolean nivelAcesso;
 
-    public Funcionario(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, long salario, String login, String senha) {
+    public Funcionario(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, long salario, String login, String senha, Boolean nivelAcesso) {
         super(id, nome, cpf, telefone, endereco, contaBanco);
         this.salario = salario;
         this.login = login;
         this.senha = senha;
+        this.nivelAcesso = nivelAcesso;
     }
 
     public float getSalario() {
@@ -49,6 +51,16 @@ public class Funcionario extends Pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
+    public Boolean getNivelAcesso()
+    {
+        return nivelAcesso;
+    }
+    
+    public void setNivelAcesso(Boolean nivelAcesso)
+    {
+        this.nivelAcesso = nivelAcesso;
+    }
 
     public static List<Funcionario> obterFuncionarios() throws ClassNotFoundException, SQLException {
         return FuncionarioDAO.obterFuncionarios();
@@ -63,5 +75,13 @@ public class Funcionario extends Pessoa {
             ClassNotFoundException,
             SQLException {
         FuncionarioDAO.gravar(this);
+    }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        FuncionarioDAO.excluir(this);
+    }
+    
+    public void alterar() throws ClassNotFoundException, SQLException{
+        FuncionarioDAO.alterar(this);
     }
 }

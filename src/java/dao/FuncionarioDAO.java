@@ -44,10 +44,11 @@ public class FuncionarioDAO {
                 null,
                 rs.getLong("salario"),
                 rs.getString("login"),
-                rs.getString("senha")
+                rs.getString("senha"),
+                rs.getBoolean("nivelAcesso")
         );
         funcionario.setIdPrimariaEndereco(rs.getInt("id_endereco"));
-        funcionario.setIdPrimariaContaBanco(rs.getInt("id_contaBanco"));
+        funcionario.setIdPrimariaContaBanco(rs.getInt("id_Conta_Banco"));
         return funcionario;
     }
     
@@ -74,7 +75,7 @@ public class FuncionarioDAO {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
                     "insert into funcionario (id, salario, login, senha, "
-                    + "nome, CPF, telefone, "
+                    + "nome, cpf, telefone, "
                     + "id_Conta_Banco, id_Endereco) "
                     + "values (?,?,?,?,?,?,?,?,?)");
             comando.setLong(1, funcionario.getId());
@@ -86,9 +87,70 @@ public class FuncionarioDAO {
             comando.setString(7, funcionario.getTelefone());
             comando.setLong(8, funcionario.getContaBanco().getId());
             comando.setLong(9, funcionario.getEndereco().getId());
+            comando.setBoolean(10, funcionario.getNivelAcesso());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);
         }
+    }
+    public static void alterar(Funcionario funcionario) throws ClassNotFoundException, SQLException
+    {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update funcionario set "
+                    + "salario = '" + funcionario.getSalario() + "', "
+                    + "login = '" + funcionario.getLogin() + "', "
+                    + "senha = '" + funcionario.getSenha() + "', "
+                    + "nome = '" + funcionario.getNome() + "', "
+                    + "CPF = '" + funcionario.getCpf() +  "', "
+                    + "telefone = '" + funcionario.getTelefone() + "', ";
+            if(funcionario.getContaBanco() == null)
+            {
+                stringSQL += "id_Conta_Banco = null, ";
+            }
+            else
+            {
+                stringSQL += "id_Conta_Banco = '" + funcionario.getContaBanco().getId() + "'";
+            }
+            if(funcionario.getEndereco() == null)
+            {
+                stringSQL += "id_Endereco = null";
+            }
+            else
+            {
+                stringSQL += "id_Endereco = '" + funcionario.getEndereco().getId() + "'";
+            }
+            
+            stringSQL += " nivelAcesso = '" + funcionario.getNivelAcesso() + "'";
+            stringSQL += " where id = " + funcionario.getId() + ";";
+            comando.execute(stringSQL);
+            
+        } finally
+            {
+                fecharConexao(conexao, comando);
+            }
+    }
+    
+    public static void excluir(Funcionario funcionario) throws ClassNotFoundException, SQLException{
+    Connection conexao = null;
+    Statement comando = null;
+    String stringSQL;
+    
+    try{
+        conexao = BD.getConexao();
+        comando = conexao.createStatement();
+        stringSQL = "delete from funcionario where id="
+                + funcionario.getId();
+        comando.execute(stringSQL);
+    } finally
+    {
+        fecharConexao(conexao, comando);
+    }
+    
     }
 }
