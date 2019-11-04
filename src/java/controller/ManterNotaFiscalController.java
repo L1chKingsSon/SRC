@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Item;
+import model.NotaFiscal;
 
 /**
  *
@@ -87,11 +89,11 @@ public class ManterNotaFiscalController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("marcas", Marca.obterMarcas());
+            request.setAttribute("itens", Item.obterItens());
             if(!operacao.equals("Incluir")){
                 int idModelo = Integer.parseInt(request.getParameter("id"));
-                Modelo modelo = Modelo.obterModelo(idModelo);
-                request.setAttribute("modelo", modelo);
+                NotaFiscal notaFiscal = NotaFiscal.obterNotaFiscal(idModelo);
+                request.setAttribute("notaFiscal", notaFiscal);
             }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
             view.forward(request, response);

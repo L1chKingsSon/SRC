@@ -42,9 +42,9 @@
             <tr>
                 <td>Conta do Banco</td>
                 <td>
-                    <select name="txtSelect_conta" id="conta">
+                    <select name="txtSelect_conta" id="contaBanco">
                             <option value="0" <c:if test="${cliente.contaBanco.id == null}"> selected</c:if></option>
-                            <c:forEach items="${contasBanco}" var="marca">
+                            <c:forEach items="${contaBancos}" var="contaBanco">
                                 <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}</option>
                             </c:forEach>
                         </select>

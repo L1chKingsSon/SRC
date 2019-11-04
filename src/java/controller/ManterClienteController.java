@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import model.ContaBanco;
 import model.Endereco;
 
@@ -48,25 +49,21 @@ public class ManterClienteController extends HttpServlet {
     
         public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException, ClassNotFoundException, IOException {
-//        try {
-//            String operacao = request.getParameter("operacao");
-//            request.setAttribute("operacao", operacao);
-//            if(!operacao.equals("Incluir")){
-//                int id
-//                request.setAttribute("endereco", Endereco.obterEnderecos());
-//                request.setAttribute("contaBanco", ContaBanco.obterContas());
-//                
-//            try{
-//                Cliente cliente = new Cliente()
-//            }
+
+            String operacao = request.getParameter("operacao");
+            request.setAttribute("operacao", operacao);
+            request.setAttribute("enderecos", Endereco.obterEnderecos());
+            request.setAttribute("contaBancos", ContaBanco.obterContas());
+            if(!operacao.equals("Incluir")){
+                int id = Integer.parseInt(request.getParameter("txtId"));
+                Cliente cliente = Cliente.obterCliente(id);
+                request.setAttribute("cliente", cliente);
+
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
-//        } catch (ServletException e) {
-//            throw e;
-//        } catch (IOException e) {
-//            throw new ServletException(e);
-//        }
-    }
+            
+            }
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -117,6 +114,9 @@ public class ManterClienteController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }
+
+// </editor-fold>
+
+
