@@ -25,7 +25,7 @@
         <table border="1"> 
             <tr>
                 <td>ID da Conta</td>
-                <td><input type="number" name="txtId" value="${contaBanco.id}"></td>
+                <td><input type="number" name="txtId" value="${contaBanco.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Nome do Dono da conta</td>

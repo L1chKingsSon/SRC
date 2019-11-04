@@ -5,6 +5,8 @@
  */
 package model;
 
+import dao.ItemDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +68,19 @@ public class Item {
         this.idPrimariaCarro = idPrimariaCarro;
     }
     
-    
+    public static List<Item> obterItems() throws ClassNotFoundException, SQLException{
+        return ItemDAO.obterItems();
+    }
+    public static Item obterItem(int codItem) throws ClassNotFoundException, SQLException{
+        return ItemDAO.obterItem(codItem);
+    }
+    public void gravar() throws ClassNotFoundException, SQLException{
+        ItemDAO.gravar(this);  
+    }
+    public void alterar() throws ClassNotFoundException, SQLException{
+        ItemDAO.alterar(this);
+    }
+    public void excluir() throws ClassNotFoundException, SQLException{
+        ItemDAO.excluir(this);
+    }
 }

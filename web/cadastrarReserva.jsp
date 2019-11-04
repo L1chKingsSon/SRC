@@ -27,7 +27,7 @@
                 <tr>
                     <td>ID da reserva</td>
                     <td>
-                <input type="number" name="txtId" value="${reserva.id}"></td>
+                <input type="number" name="txtId" value="${reserva.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
                 </td>
                 </tr>
                 <tr>
@@ -38,13 +38,27 @@
                     <td>
                         Modelo da reserva
                     </td>
-                    <td><select name="txtSelect_modelo" id="modelo">
+                    <td><select name="txtSelect_modelo" id="modelo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${reserva.modelo.id == null}"> selected</c:if></option>
                             <c:forEach items="${modelos}" var="modelo">
                                 <option value="${modelo.id}" <c:if test="${reserva.idPrimariaModelo == modelo.id}"> selected</c:if>>${modelo.nome}</option>
                             </c:forEach>
                         </select>
                 </tr>
+                <tr>
+                    <td>
+                        Cliente
+                    </td>
+                    <td>
+                        <select name="txtSelect_cliente" id="cliente" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
+                            <option value="0" <c:if test="${reserva.cliente.id == null}"> selected</c:if></option>
+                            <c:forEach items="${clientes}" var="cliente">
+                                <option value="${cliente.id}" <c:if test="${reserva.idPrimariaCliente == cliente.id}"> selected</c:if>>${cliente.nome}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                
 
                 <button type="submit" >Cadastrar</button>
         </form>

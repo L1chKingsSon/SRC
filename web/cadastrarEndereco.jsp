@@ -19,7 +19,7 @@
             <table border="1"> 
                 <tr>
                     <td>ID do endereco</td>
-                    <td><input type="number" name="txtId" value="${endereco.id}"></td>
+                    <td><input type="number" name="txtId" value="${endereco.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>cep</td>

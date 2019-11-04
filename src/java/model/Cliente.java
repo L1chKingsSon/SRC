@@ -29,10 +29,7 @@ public class Cliente extends Pessoa {
     }
 
     
-     public void gravar()
-            throws 
-            ClassNotFoundException,
-            SQLException {
+     public void gravar() throws ClassNotFoundException, SQLException {
         ClienteDAO.gravar(this);
     }
     

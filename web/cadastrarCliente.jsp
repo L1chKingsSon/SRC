@@ -25,24 +25,24 @@
         <table border="1"> 
             <tr>
                 <td>ID Cliente</td>
-                <td><input type="number" name="txtId" value="${cliente.id}"></td>
+                <td><input type="number" name="txtId" value="${cliente.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Nome</td>
-                <td><input type="text" name="txtNome" value="${cliente.nome}"></td>
+                <td><input type="text" name="txtNome" value="${cliente.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>CPF</td>
-                <td><input name="txtCpf" type="number" value="${cliente.cpf}"></td>
+                <td><input name="txtCpf" type="number" value="${cliente.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Telefone</td>
-                <td><input type="text" name="txtTelefone" value="${cliente.telefone}"></td>
+                <td><input type="text" name="txtTelefone" value="${cliente.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Conta do Banco</td>
                 <td>
-                    <select name="txtSelect_conta" id="contaBanco">
+                    <select name="txtSelect_conta" id="contaBanco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${cliente.contaBanco.id == null}"> selected</c:if></option>
                             <c:forEach items="${contaBancos}" var="contaBanco">
                                 <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}</option>
@@ -53,7 +53,7 @@
             <tr>
                 <td>Endereco</td>
                 <td>
-                    <select name="txtSelect_endereco" id="endereco">
+                    <select name="txtSelect_endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${cliente.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${cliente.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}</option>

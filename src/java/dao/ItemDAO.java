@@ -24,29 +24,29 @@ public class ItemDAO {
     public static List<Item> obterItems() throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        List<Item> items = new ArrayList<Item>();
+        List<Item> itens = new ArrayList<Item>();
         Item item = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("Select * from item");
+            ResultSet rs = comando.executeQuery("Select * from itens");
             while (rs.next()) {
                 item = instanciarItem(rs);
-                items.add(item);
+                itens.add(item);
             }
         } finally {
             fecharConexao(conexao, comando);
         }
-        return items;
+        return itens;
     }
 
     public static Item instanciarItem(ResultSet rs) throws SQLException {
         Item item = new Item(
                 rs.getInt("id"),
                 null,
-                null)
-        item.setIdPrimariaNotaFiscal("");
-        );
+                null);
+        item.setIdPrimariaNotaFiscal(rs.getInt("NotaFiscal_id"));
+        item.setIdPrimariaCarro(rs.getInt("id_Carro"));
         return item;
     }
 
@@ -57,7 +57,7 @@ public class ItemDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from item where id =" + codItem);
+            ResultSet rs = comando.executeQuery("select * from itens where id =" + codItem);
             rs.first();
             item = instanciarItem(rs);
         } finally {
@@ -72,7 +72,7 @@ public class ItemDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
-                    "insert into item (id, NotaFiscal_id, id_Carro) "
+                    "insert into itens (id, NotaFiscal_id, id_Carro) "
                     + "values (?,?,?)");
             comando.setLong(1, item.getId());
             comando.setLong(2, item.getNotaFiscal().getId());
@@ -91,8 +91,17 @@ public class ItemDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "update item set NotaFiscal_id = '" + item.getIdPrimariaNotaFiscal()+ "'";
-            stringSQL = stringSQL + "where id = " + item.getId();
+            stringSQL = "update itens set NotaFiscal_id = '";
+            if(item.getNotaFiscal()== null){
+                stringSQL += "NotaFiscal_id = null";
+            } else {
+                stringSQL += "id_Marca = '" + item.getNotaFiscal().getId() + "'";
+            } if (item.getCarro() == null){
+                stringSQL += "id_Carro = null";
+            } else {
+                stringSQL += "NotaFiscal_id = '" + item.getCarro().getId() + "'";
+            }
+            stringSQL += " where id = " + item.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
@@ -107,7 +116,7 @@ public class ItemDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from item where id ="
+            stringSQL = "delete from itens where id ="
                     + item.getId();
             comando.execute(stringSQL);
         } finally {

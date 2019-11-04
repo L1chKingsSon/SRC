@@ -76,6 +76,14 @@
         <servlet-name>ManterNotaFiscalController</servlet-name>
         <servlet-class>controller.ManterNotaFiscalController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterItemController</servlet-name>
+        <servlet-class>controller.ManterItemController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaItemController</servlet-name>
+        <servlet-class>controller.PesquisaItemController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -147,10 +155,18 @@
     <servlet-mapping>
         <servlet-name>ManterNotaFiscalController</servlet-name>
         <url-pattern>/ManterNotaFiscalController</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterReservaController</servlet-name>
         <url-pattern>/ManterReservaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterItemController</servlet-name>
+        <url-pattern>/ManterItemController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaItemController</servlet-name>
+        <url-pattern>/PesquisaItemController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

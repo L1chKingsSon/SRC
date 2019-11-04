@@ -22,15 +22,15 @@ public class Carro {
     private String ano;
     private String cor;
     private float IPVA;
-    private Date seguro;
-    private Date garantia;
+    private String seguro;
+    private String garantia;
     private double valorComprado;
     private double valorVenda;
     private Modelo modelo;
     private int idPrimariaModelo;
 
     public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA,
-            Date seguro, Date garantia, double valorComprado, double valorVenda, Modelo modelo) {
+            String seguro, String garantia, double valorComprado, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
         this.chassi = chassi;
@@ -111,19 +111,19 @@ public class Carro {
         this.IPVA = IPVA;
     }
 
-    public Date getSeguro() {
+    public String getSeguro() {
         return seguro;
     }
 
-    public void setSeguro(Date seguro) {
+    public void setSeguro(String seguro) {
         this.seguro = seguro;
     }
 
-    public Date getGarantia() {
+    public String getGarantia() {
         return garantia;
     }
 
-    public void setGarantia(Date garantia) {
+    public void setGarantia(String garantia) {
         this.garantia = garantia;
     }
 
@@ -150,4 +150,17 @@ public class Carro {
     public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
         return CarroDAO.obterCarro(codCarro);
     }
+    
+    public void gravar() throws ClassNotFoundException, SQLException {
+        CarroDAO.gravar(this);
+    }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        CarroDAO.excluir(this);
+    }
+    
+    public void alterar() throws ClassNotFoundException, SQLException{
+        CarroDAO.alterar(this);
+    }
+    
 }
