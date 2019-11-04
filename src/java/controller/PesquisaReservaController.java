@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Modelo;
 import model.Reserva;
 
 /**
@@ -34,6 +35,7 @@ public class PesquisaReservaController extends HttpServlet {
             throws ServletException, IOException {
         try {
             request.setAttribute("reservas", Reserva.obterReservas());
+            request.setAttribute("modelos", Modelo.obterModelos());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaReserva.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
