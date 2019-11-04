@@ -42,7 +42,7 @@ public class FuncionarioDAO {
                 rs.getString("telefone"),
                 null,
                 null,
-                rs.getLong("salario"),
+                rs.getInt("salario"),
                 rs.getString("login"),
                 rs.getString("senha"),
                 rs.getBoolean("nivelAcesso")
@@ -59,7 +59,7 @@ public class FuncionarioDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from funcionario where codFuncionario =" + codFuncionario);
+            ResultSet rs = comando.executeQuery("select * from funcionario where id =" + codFuncionario);
             rs.first();
             funcionario = instanciarFuncionario(rs);
         } finally {
@@ -115,18 +115,18 @@ public class FuncionarioDAO {
             }
             else
             {
-                stringSQL += "id_Conta_Banco = '" + funcionario.getContaBanco().getId() + "'";
+                stringSQL += "id_Conta_Banco = '" + funcionario.getContaBanco().getId() + "', ";
             }
             if(funcionario.getEndereco() == null)
             {
-                stringSQL += "id_Endereco = null";
+                stringSQL += "id_Endereco = null,";
             }
             else
             {
-                stringSQL += "id_Endereco = '" + funcionario.getEndereco().getId() + "'";
+                stringSQL += "id_Endereco = '" + funcionario.getEndereco().getId() + "',";
             }
             
-            stringSQL += " nivelAcesso = '" + funcionario.getNivelAcesso() + "'";
+            stringSQL += " nivelAcesso = " + funcionario.getNivelAcesso();
             stringSQL += " where id = " + funcionario.getId() + ";";
             comando.execute(stringSQL);
             

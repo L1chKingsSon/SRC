@@ -53,7 +53,7 @@ public class ManterFuncionarioController extends HttpServlet {
         String nome = request.getParameter("txtNome");
         String cpf = request.getParameter("txtCpf");
         String telefone = request.getParameter("txtTelefone");
-        long salario = Long.parseLong(request.getParameter("txtSalario"));
+        int salario = Integer.parseInt(request.getParameter("txtSalario"));
         String login = request.getParameter("txtLogin");
         String senha = request.getParameter("txtSenha");
         Boolean nivelAcesso = request.getParameter("txtNivelAcesso") != null;

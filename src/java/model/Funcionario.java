@@ -15,12 +15,12 @@ import java.util.List;
  */
 public class Funcionario extends Pessoa {
 
-    private float salario;
+    private int salario;
     private String login;
     private String senha;
     private Boolean nivelAcesso;
 
-    public Funcionario(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, long salario, String login, String senha, Boolean nivelAcesso) {
+    public Funcionario(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int salario, String login, String senha, Boolean nivelAcesso) {
         super(id, nome, cpf, telefone, endereco, contaBanco);
         this.salario = salario;
         this.login = login;
@@ -28,11 +28,11 @@ public class Funcionario extends Pessoa {
         this.nivelAcesso = nivelAcesso;
     }
 
-    public float getSalario() {
+    public int getSalario() {
         return salario;
     }
 
-    public void setSalario(long salario) {
+    public void setSalario(int salario) {
         this.salario = salario;
     }
 
