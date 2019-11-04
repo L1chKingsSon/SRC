@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jafar
  */
-@WebServlet(name = "ManterNotaFiscalController", urlPatterns = {"/ManterNotaFiscalController"})
+
 public class ManterNotaFiscalController extends HttpServlet {
 
     /**
@@ -28,21 +29,78 @@ public class ManterNotaFiscalController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManterNotaFiscalController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManterNotaFiscalController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        String acao = request.getParameter("acao");
+        if (acao.equals("confirmarOperacao")) {
+            confirmarOperacao(request, response);
+
+        } else if (acao.equals("prepararOperacao")) {
+            prepararOperacao(request, response);
+
+        }
+    }
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+        
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String nome = request.getParameter("txtNome");
+        int marcaCarro = Integer.parseInt(request.getParameter("txtSelect_marca"));
+
+        try {
+            Marca marca = null;
+            if (marcaCarro != 0) {
+                marca = Marca.obterMarca(marcaCarro);
+            }
+            Modelo modelo = new Modelo(id, nome, marca);
+            if (operacao.equals("Incluir")) {
+                try {
+                    modelo.gravar();
+                } catch (ClassNotFoundException e) {
+                    throw new ServletException(e);
+                }
+            } else {
+                if(operacao.equals("Editar")){
+                    modelo.alterar();
+                } else {
+                    if(operacao.equals("Excluir")){
+                        modelo.excluir();
+                    }
+                }
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaModeloController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, SQLException {
+        try {
+            String operacao = request.getParameter("operacao");
+            request.setAttribute("operacao", operacao);
+            request.setAttribute("marcas", Marca.obterMarcas());
+            if(!operacao.equals("Incluir")){
+                int idModelo = Integer.parseInt(request.getParameter("id"));
+                Modelo modelo = Modelo.obterModelo(idModelo);
+                request.setAttribute("modelo", modelo);
+            }
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
+            view.forward(request, response);
+        } catch (ServletException e) {
+            throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
         }
     }
 
