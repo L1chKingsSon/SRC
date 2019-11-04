@@ -2,6 +2,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,7 +12,7 @@ import model.Reserva;
 
 /**
  *
- * @author Alisson
+ * @author Raphael
  */
 public class ReservaDAO {
 
@@ -60,4 +61,68 @@ public class ReservaDAO {
         );
         return reserva;
     }
+    
+    public static void gravar(Reserva reserva) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into reserva (id, cor, id_Cliente, id_Modelo) "
+                    + "values (?,?,?, ?)");
+            comando.setLong(1, reserva.getId());
+            comando.setString(2, reserva.getCor());
+            comando.setLong(3, reserva.getCliente().getId());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+    
+    public static void alterar(Reserva reserva) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "update reservaset "
+                    + "cor = '" + reserva.getCor() + "', ";
+            if(reserva.getCliente() == null){
+                stringSQL = stringSQL + "id_Cliente = null, ";
+            } else {
+                stringSQL = stringSQL + "id_Cliente = '" + reserva.getCliente().getId();
+                stringSQL = stringSQL + "', ";
+            }
+            if(reserva.getModelo() == null)
+            {
+                stringSQL += "id_Modelo = null";
+            }
+            else{
+                stringSQL += "id_Modelo = '" + reserva.getModelo().getId();
+            }
+            stringSQL = stringSQL + " where id = " + reserva.getId() + ";";
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+    
+    public static void excluir(Reserva reserva) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from reservawhere id ="
+                    + reserva.getId();
+            comando.execute(stringSQL);
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
 }

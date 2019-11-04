@@ -68,4 +68,22 @@ public class Reserva {
     public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException {
         return ReservaDAO.obterReserva(codReserva);
     }
+    
+    public void gravar() throws ClassNotFoundException, SQLException{
+        ReservaDAO.gravar(this);
+    }
+    
+    public void alterar() 
+            throws 
+            ClassNotFoundException, 
+            SQLException {
+        ReservaDAO.alterar(this);
+    }
+    
+    public void excluir() 
+            throws 
+            ClassNotFoundException, 
+            SQLException {
+        ReservaDAO.excluir(this);
+    }    
 }

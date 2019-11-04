@@ -25,7 +25,7 @@
             <c:forEach items="${reservas}" var="reserva">
                 <tr>
                     <td><c:out value="${reserva.id}" /></td>
-                    <td><c:out value="${reserva.nome}" /></td>
+                    <td><c:out value="${reserva.cor}" /></td>
                     <td><a href="ManterReservaController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${reserva.id}"/>">Editar</a></td>
                     <td><a href="ManterReservaController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${reserva.id}"/>">Excluir</a></td>                    
                 </tr> 
