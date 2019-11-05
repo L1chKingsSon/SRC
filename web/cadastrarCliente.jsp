@@ -39,21 +39,11 @@
                 <td>Telefone</td>
                 <td><input type="text" name="txtTelefone" value="${cliente.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
-            <tr>
-                <td>Conta do Banco</td>
-                <td>
-                    <select name="txtSelect_conta" id="contaBanco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
-                            <option value="0" <c:if test="${cliente.contaBanco.id == null}"> selected</c:if></option>
-                            <c:forEach items="${contaBancos}" var="contaBanco">
-                                <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}, agencia ${contaBanco.agencia}</option>
-                            </c:forEach>
-                        </select>
-                </td>
-            </tr>
+            
             <tr>
                 <td>Endereco</td>
                 <td>
-                    <select name="txtSelect_endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
+                    <select name="txtSelect_endereco" id="endereco" >
                             <option value="0" <c:if test="${cliente.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${cliente.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, n ${endereco.numero}, ${endereco.complemento}</option>
@@ -62,6 +52,19 @@
                     
                 </td>
             </tr>
+            
+            <tr>
+                <td>Conta do Banco</td>
+                <td>
+                    <select name="txtSelect_conta" id="contaBanco" >
+                            <option value="0" <c:if test="${cliente.contaBanco.id == null}"> selected</c:if></option>
+                            <c:forEach items="${contaBancos}" var="contaBanco">
+                                <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}, agencia ${contaBanco.agencia}</option>
+                            </c:forEach>
+                        </select>
+                </td>
+            </tr>
+            
             <tr >
                 <td colspan="2"><button type="submit">Submit</button></td>
             </tr>

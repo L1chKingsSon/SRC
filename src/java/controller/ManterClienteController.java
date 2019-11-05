@@ -52,8 +52,8 @@ public class ManterClienteController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             request.setAttribute("enderecos", Endereco.obterEnderecos());
             request.setAttribute("contaBancos", ContaBanco.obterContas());
-            if (!operacao.equals("Incluir")) {
-                int id = Integer.parseInt(request.getParameter("txtId"));
+            if(!operacao.equals("Incluir")){
+                int id = Integer.parseInt(request.getParameter("id"));
                 Cliente cliente = Cliente.obterCliente(id);
                 request.setAttribute("cliente", cliente);
             }

@@ -109,7 +109,7 @@ public class ClienteDAO {
             }
             else
             {
-                stringSQL += "id_Conta_Banco = '" + cliente.getContaBanco().getId() + "'";
+                stringSQL += "id_Conta_Banco = '" + cliente.getContaBanco().getId() + "', ";
             }
             if(cliente.getEndereco() == null)
             {

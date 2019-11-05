@@ -60,7 +60,7 @@ public class EnderecoDAO {
 
     public static Endereco instanciarEndereco(ResultSet rs) throws SQLException {
         Endereco endereco = new Endereco(
-                rs.getLong("id"),
+                rs.getInt("id"),
                 rs.getString("cep"),
                 rs.getString("uf"),
                 rs.getString("cidade"),
@@ -81,7 +81,7 @@ public class EnderecoDAO {
                     "insert into endereco (id, cep, uf, cidade, bairro, "
                     + "logradouro, numero, complemento) "
                     + "values (?,?,?,?,?,?,?,?)");
-            comando.setLong(1, endereco.getId());
+            comando.setInt(1, endereco.getId());
             comando.setString(2, endereco.getCep());
             comando.setString(3, endereco.getUf());
             comando.setString(4, endereco.getCidade());
