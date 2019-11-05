@@ -17,7 +17,6 @@
     </h1>
 
     <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario">
-    Funcionario
     <label>ID Funcionario</label>
     <input name="txtId" type="text" value="${funcionario.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br>
     
@@ -26,7 +25,6 @@
 
     <label>CPF</label>
     <input name="txtCpf" type="number" value="${funcionario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ><br><br>
-    Endereco
 <!--    <label>ID Endereco</label>
     <input name="idendereco" type="number" value="${endereco.id}"><br><br>
     

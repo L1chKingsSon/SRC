@@ -23,12 +23,12 @@
                 <th>Telefone</th>
                 <th colspan="2">Ação</th>
             </tr>
-            <c:forEach items="${clientes}" var="clientes">
+            <c:forEach items="${clientes}" var="cliente">
                 <tr>
-                    <td><c:out value="${clientes.id}" /></td>
-                    <td><c:out value="${clientes.nome}" /></td>
-                    <td><c:out value="${clientes.cpf}" /></td>
-                    <td><c:out value="${clientes.telefone}" /></td>
+                    <td><c:out value="${cliente.id}" /></td>
+                    <td><c:out value="${cliente.nome}" /></td>
+                    <td><c:out value="${cliente.cpf}" /></td>
+                    <td><c:out value="${cliente.telefone}" /></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${cliente.id}"/>">Editar</a></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${cliente.id}"/>">Excluir</a></td>
                 </tr>

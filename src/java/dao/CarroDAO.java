@@ -43,7 +43,7 @@ public class CarroDAO {
 
     public static Carro instanciarCarro(ResultSet rs) throws SQLException {
         Carro carro = new Carro(
-                rs.getLong("id"),
+                rs.getInt("id"),
                 rs.getString("placa"),
                 rs.getString("chassi"),
                 rs.getString("ano"),
@@ -122,13 +122,31 @@ public class CarroDAO {
             comando.setString(7, carro.getSeguro());
             comando.setString(8, carro.getGarantia());
             comando.setDouble(9, carro.getValorComprado());
-            comando.setInt(10, carro.getIdPrimariaModelo());
+            comando.setInt(10, carro.getModelo().getId());
             comando.setString(11, carro.getCor());
             comando.setString(12, carro.getCor());
-            comando.setInt(3, modelo.getMarca().getId());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);
         }
     }
+        
+        public static void excluir(Carro carro) throws ClassNotFoundException, SQLException{
+    Connection conexao = null;
+    Statement comando = null;
+    String stringSQL;
+    
+    try{
+        conexao = BD.getConexao();
+        comando = conexao.createStatement();
+        stringSQL = "delete from carro where id="
+                + carro.getId();
+        comando.execute(stringSQL);
+    } finally
+    {
+        fecharConexao(conexao, comando);
+    }
+    
+    }
+
 }
