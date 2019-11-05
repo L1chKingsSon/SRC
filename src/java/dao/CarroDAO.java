@@ -91,7 +91,7 @@ public class CarroDAO {
                     + "IPVA = '" + carro.getIPVA()+ "', "
                     + "seguro = '" + carro.getSeguro()+ "', "
                     + "garantia = '" + carro.getGarantia()+ "', "
-                    + "valorComprado = " + carro.getValorComprado()+ "', "
+                    + "valorComprado = '" + carro.getValorComprado()+ "', "
                     + "id_Modelo =";
             if(carro.getModelo() == null){
                 stringSQL += null;
