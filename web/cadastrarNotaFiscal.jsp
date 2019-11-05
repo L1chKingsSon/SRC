@@ -17,20 +17,35 @@
     </h1>
     <form action="ManterNotaFiscalController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterNotaFiscal">
        <label>ID</label> 
-       <input type="number" name="idnotafiscal" value="${notaFiscal.id}"><br><br> 
+       <input type="number" name="txtId" value="${notaFiscal.id}"><br><br> 
         
        <label>Data</label> 
-       <input type="datetime-local" name="data" value="${notaFiscal.data}"><br><br>
+       <input type="date" name="dateData" value="${notaFiscal.data}"><br><br>
 
        <label>Valor</label>
-       <input type="number" name="valor" value="${notaFiscal.valor}"><br><br>
+       <input type="number" name="txtValor" value="${notaFiscal.valor}"><br><br>
        
-       <select>
-           <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
-                            <c:forEach items="${marcas}" var="marca">
-                                <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
+       <label>Tipo Transação</label>
+       <select name="Select_transacao">
+           <option value=true>Venda</option>
+           <option value=false>Compra</option>
+        </select><br><br>
+       
+       <label>Funcionario Responsavel</label>
+       <select name="Select_funcionario">
+           <option value="0" <c:if test="${notaFiscal.funcionario.id == null}"> selected</c:if></option>
+                            <c:forEach items="${funcionarios}" var="funcionario">
+                                <option value="${funcionario.id}" <c:if test="${notaFiscal.idPrimariaFuncionario == funcionario.id}"> selected</c:if>>${funcionario.nome}</option>
                             </c:forEach>
-       </select>
+       </select><br><br>
+       
+       <label>Cliente Envolvido</label>
+       <select name="Select_cliente">
+           <option value="0" <c:if test="${notaFiscal.cliente.id == null}"> selected</c:if></option>
+                            <c:forEach items="${clientes}" var="cliente">
+                                <option value="${cliente.id}" <c:if test="${notaFiscal.idPrimariaCliente == cliente.id}"> selected</c:if>>${cliente.nome}</option>
+                            </c:forEach>
+       </select><br><br>
 
        <button type="submit">Cadastrar Nota</button>
     </form>

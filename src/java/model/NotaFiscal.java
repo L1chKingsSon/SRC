@@ -18,25 +18,23 @@ import java.util.List;
 public class NotaFiscal {
 
     private long id;
-    private Date data;
+    private String data;
     private double valor;
     private Boolean transacao;
-    private int idPrimariaItem;
-    private int idPrimariaTransacao;
+    private Funcionario funcionario;
+    private Cliente cliente;
+    
+    private int idPrimariaFuncionario;
+    private int idPrimariaCliente;
 
-    public NotaFiscal(long id, Date data, double valor, Item itens, Boolean transacao) {
+    public NotaFiscal(long id, String data, double valor, Boolean transacao, 
+            Funcionario funcionario, Cliente cliente) {
         this.id = id;
         this.data = data;
         this.valor = valor;
         this.transacao = transacao;
-    }
-
-    public void setIdPrimariaTransacao(int x) {
-        this.idPrimariaTransacao = x;
-    }
-
-    public void setIdPrimariaItem(int x) {
-        this.idPrimariaItem = x;
+        this.funcionario = funcionario;
+        this.cliente = cliente;
     }
 
     public Boolean getTransacao() {
@@ -55,11 +53,11 @@ public class NotaFiscal {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -71,11 +69,53 @@ public class NotaFiscal {
         this.valor = valor;
     }
 
-    public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException {
+    public static List<NotaFiscal> obterNotasFiscais() throws ClassNotFoundException, SQLException, ClassNotFoundException, ClassNotFoundException, SQLException {
         return NotaFiscalDAO.obterNotasFiscais();
     }
 
     public static NotaFiscal obterNotaFiscal(int codNotaFiscal) throws ClassNotFoundException, SQLException {
         return NotaFiscalDAO.obterNotaFiscal(codNotaFiscal);
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getIdPrimariaFuncionario() {
+        return idPrimariaFuncionario;
+    }
+
+    public void setIdPrimariaFuncionario(int idPrimariaFuncionario) {
+        this.idPrimariaFuncionario = idPrimariaFuncionario;
+    }
+
+    public int getIdPrimariaCliente() {
+        return idPrimariaCliente;
+    }
+
+    public void setIdPrimariaCliente(int idPrimariaCliente) {
+        this.idPrimariaCliente = idPrimariaCliente;
+    }
+    public void gravar() throws ClassNotFoundException, SQLException{
+        NotaFiscalDAO.gravar(this);
+    }
+    public void alterar() throws ClassNotFoundException, SQLException{
+        NotaFiscalDAO.alterar(this);
+    }
+    public void excluir() throws ClassNotFoundException, SQLException{
+        NotaFiscalDAO.excluir(this);
+    }
+    
 }

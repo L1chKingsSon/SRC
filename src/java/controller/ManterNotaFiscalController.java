@@ -8,12 +8,19 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Item;
+import model.Cliente;
+import model.Funcionario;
 import model.NotaFiscal;
 
 /**
@@ -35,7 +42,7 @@ public class ManterNotaFiscalController extends HttpServlet {
      * @throws java.lang.ClassNotFoundException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException, ParseException {
         String acao = request.getParameter("acao");
         if (acao.equals("confirmarOperacao")) {
             confirmarOperacao(request, response);
@@ -46,40 +53,48 @@ public class ManterNotaFiscalController extends HttpServlet {
         }
     }
 
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException, ParseException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
         
         int id = Integer.parseInt(request.getParameter("txtId"));
-        String nome = request.getParameter("txtNome");
-        int marcaCarro = Integer.parseInt(request.getParameter("txtSelect_marca"));
+        float valor = Float.parseFloat(request.getParameter("txtValor"));
+        boolean transacao = Boolean.parseBoolean(request.getParameter("Select_transacao"));
+        
+        String data = request.getParameter("dateData");
+        //java.sql.Date data = new java.sql.Date(dateData);
+        
+        int idFuncionario = Integer.parseInt(request.getParameter("Select_funcionario"));
+        int idCliente = Integer.parseInt(request.getParameter("Select_cliente"));
 
         try {
-            Marca marca = null;
-            if (marcaCarro != 0) {
-                marca = Marca.obterMarca(marcaCarro);
+            Funcionario funcionario = null;
+            if (idFuncionario != 0) {
+                funcionario = Funcionario.obterFuncionario(idFuncionario);
             }
-            Modelo modelo = new Modelo(id, nome, marca);
+            Cliente cliente = null;
+            if (idCliente != 0){
+                cliente = Cliente.obterCliente(idCliente);
+            }
+            NotaFiscal notaFiscal = new NotaFiscal(id, data, valor, transacao, funcionario, cliente);
             if (operacao.equals("Incluir")) {
                 try {
-                    modelo.gravar();
+                    notaFiscal.gravar();
                 } catch (ClassNotFoundException e) {
                     throw new ServletException(e);
                 }
             } else {
                 if(operacao.equals("Editar")){
-                    modelo.alterar();
+                    notaFiscal.alterar();
                 } else {
                     if(operacao.equals("Excluir")){
-                        modelo.excluir();
+                        notaFiscal.excluir();
                     }
                 }
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaModeloController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaNotaFiscalController");
             view.forward(request, response);
         } catch (IOException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
             throw new ServletException(e);
         }
     }
@@ -89,13 +104,14 @@ public class ManterNotaFiscalController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("itens", Item.obterItens());
+            request.setAttribute("funcionarios", Funcionario.obterFuncionarios());
+            request.setAttribute("clientes", Cliente.obterClientes());
             if(!operacao.equals("Incluir")){
-                int idModelo = Integer.parseInt(request.getParameter("id"));
-                NotaFiscal notaFiscal = NotaFiscal.obterNotaFiscal(idModelo);
+                int id = Integer.parseInt(request.getParameter("id"));
+                NotaFiscal notaFiscal = NotaFiscal.obterNotaFiscal(id);
                 request.setAttribute("notaFiscal", notaFiscal);
             }
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarNotaFiscal.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -118,7 +134,17 @@ public class ManterNotaFiscalController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            try {
+                processRequest(request, response);
+            } catch (ParseException ex) {
+                Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -132,7 +158,17 @@ public class ManterNotaFiscalController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            try {
+                processRequest(request, response);
+            } catch (ParseException ex) {
+                Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterNotaFiscalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
