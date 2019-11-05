@@ -20,7 +20,7 @@
     </head>
     <body>
         <h1>
-            Cadastrar Modelo e/ou Marca
+            Cadastrar Reserva
         </h1>
         <form action="ManterReservaController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterReserva">
             <table border="1">

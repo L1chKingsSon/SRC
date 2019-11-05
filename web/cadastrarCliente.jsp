@@ -19,7 +19,7 @@
     </head>
     <body>
         <h1>
-            Cadastrar Conta de Banco
+            Cadastrar Cliente
         </h1>
     <form action="ManterClienteController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCliente">
         <table border="1"> 

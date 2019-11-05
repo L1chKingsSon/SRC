@@ -52,13 +52,15 @@ public class ManterCarroController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
-        int id = Integer.parseInt(request.getParameter("idcarro"));
-        String placa = request.getParameter("placa");
-        String chassi = request.getParameter("chassi");
-        String ano = request.getParameter("ano");
-        String cor = request.getParameter("cor");
-        float ipva = Float.parseFloat(request.getParameter("ipva"));
-        Long seguro = Date.parse(request.getParameter("dataSeguro"));
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String cor = request.getParameter("txtCor");
+        String placa = request.getParameter("txtPlaca");
+        String chassi = request.getParameter("txtChassi");
+        String ano = request.getParameter("txtAno");
+        Boolean IPVA = request.getParameter("txtIpva") != null;
+        String seguro = request.getParameter("txtSeguro");
+        String garantia = request.getParameter("txtGarantia");
+        Long valorComprado = Long.parseLong(request.getParameter("txtValorComprado"));
         int modelo = Integer.parseInt(request.getParameter(""))
         
         try {
@@ -86,7 +88,7 @@ public class ManterCarroController extends HttpServlet {
             view.forward(request, response);
 
         }
-
+    }
     
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)

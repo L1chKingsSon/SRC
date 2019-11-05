@@ -17,7 +17,7 @@
         <input type="number" name="txtId" value="${estacionamento.id}" > </td>
     <br>
     <br>
-        <label>Numero de Vagas: </label> <input type="number" value="numeroVagas">
+        <label>Numero de Vagas: </label> <input type="number" name="txtVagas" value="${estacionamento.numeroVagas}">
         <br>
     <br>
     <br>

@@ -53,9 +53,11 @@ public class CarroDAO {
                 rs.getString("garantia"),
                 rs.getDouble("valorComprado"),
                 rs.getDouble("valorVenda"),
+                null,
                 null
         );
         carro.setIdPrimariaModelo(rs.getInt("id_Modelo"));
+        carro.setIdPrimariaEstacionamento(rs.getInt("id_Estacionamento"));
         return carro;
     }
 
@@ -94,9 +96,17 @@ public class CarroDAO {
                     + "valorComprado = '" + carro.getValorComprado()+ "', "
                     + "id_Modelo =";
             if(carro.getModelo() == null){
-                stringSQL += null;
+                stringSQL += "null";
             } else {
-                stringSQL += carro.getModelo().getId();
+                stringSQL += " '" + carro.getModelo().getId() + "', ";
+            }
+            stringSQL += "id_Estacionamento =";
+            if(carro.getEstacionamento() == null){
+                stringSQL += " null";
+            }
+            else
+            {
+                stringSQL += " '" + carro.getEstacionamento().getId() + "' ";
             }
             stringSQL = stringSQL + "where id = " + carro.getId();
             comando.execute(stringSQL);
@@ -123,8 +133,8 @@ public class CarroDAO {
             comando.setString(8, carro.getGarantia());
             comando.setDouble(9, carro.getValorComprado());
             comando.setInt(10, carro.getModelo().getId());
-            comando.setString(11, carro.getCor());
-            comando.setString(12, carro.getCor());
+            comando.setInt(11, carro.getEstacionamento().getId());
+            comando.setDouble(12, carro.getValorVenda());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

@@ -61,7 +61,7 @@ public class EstacionamentoDAO {
 
     public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException {
         Estacionamento estacionamento = new Estacionamento(
-                rs.getInt("idEstacionamento"),
+                rs.getInt("id"),
                 rs.getInt("numeroVagas"),
                 null
         );
@@ -81,7 +81,7 @@ public class EstacionamentoDAO {
                     + "numeroVagas = '" + estacionamento.getNumeroVagas()+ "' "
                     + "id_endereco = ";
             if(estacionamento.getEndereco() == null){
-                stringSQL += null;
+                stringSQL += "null";
             } else {
                 stringSQL += estacionamento.getEndereco().getId();
             }

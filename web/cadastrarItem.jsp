@@ -19,7 +19,7 @@
     </head>
     <body>
         <h1>
-            Cadastrar Modelo e/ou Marca
+            Cadastrar Item
         </h1>
         <form action="ManterItemController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterItem">
             <table border="1">
