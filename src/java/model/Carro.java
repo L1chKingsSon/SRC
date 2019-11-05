@@ -28,11 +28,13 @@ public class Carro {
     private double valorVenda;
     private Modelo modelo;
     private Estacionamento estacionamento;
+    
     private int idPrimariaEstacionamento;
     private int idPrimariaModelo;
 
     public Carro(int id, String placa, String chassi, String ano, String cor, float IPVA,
-            String seguro, String garantia, double valorComprado, double valorVenda, Modelo modelo) {
+            String seguro, String garantia, double valorComprado, 
+            double valorVenda, Modelo modelo, Estacionamento estacionamento) {
         this.id = id;
         this.placa = placa;
         this.chassi = chassi;
@@ -44,6 +46,23 @@ public class Carro {
         this.valorComprado = valorComprado;
         this.valorVenda = valorVenda;
         this.modelo = modelo;
+        this.estacionamento = estacionamento;
+    }
+
+    public Estacionamento getEstacionamento() {
+        return estacionamento;
+    }
+
+    public void setEstacionamento(Estacionamento estacionamento) {
+        this.estacionamento = estacionamento;
+    }
+
+    public int getIdPrimariaEstacionamento() {
+        return idPrimariaEstacionamento;
+    }
+
+    public void setIdPrimariaEstacionamento(int idPrimariaEstacionamento) {
+        this.idPrimariaEstacionamento = idPrimariaEstacionamento;
     }
 
     public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {

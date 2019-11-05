@@ -38,11 +38,11 @@
         <input type="checkbox" name="txtIpva" value="IPVA" id="IPVA" <c:if test="${carro.IPVA == true}">checked</c:if>>
         <br>
         <br>
-        <label>data até onde o seguro foi pago</label>
+        <label>data atÃ© onde o seguro foi pago</label>
         <input type="text" name="txtSeguro" value="${carro.seguro}">
         <br>
         <br>
-        <label>data até onde tem garantia</label>
+        <label>data atÃ© onde tem garantia</label>
         <input type ="text" name="txtGarantia" value="${carro.garantia}">
         <br>
         <br>
@@ -69,7 +69,7 @@
         <br>
         <br>
         <label>valor de venda</label>   
-        <input type="number" name="txtValorComprado" value="${carro.valorComprado}">
+        <input type="number" name="txtValorVenda" value="${carro.valorComprado}">
         
     
     <button type="submit">Cadastrar</button>

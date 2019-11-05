@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Carro;
+import model.Estacionamento;
 import model.Modelo;
 
 /**
@@ -48,7 +49,7 @@ public class ManterCarroController extends HttpServlet {
         }
     }
 
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
@@ -58,36 +59,47 @@ public class ManterCarroController extends HttpServlet {
         String ano = request.getParameter("ano");
         String cor = request.getParameter("cor");
         float ipva = Float.parseFloat(request.getParameter("ipva"));
-        Long seguro = Date.parse(request.getParameter("dataSeguro"));
-        int modelo = Integer.parseInt(request.getParameter(""))
-        
+        String seguro = request.getParameter("dataSeguro");
+        double valorComprado = Double.parseDouble(request.getParameter("txtValorComprado"));
+        double valorVenda = Double.parseDouble(request.getParameter("txtValorVenda"));
+
+        int IdModelo = Integer.parseInt(request.getParameter("txtSelect_Modelo"));
+        int IdEstacionamento = Integer.parseInt(request.getParameter("txtSelect_Estacionamento"));
+
         try {
             Modelo modelo = null;
-            if (marcaCarro != 0) {
-                marca = Marca.obterMarca(marcaCarro);
+            if (IdModelo != 0) {
+                modelo = Modelo.obterModelo(IdModelo);
             }
-            Modelo modelo = new Modelo(id, nome, marca);
+            Estacionamento estacionamento = null;
+            if (IdEstacionamento != 0) {
+                estacionamento = Estacionamento.obterEstacionamento(IdEstacionamento);
+            }
+
+            Carro carro = new Carro(id, placa, chassi, ano, cor, ipva, seguro, ano, valorComprado, valorVenda, modelo, estacionamento);
             if (operacao.equals("Incluir")) {
                 try {
-                    modelo.gravar();
+                    carro.gravar();
                 } catch (ClassNotFoundException e) {
                     throw new ServletException(e);
                 }
             } else {
                 if (operacao.equals("Editar")) {
-                    modelo.alterar();
+                    carro.alterar();
                 } else {
                     if (operacao.equals("Excluir")) {
-                        modelo.excluir();
+                        carro.excluir();
                     }
                 }
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaCarroController");
             view.forward(request, response);
-
+        } catch (ServletException e) {
+            throw e;
+        } catch (IOException e) {
+            throw new ServletException(e);
         }
-
-    
+    }
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException {
