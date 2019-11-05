@@ -60,7 +60,7 @@ public class ManterNotaFiscalController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("txtId"));
         float valor = Float.parseFloat(request.getParameter("txtValor"));
         boolean transacao = Boolean.parseBoolean(request.getParameter("Select_transacao"));
-        String data = request.getParameter("dateData");
+        String data = request.getParameter("txtData");
         
         int idFuncionario = Integer.parseInt(request.getParameter("Select_funcionario"));
         int idCliente = Integer.parseInt(request.getParameter("Select_cliente"));
