@@ -61,7 +61,7 @@ public class EstacionamentoDAO {
 
     public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException {
         Estacionamento estacionamento = new Estacionamento(
-                rs.getInt("id"),
+                rs.getInt("idEstacionamento"),
                 rs.getInt("numeroVagas"),
                 null
         );

@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Endereco;
 import model.Estacionamento;
 
 /**
@@ -38,6 +39,7 @@ public class PesquisaEstacionamentoController extends HttpServlet {
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
+            request.setAttribute("enderecos", Endereco.obterEnderecos());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaEstacionamento.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {

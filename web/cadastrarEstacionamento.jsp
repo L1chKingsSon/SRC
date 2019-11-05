@@ -23,7 +23,7 @@
     <br>
     <label>Endereco<label>
     <select name="txtSelect_Endereco" id="endereco" >
-                            <option value="0" <c:if test="${estacionamento.endereco.id == null}"> selected</c:if> </option>
+                            <option value="0" <c:if test="${estacionamento.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${estacionamento.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, ${endereco.numero}, ${endereco.complemento} </option>
                             </c:forEach>

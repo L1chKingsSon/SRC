@@ -22,7 +22,7 @@
                 <th>ID Carro</th>
                 <th >Ação</th>
             </tr>
-            <c:forEach items="${itens}" var="item">
+            <c:forEach items="${itens}" var="item"> 
                 <tr>
                     <td><c:out value="${item.id}" /></td>
                     <td><c:out value="${item.idPrimariaNotaFiscal}" /></td>

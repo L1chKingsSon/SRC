@@ -40,36 +40,34 @@ public class ManterClienteController extends HttpServlet {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
-        }
-        else if (acao.equals("confirmarOperacao"))
-        {
+        } else if (acao.equals("confirmarOperacao")) {
             confirmarOperacao(request, response);
         }
     }
-    
-        public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, SQLException, ClassNotFoundException, IOException {
-        try{
+        try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             request.setAttribute("enderecos", Endereco.obterEnderecos());
             request.setAttribute("contaBancos", ContaBanco.obterContas());
-            if(!operacao.equals("Incluir")){
+            if (!operacao.equals("Incluir")) {
                 int id = Integer.parseInt(request.getParameter("txtId"));
                 Cliente cliente = Cliente.obterCliente(id);
                 request.setAttribute("cliente", cliente);
             }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCliente.jsp");
             view.forward(request, response);
-            
+
         } catch (ServletException e) {
             throw e;
         } catch (IOException e) {
             throw new ServletException(e);
         }
     }
-        
-        public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException{
+
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, ClassNotFoundException, SQLException, IOException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
@@ -79,33 +77,34 @@ public class ManterClienteController extends HttpServlet {
         String telefone = request.getParameter("txtTelefone");
         int enderecoid = Integer.parseInt(request.getParameter("txtSelect_endereco"));
         int contaBancoid = Integer.parseInt(request.getParameter("txtSelect_conta"));
-        
+
         try {
             Endereco endereco = null;
-            if(enderecoid != 0)
-            {
+            if (enderecoid != 0) {
                 endereco = Endereco.obterEndereco(enderecoid);
             }
             ContaBanco contabanco = null;
-            if(contaBancoid != 0)
-            {
+            if (contaBancoid != 0) {
                 contabanco = ContaBanco.obterConta(contaBancoid);
             }
             Cliente cliente = new Cliente(id, nome, cpf, telefone, endereco, contabanco);
-            if(operacao.equals("Incluir")){
-                try{
+            if (operacao.equals("Incluir")) {
+                try {
                     cliente.gravar();
-                } catch (ClassNotFoundException e){
+                } catch (ClassNotFoundException e) {
                     throw new ServletException(e);
                 }
-            } else if(operacao.equals("Editar"))
-            {
-                cliente.alterar();
-            } else if(operacao.equals("Excluir")){
-                cliente.excluir();
+            } else {
+                if (operacao.equals("Editar")) {
+                    cliente.alterar();
+                } else {
+                    if (operacao.equals("Excluir")) {
+                        cliente.excluir();
+                    }
+                }
+                RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
+                view.forward(request, response);
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
-            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
@@ -166,5 +165,4 @@ public class ManterClienteController extends HttpServlet {
 }
 
 // </editor-fold>
-
 
