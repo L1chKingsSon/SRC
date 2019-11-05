@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Endereco {
 
-    private long id;
+    private int id;
     private String cep;
     private String uf;
     private String cidade;
@@ -24,7 +24,7 @@ public class Endereco {
     private String numero;
     private String complemento;
 
-    public Endereco(long id, String cep, String uf, String cidade, String bairro, String logadouro, String numero, String complemento) {
+    public Endereco(int id, String cep, String uf, String cidade, String bairro, String logadouro, String numero, String complemento) {
         this.id = id;
         this.cep = cep;
         this.uf = uf;
@@ -35,11 +35,11 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

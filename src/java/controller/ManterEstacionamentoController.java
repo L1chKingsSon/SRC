@@ -51,7 +51,7 @@ public class ManterEstacionamentoController extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("txtId"));
         int vagas = Integer.parseInt(request.getParameter("txtVagas"));
-        int idEndereco = Integer.parseInt(request.getParameter("txtSelect_endereco"));
+        int idEndereco = Integer.parseInt(request.getParameter("txtSelect_Endereco"));
         try {
             Endereco endereco = null;
             if(idEndereco != 0){
