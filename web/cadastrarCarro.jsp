@@ -15,43 +15,43 @@
     <body>
         <form action="ManterCarroController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCarro">
         <label>id</label>
-        <input type="number" name="txtId" value="${carro.id}">
+        <input type="number" name="txtId" value="${carro.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>cor</labe>
-        <input type="text" name="txtCor" value="${carro.cor}">
+        <input type="text" name="txtCor" value="${carro.cor}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>Placa</label>
-        <input type="text" name="txtPlaca" value="${carro.placa}">
+        <input type="text" name="txtPlaca" value="${carro.placa}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>Chassi </label>
-        <input type="text" name="txtChassi" value="${carro.chassi}">
+        <input type="text" name="txtChassi" value="${carro.chassi}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>ano do carro</label>
-        <input type="text" name="txtAno" value="${carro.ano}">
+        <input type="text" name="txtAno" value="${carro.ano}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>IPVA pago</label>
-        <input type="checkbox" name="txtIpva" value="IPVA" id="IPVA" <c:if test="${carro.IPVA == true}">checked</c:if>>
+        <input type="checkbox" name="txtIpva" value="IPVA" id="IPVA" <c:if test="${carro.IPVA == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>data atÃ© onde o seguro foi pago</label>
-        <input type="text" name="txtSeguro" value="${carro.seguro}">
+        <input type="text" name="txtSeguro" value="${carro.seguro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>data atÃ© onde tem garantia</label>
-        <input type ="text" name="txtGarantia" value="${carro.garantia}">
+        <input type ="text" name="txtGarantia" value="${carro.garantia}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>Valor comprado</label>
-        <input type="number" name="txtValorComprado" value="${carro.valorComprado}">
+        <input type="number" name="txtValorComprado" value="${carro.valorComprado}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
         <label>Modelo: </label>
-        <select name="txtSelect_Modelo" id="modelo" >
+        <select name="txtSelect_Modelo" id="modelo" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${carro.modelo.id == null}"> selected</c:if></option>
                             <c:forEach items="${modelos}" var="modelo">
                                 <option value="${modelo.id}" <c:if test="${carro.idPrimariaModelo == modelo.id}"> selected</c:if>> ${modelo.nome} </option>
@@ -60,7 +60,7 @@
         <br>
         <br>
         <label>Estacionamento<label>
-    <select name="txtSelect_Estacionamento" id="estacionamento" >
+    <select name="txtSelect_Estacionamento" id="estacionamento" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${carro.estacionamento.id == null}"> selected</c:if></option>
                             <c:forEach items="${estacionamento}" var="estacionamento">
                                 <option value="${estacionamento.id}" <c:if test="${carro.idPrimariaEstacionamento == estacionamento.id}"> selected</c:if>>${estacionamento.id}</option>

@@ -26,14 +26,14 @@
                 <tr>
                     <td>ID do Item</td>
                     <td>
-                        <input type="number" name="txtId" value="${item.id}"></td>
+                        <input type="number" name="txtId" value="${item.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         ID Nota Fiscal
                     </td>
-                    <td><select name="Select_notaFiscal" id="notaFiscal">
+                    <td><select name="Select_notaFiscal" id="notaFiscal" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${item.notaFiscal.id == null}"> selected</c:if></option>
                             <c:forEach items="${notasFiscais}" var="notaFiscal">
                                 <option value="${notaFiscal.id}" <c:if test="${item.idPrimariaNotaFiscal == notaFiscal.id}"> selected</c:if>>${notaFiscal.id}</option>
@@ -45,7 +45,7 @@
                     <td>
                         Placa Carro
                     </td>
-                    <td><select name="Select_carro" id="carro">
+                    <td><select name="Select_carro" id="carro" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${item.carro.id == null}"> selected</c:if></option>
                             <c:forEach items="${carros}" var="carro">
                                 <option value="${carro.id}" <c:if test="${item.idPrimariaCarro == carro.id}"> selected</c:if>>${carro.placa}</option>

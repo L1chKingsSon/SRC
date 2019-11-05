@@ -32,8 +32,7 @@
                     <td>
                         Marca do modelo
                     </td>
-                    <!-- <c:if test="${operacao == 'Excluir'}"> disabled </c:if> -->
-                    <td><select name="txtSelect_marca" id="marca" >
+                    <td><select name="txtSelect_marca" id="marca" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
                             <c:forEach items="${marcas}" var="marca">
                                 <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>

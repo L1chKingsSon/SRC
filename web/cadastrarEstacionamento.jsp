@@ -14,15 +14,15 @@
 
         <form action="ManterEstacionamentoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterEstacionamento">
         <label>ID</label>
-        <input type="number" name="txtId" value="${estacionamento.id}" > </td>
+        <input type="number" name="txtId" value="${estacionamento.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> > </td>
     <br>
     <br>
-        <label>Numero de Vagas: </label> <input type="number" name="txtVagas" value="${estacionamento.numeroVagas}">
+        <label>Numero de Vagas: </label> <input type="number" name="txtVagas" value="${estacionamento.numeroVagas}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
     <br>
     <br>
     <label>Endereco<label>
-    <select name="txtSelect_Endereco" id="endereco" >
+    <select name="txtSelect_Endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${estacionamento.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${estacionamento.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, ${endereco.numero}, ${endereco.complemento} </option>
