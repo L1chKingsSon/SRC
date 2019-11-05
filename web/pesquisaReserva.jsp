@@ -19,6 +19,8 @@
             <tr>
                 <th>Código da Reserva</th>
                 <th>Cor do carro</th>
+                <th>Modelo do carro</th>
+                <th>Nome do cliente</th>
                 <th colspan="2">Ação</th>
                 <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
@@ -26,6 +28,8 @@
                 <tr>
                     <td><c:out value="${reserva.id}" /></td>
                     <td><c:out value="${reserva.cor}" /></td>
+                    <td><c:out value="${reserva.modelo.nome}" /> </td>
+                    <td><c:out value="${reserva.cliente.nome}" /> </td>
                     <td><a href="ManterReservaController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${reserva.id}"/>">Editar</a></td>
                     <td><a href="ManterReservaController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${reserva.id}"/>">Excluir</a></td>                    
                 </tr> 

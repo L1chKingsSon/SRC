@@ -21,18 +21,18 @@
                 <tr>
                     <td>ID do Modelo</td>
                     <td>
-                <input type="number" name="txtId" value="${modelo.id}"></td>
+                <input type="number" name="txtId" value="${modelo.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
                 </td>
                 </tr>
                 <tr>
                     <td>Nome do Modelo</td>
-                    <td><input type="text" name="txtNome" value="${modelo.nome}"></td>
+                    <td><input type="text" name="txtNome" value="${modelo.nome}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>
                         Marca do modelo
                     </td>
-                    <td><select name="txtSelect_marca" id="marca">
+                    <td><select name="txtSelect_marca" id="marca" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
                             <c:forEach items="${marcas}" var="marca">
                                 <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
@@ -49,7 +49,7 @@
         <table border="1"> 
             <tr>
                 <td>ID da marca</td>
-                <td><input type="number" name="txtId" value="${marca.id}"></td>
+                <td><input type="number" name="txtId" value="${marca.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
             </tr>
             <tr>
                 <td>Nome da Marca</td>

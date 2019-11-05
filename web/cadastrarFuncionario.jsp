@@ -19,7 +19,7 @@
     <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario">
     Funcionario
     <label>ID Funcionario</label>
-    <input name="txtId" type="text" value="${funcionario.id}"><br><br>
+    <input name="txtId" type="text" value="${funcionario.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br>
     
     <label>Nome</label>
     <input name="txtNome" type="text" value="${funcionario.nome}"><br><br>
@@ -87,7 +87,7 @@
     <input type="password" name="txtSenha" value="${funcionario.senha}"><br><br>
 
 
-    <label>Nivel de acesso</label>
+    <label>Admin: </label>
     
     <input type="checkbox" name="txtNivelAcesso" value="Admin" id="Admin" <c:if test="${funcionario.nivelAcesso == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
     <br><br>
@@ -95,7 +95,7 @@
     <!--<input type="checkbox" name="txtNivelAcesso" value="Admin" <c:if test="${funcionario.nivelAcesso == true}"> checked </c:if> > <br>
   -->
   <label>Endereco<label>
-    <select name="txtSelect_Endereco" id="endereco">
+    <select name="txtSelect_Endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${funcionario.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
                                 <option value="${endereco.id}" <c:if test="${funcionario.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, ${endereco.numero}, ${endereco.complemento} </option>
@@ -103,7 +103,7 @@
                         </select>
                             <br><br>
                             <label>Conta do banco</label>
-    <select name="txtSelect_ContaBanco" id="contaBanco">
+    <select name="txtSelect_ContaBanco" id="contaBanco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${funcionario.contaBanco.id == null}"> selected</c:if></option>
                             <c:forEach items="${contasBanco}" var="contaBanco">
                                 <option value="${contaBanco.id}" <c:if test="${funcionario.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>conta: ${contaBanco.conta}, agencia: ${contaBanco.agencia}</option>
