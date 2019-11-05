@@ -53,13 +53,14 @@ public class ManterCarroController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
 
-        int id = Integer.parseInt(request.getParameter("idcarro"));
-        String placa = request.getParameter("placa");
-        String chassi = request.getParameter("chassi");
-        String ano = request.getParameter("ano");
-        String cor = request.getParameter("cor");
-        float ipva = Float.parseFloat(request.getParameter("ipva"));
-        String seguro = request.getParameter("dataSeguro");
+        int id = Integer.parseInt(request.getParameter("txtId"));
+        String cor = request.getParameter("txtCor");
+        String placa = request.getParameter("txtPlaca");
+        String chassi = request.getParameter("txtChassi");
+        String ano = request.getParameter("txtAno");
+        Boolean IPVA = request.getParameter("txtIpva") != null;
+        String seguro = request.getParameter("txtSeguro");
+        String garantia = request.getParameter("txtGarantia");
         double valorComprado = Double.parseDouble(request.getParameter("txtValorComprado"));
         double valorVenda = Double.parseDouble(request.getParameter("txtValorVenda"));
 
@@ -76,7 +77,7 @@ public class ManterCarroController extends HttpServlet {
                 estacionamento = Estacionamento.obterEstacionamento(IdEstacionamento);
             }
 
-            Carro carro = new Carro(id, placa, chassi, ano, cor, ipva, seguro, ano, valorComprado, valorVenda, modelo, estacionamento);
+            Carro carro = new Carro(id, placa, chassi, ano, cor, IPVA, seguro, ano, valorComprado, valorVenda, modelo, estacionamento);
             if (operacao.equals("Incluir")) {
                 try {
                     carro.gravar();
