@@ -20,14 +20,13 @@
                 <th>ID do Item</th>
                 <th>ID Nota Fiscal</th>
                 <th>ID Carro</th>
-                <th colspan="2">Ação</th>
+                <th >Ação</th>
             </tr>
             <c:forEach items="${itens}" var="item">
                 <tr>
                     <td><c:out value="${item.id}" /></td>
-                    <td><c:out value="${item.NotaFiscal_id}" /></td>
-                    <td><c:out value="${item.id_Carro}" /></td>
-                    <td><a href="ManterItemController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${item.id}"/>">Editar</a></td>
+                    <td><c:out value="${item.idPrimariaNotaFiscal}" /></td>
+                    <td><c:out value="${item.idPrimariaCarro}" /></td>
                     <td><a href="ManterItemController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${item.id}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
