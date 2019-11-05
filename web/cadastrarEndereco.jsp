@@ -23,31 +23,31 @@
                 </tr>
                 <tr>
                     <td>cep</td>
-                    <td><input type="text" name="txtCep" value="${endereco.cep}"></td>
+                    <td><input type="text" name="txtCep" value="${endereco.cep}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>uf</td>
-                    <td><input type="text" name="txtUF" value="${endereco.uf}"></td>
+                    <td><input type="text" name="txtUF" value="${endereco.uf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>cidade</td>
-                    <td><input type="text" name="txtCidade" value="${endereco.cidade}"></td>
+                    <td><input type="text" name="txtCidade" value="${endereco.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>bairro</td>
-                    <td><input type="text" name="txtBairro" value="${endereco.bairro}"></td>
+                    <td><input type="text" name="txtBairro" value="${endereco.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>logradouro</td>
-                    <td><input type="text" name="txtLogradouro" value="${endereco.logradouro}"></td>
+                    <td><input type="text" name="txtLogradouro" value="${endereco.logradouro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>numero</td>
-                    <td><input type="text" name="txtNumero" value="${endereco.numero}"></td>
+                    <td><input type="text" name="txtNumero" value="${endereco.numero}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>complemento</td>
-                    <td><input type="text" name="txtComplemento" value="${endereco.complemento}"></td>
+                    <td><input type="text" name="txtComplemento" value="${endereco.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button type="submit">Cadastrar</button></td>
