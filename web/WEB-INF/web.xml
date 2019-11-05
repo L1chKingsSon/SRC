@@ -84,6 +84,10 @@
         <servlet-name>PesquisaItemController</servlet-name>
         <servlet-class>controller.PesquisaItemController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterEstacionamentoController</servlet-name>
+        <servlet-class>controller.ManterEstacionamentoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaItemController</servlet-name>
         <url-pattern>/PesquisaItemController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterEstacionamentoController</servlet-name>
+        <url-pattern>/ManterEstacionamentoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

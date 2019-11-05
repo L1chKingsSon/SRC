@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class Estacionamento {
 
-    private long idEstacionamento;
-    private long numeroVagas;
+    private int id;
+    private int numeroVagas;
     private Endereco endereco;
     private int idPrimariaEndereco;
 
-    public Estacionamento(long idEstacionamento, long numeroVagas, Endereco endereco) {
-        this.idEstacionamento = idEstacionamento;
+    public Estacionamento(int id, int numeroVagas, Endereco endereco) {
+        this.id = id;
         this.numeroVagas = numeroVagas;
         this.endereco = endereco;
     }
@@ -34,19 +34,19 @@ public class Estacionamento {
         this.idPrimariaEndereco = idPrimariaEndereco;
     }
 
-    public long getIdEstacionamento() {
-        return idEstacionamento;
+    public int getId() {
+        return id;
     }
 
-    public void setIdEstacionamento(long idEstacionamento) {
-        this.idEstacionamento = idEstacionamento;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public long getNumeroVagas() {
+    public int getNumeroVagas() {
         return numeroVagas;
     }
 
-    public void setNumeroVagas(long numeroVagas) {
+    public void setNumeroVagas(int numeroVagas) {
         this.numeroVagas = numeroVagas;
     }
 
@@ -66,4 +66,19 @@ public class Estacionamento {
         return EstacionamentoDAO.obterEstacionamento(codEstacionamento);
     }
     
+    
+     public void gravar()
+            throws 
+            ClassNotFoundException,
+            SQLException {
+        EstacionamentoDAO.gravar(this);
+    }
+    
+    public void excluir() throws ClassNotFoundException, SQLException{
+        EstacionamentoDAO.excluir(this);
+    }
+    
+    public void alterar() throws ClassNotFoundException, SQLException{
+        EstacionamentoDAO.alterar(this);
+    }
 }

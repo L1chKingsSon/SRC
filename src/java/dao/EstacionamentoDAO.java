@@ -2,6 +2,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,7 +49,7 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from estacionamento where idEstacionamento = " + codEstacionamento);
+            ResultSet rs = comando.executeQuery("select * from estacionamento where id = " + codEstacionamento);
             rs.first();
             estacionamento = instanciarEstacionamento(rs);
         } finally {
@@ -60,7 +61,7 @@ public class EstacionamentoDAO {
 
     public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException {
         Estacionamento estacionamento = new Estacionamento(
-                rs.getInt("idEstacionamento"),
+                rs.getInt("id"),
                 rs.getInt("numeroVagas"),
                 null
         );
@@ -84,7 +85,7 @@ public class EstacionamentoDAO {
             } else {
                 stringSQL += estacionamento.getEndereco().getId();
             }
-            stringSQL = stringSQL + "where idEstacionamento = " + estacionamento.getIdEstacionamento();
+            stringSQL = stringSQL + "where id = " + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
@@ -100,12 +101,29 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from estacionamento where idEstacionamento ="
-                    + estacionamento.getIdEstacionamento();
+            stringSQL = "delete from estacionamento where id ="
+                    + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
         }
     }
-    
+        
+        
+        public static void gravar(Estacionamento estacionamento) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into estacionamento (id, numeroVagas, id_endereco) "
+                    + "values (?,?,?)");
+            comando.setInt(1, estacionamento.getId());
+            comando.setInt(2, estacionamento.getNumeroVagas());
+            comando.setLong(3, estacionamento.getEndereco().getId());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
 }

@@ -24,10 +24,10 @@
             </tr>
             <c:forEach items="${estacionamentos}" var="estacionamento">
                 <tr>
-                    <td><c:out value="${estacionamento.idEstacionamento}" /></td>
+                    <td><c:out value="${estacionamento.id}" /></td>
                     <td><c:out value="${estacionamento.numeroVagas}" /></td>
-                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${estacionamento.idEstacionamento}"/>">Editar</a></td>
-                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${modelo.idEstacionamento}"/>">Excluir</a></td> 
+                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${estacionamento.id}"/>">Editar</a></td>
+                    <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${modelo.id}"/>">Excluir</a></td> 
                 </tr> 
             </c:forEach>
         </table>
