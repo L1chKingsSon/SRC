@@ -50,7 +50,7 @@ public class ManterEnderecoController extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("txtId"));
         String cep = request.getParameter("txtCep");
-        String uf = request.getParameter("txtUf");
+        String uf = request.getParameter("txtUF");
         String cidade = request.getParameter("txtCidade");
         String bairro = request.getParameter("txtBairro");
         String logradouro = request.getParameter("txtLogradouro");

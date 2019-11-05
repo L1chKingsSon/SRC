@@ -38,7 +38,7 @@
                     <td>
                         Modelo da reserva
                     </td>
-                    <td><select name="txtSelect_modelo" id="modelo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
+                    <td><select name="txtSelect_Modelo" id="modelo" >
                             <option value="0" <c:if test="${reserva.modelo.id == null}"> selected</c:if></option>
                             <c:forEach items="${modelos}" var="modelo">
                                 <option value="${modelo.id}" <c:if test="${reserva.idPrimariaModelo == modelo.id}"> selected</c:if>>${modelo.nome}</option>
@@ -50,7 +50,7 @@
                         Cliente
                     </td>
                     <td>
-                        <select name="txtSelect_cliente" id="cliente" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
+                        <select name="txtSelect_Cliente" id="cliente" >
                             <option value="0" <c:if test="${reserva.cliente.id == null}"> selected</c:if></option>
                             <c:forEach items="${clientes}" var="cliente">
                                 <option value="${cliente.id}" <c:if test="${reserva.idPrimariaCliente == cliente.id}"> selected</c:if>>${cliente.nome}</option>

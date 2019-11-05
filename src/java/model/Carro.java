@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Carro {
 
-    private long id;
+    private int id;
     private String placa;
     private String chassi;
     private String ano;
@@ -27,9 +27,11 @@ public class Carro {
     private double valorComprado;
     private double valorVenda;
     private Modelo modelo;
+    private Estacionamento estacionamento;
+    private int idPrimariaEstacionamento;
     private int idPrimariaModelo;
 
-    public Carro(long id, String placa, String chassi, String ano, String cor, float IPVA,
+    public Carro(int id, String placa, String chassi, String ano, String cor, float IPVA,
             String seguro, String garantia, double valorComprado, double valorVenda, Modelo modelo) {
         this.id = id;
         this.placa = placa;
@@ -63,11 +65,11 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

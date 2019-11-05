@@ -69,10 +69,11 @@ public class ReservaDAO {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
                     "insert into reserva (id, cor, id_Cliente, id_Modelo) "
-                    + "values (?,?,?, ?)");
+                    + "values (?,?,?,?)");
             comando.setLong(1, reserva.getId());
             comando.setString(2, reserva.getCor());
             comando.setLong(3, reserva.getCliente().getId());
+            comando.setInt(4, reserva.getModelo().getId());
             comando.executeUpdate();
         } finally {
             fecharConexao(conexao, comando);

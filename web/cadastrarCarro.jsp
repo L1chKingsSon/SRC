@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -9,44 +13,66 @@
         <script src="main.js"></script>
     </head>
     <body>
+        <form action="ManterCarroController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCarro">
+        <label>id</label>
+        <input type="number" name="txtId" value="${carro.id}">
+        <br>
+        <br>
+        <label>cor</labe>
+        <input type="text" name="txtCor" value="${carro.cor}">
+        <br>
+        <br>
+        <label>Placa</label>
+        <input type="text" name="txtPlaca" value="${carro.placa}">
+        <br>
+        <br>
+        <label>Chassi </label>
+        <input type="text" name="txtChassi" value="${carro.chassi}">
+        <br>
+        <br>
+        <label>ano do carro</label>
+        <input type="text" name="txtAno" value="${carro.ano}">
+        <br>
+        <br>
+        <label>IPVA pago</label>
+        <input type="checkbox" name="txtIpva" value="IPVA" id="IPVA" <c:if test="${carro.IPVA == true}">checked</c:if>>
+        <br>
+        <br>
+        <label>data até onde o seguro foi pago</label>
+        <input type="text" name="txtSeguro" value="${carro.seguro}">
+        <br>
+        <br>
+        <label>data até onde tem garantia</label>
+        <input type ="text" name="txtGarantia" value="${carro.garantia}">
+        <br>
+        <br>
+        <label>Valor comprado</label>
+        <input type="number" name="txtValorComprado" value="${carro.valorComprado}">
+        <br>
+        <br>
         <label>Modelo: </label>
-        <input type="text" name="modelo" placeholder="modelo do carro"><br><br>
-        <label>Chassi: </label>
-        <input type="text" name="chassi" placeholder="Chassi do carro"><br><br>
-        <label>Ano:</label>
-        <input type="number" name="ano" placeholder="Ano do carro"><br><br>
-
-        <label>Marca:</label>
-        <input type="text" name="marca" placeholder="Marca do carro"><br><br>
-        <select name="txtSelect_marca" id="marca">
-            <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
-        <c:forEach items="${marcas}" var="marca">
-            <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
-        </c:forEach>
-    </select>
-    <label>Cor:</label>
-    <input type="cor" name="cor" placeholder="Cor do carro"><br><br>
-    <label>Placa:</label>
-    <input type="text" name="placa" placeholder="Placa do carro"><br><br>
-    <label>Valor do IPVA:</label>
-    <input type="text" name="valorIPVA" placeholder="valor do IPVA"><br><br>
-    <label>Seguro:</label>
-    <input type="radio" name="seguro" value="true"> Tem
-    <input type="radio" name="seguro" value="false"> Não tem <br>
-    <label>Se tiver seguro, até quando:</label>
-    <input type="date" name="dataSeguro">
-    <br><br>
-    <label>Cliente</label>
-    <input type="text" name="cliente" placeholder="cliente que vendeu o carro"><br><br>
-    <label>Valor pago no carro:</label>
-    <input type="number" name="valorComprado" placeholder="valor que o carro foi comprado"><br><br>
-    <label>Estacionamento:</label>
-    <select name="estacionamentos">
-        <option value="estacionamento1">loja da rio branco</option>
-        <option value="estacionamento2">loja do monte castelo</option>
-    </select><br><br>
-
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" value="Cadastrar" class="btn btn-primary">Cadastrar</button>
-</body>
+        <select name="txtSelect_Modelo" id="modelo" >
+                            <option value="0" <c:if test="${carro.modelo.id == null}"> selected</c:if></option>
+                            <c:forEach items="${modelos}" var="modelo">
+                                <option value="${modelo.id}" <c:if test="${carro.idPrimariaModelo == modelo.id}"> selected</c:if>> ${modelo.nome} </option>
+                            </c:forEach>
+        </select>
+        <br>
+        <br>
+        <label>Estacionamento<label>
+    <select name="txtSelect_Estacionamento" id="estacionamento" >
+                            <option value="0" <c:if test="${carro.estacionamento.id == null}"> selected</c:if></option>
+                            <c:forEach items="${estacionamento}" var="estacionamento">
+                                <option value="${estacionamento.id}" <c:if test="${carro.idPrimariaEstacionamento == estacionamento.id}"> selected</c:if>>${estacionamento.id}</option>
+                            </c:forEach>
+                        </select>
+        <br>
+        <br>
+        <label>valor de venda</label>   
+        <input type="number" name="txtValorComprado" value="${carro.valorComprado}">
+        
+    
+    <button type="submit">Cadastrar</button>
+    </form>
+    </body>
 </html>

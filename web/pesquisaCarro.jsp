@@ -17,37 +17,42 @@
         <h1>Pesquisa de Carros</h1>
         <table border="1">
             <tr>
-                <th>Código do carro</th>
+                <th>ID do carro</th>
+                <th>Cor</th>
                 <th>Placa do carro</th>
                 <th>Chassi</th>
                 <th>Ano</th>
-                <th>Cor</th>
                 <th>IPVA</th>
                 <th>Data Seguro</th>
                 <th>Data Garantia</th>
                 <th>Valor Comprado</th>
-                <th>Valor de Venda</th>
                 <th>ID de Modelo</th>
+                <th>ID do estacionamento</th>
+                <th>Valor de Venda</th>
                 <th colspan="2">Ação</th>
                 <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
             <c:forEach items="${carros}" var="carro">
                 <tr>
                     <td><c:out value="${carro.id}" /></td>
+                    <td><c:out value="${carro.cor}" /></td>
                     <td><c:out value="${carro.placa}" /></td>
                     <td><c:out value="${carro.chassi}" /></td>
                     <td><c:out value="${carro.ano}" /></td>
-                    <td><c:out value="${carro.cor}" /></td>
                     <td><c:out value="${carro.IPVA}" /></td>
                     <td><c:out value="${carro.seguro}" /></td>
                     <td><c:out value="${carro.garantia}" /></td>
                     <td><c:out value="${carro.valorComprado}" /></td>
+                    <td><c:out value="${carro.id_Modelo}" /></td>
+                    <td><c:out value="${carro.id_Estacionamento}" /></td>
                     <td><c:out value="${carro.valorVenda}" /></td>
                     <td><a href="ManterCarroController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${carro.id}"/>">Editar</a></td>
                     <td><a href="ManterCarroController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${carro.id}"/>">Excluir</a></td> 
                 </tr> 
             </c:forEach>
         </table>
-         <td colspan="2"><button type="submit">Submit</button></td>
+        <form action="ManterCarroController?acao=prepararOperacao&operacao=Incluir" method="post">
+         <button type="submit">Submit</button></td>
+        </form>
     </body>
 </html>

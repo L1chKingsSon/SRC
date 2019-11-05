@@ -7,6 +7,7 @@ package dao;
 
 import static dao.DAO.fecharConexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,7 +43,7 @@ public class CarroDAO {
 
     public static Carro instanciarCarro(ResultSet rs) throws SQLException {
         Carro carro = new Carro(
-                rs.getLong("id"),
+                rs.getInt("id"),
                 rs.getString("placa"),
                 rs.getString("chassi"),
                 rs.getString("ano"),
@@ -103,4 +104,49 @@ public class CarroDAO {
             fecharConexao(conexao, comando);
         }
     }
+        
+        public static void gravar(Carro carro) throws ClassNotFoundException, SQLException {
+        Connection conexao = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.prepareStatement(
+                    "insert into carro (id, cor, placa, chassi, ano, IPVA, seguro, garantia, valorComprado, id_Modelo, id_Estacionamento, valorVenda) "
+                    + "values (?,?,?,?,?,?,?,?,?,?,?,?)");
+            comando.setInt(1, carro.getId());
+            comando.setString(2, carro.getCor());
+            comando.setString(3, carro.getPlaca());
+            comando.setString(4, carro.getChassi());
+            comando.setString(5, carro.getAno());
+            comando.setFloat(6, carro.getIPVA());
+            comando.setString(7, carro.getSeguro());
+            comando.setString(8, carro.getGarantia());
+            comando.setDouble(9, carro.getValorComprado());
+            comando.setInt(10, carro.getModelo().getId());
+            comando.setString(11, carro.getCor());
+            comando.setString(12, carro.getCor());
+            comando.executeUpdate();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+        
+        public static void excluir(Carro carro) throws ClassNotFoundException, SQLException{
+    Connection conexao = null;
+    Statement comando = null;
+    String stringSQL;
+    
+    try{
+        conexao = BD.getConexao();
+        comando = conexao.createStatement();
+        stringSQL = "delete from carro where id="
+                + carro.getId();
+        comando.execute(stringSQL);
+    } finally
+    {
+        fecharConexao(conexao, comando);
+    }
+    
+    }
+
 }

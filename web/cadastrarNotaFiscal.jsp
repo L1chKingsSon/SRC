@@ -20,7 +20,7 @@
        <input type="number" name="txtId" value="${notaFiscal.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br> 
         
        <label>Data</label> 
-       <input type="date" name="dateData" value="${notaFiscal.data}"><br><br>
+       <input type="text" name="txtData" value="${notaFiscal.data}" placeholder="MM/DD/AAAA"><br><br>
 
        <label>Valor</label>
        <input type="number" name="txtValor" value="${notaFiscal.valor}"><br><br>

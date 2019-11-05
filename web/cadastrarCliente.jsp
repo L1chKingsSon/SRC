@@ -45,7 +45,7 @@
                     <select name="txtSelect_conta" id="contaBanco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${cliente.contaBanco.id == null}"> selected</c:if></option>
                             <c:forEach items="${contaBancos}" var="contaBanco">
-                                <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}</option>
+                                <option value="${contaBanco.id}" <c:if test="${cliente.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>${contaBanco.conta}, agencia ${contaBanco.agencia}</option>
                             </c:forEach>
                         </select>
                 </td>
@@ -56,7 +56,7 @@
                     <select name="txtSelect_endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
                             <option value="0" <c:if test="${cliente.endereco.id == null}"> selected</c:if></option>
                             <c:forEach items="${enderecos}" var="endereco">
-                                <option value="${endereco.id}" <c:if test="${cliente.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}</option>
+                                <option value="${endereco.id}" <c:if test="${cliente.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, n ${endereco.numero}, ${endereco.complemento}</option>
                             </c:forEach>
                         </select>
                     

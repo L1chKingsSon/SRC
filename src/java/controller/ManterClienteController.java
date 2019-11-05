@@ -41,9 +41,9 @@ public class ManterClienteController extends HttpServlet {
         if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
-        else if (acao.equals("prepararOperacao"))
+        else if (acao.equals("confirmarOperacao"))
         {
-            prepararOperacao(request, response);
+            confirmarOperacao(request, response);
         }
     }
     
@@ -77,8 +77,8 @@ public class ManterClienteController extends HttpServlet {
         String nome = request.getParameter("txtNome");
         String cpf = request.getParameter("txtCpf");
         String telefone = request.getParameter("txtTelefone");
-        int enderecoid = Integer.parseInt(request.getParameter("txtSelect_Endereco"));
-        int contaBancoid = Integer.parseInt(request.getParameter("txtSelect_ContaBanco"));
+        int enderecoid = Integer.parseInt(request.getParameter("txtSelect_endereco"));
+        int contaBancoid = Integer.parseInt(request.getParameter("txtSelect_conta"));
         
         try {
             Endereco endereco = null;

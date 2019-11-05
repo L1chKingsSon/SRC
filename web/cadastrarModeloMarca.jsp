@@ -26,13 +26,14 @@
                 </tr>
                 <tr>
                     <td>Nome do Modelo</td>
-                    <td><input type="text" name="txtNome" value="${modelo.nome}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
+                    <td><input type="text" name="txtNome" value="${modelo.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                 </tr>
                 <tr>
                     <td>
                         Marca do modelo
                     </td>
-                    <td><select name="txtSelect_marca" id="marca" <c:if test="${operacao == 'Excluir'}"> disabled </c:if> >
+                    <!-- <c:if test="${operacao == 'Excluir'}"> disabled </c:if> -->
+                    <td><select name="txtSelect_marca" id="marca" >
                             <option value="0" <c:if test="${modelo.marca.id == null}"> selected</c:if></option>
                             <c:forEach items="${marcas}" var="marca">
                                 <option value="${marca.id}" <c:if test="${modelo.idPrimariaMarca == marca.id}"> selected</c:if>>${marca.nome}</option>
@@ -53,7 +54,7 @@
             </tr>
             <tr>
                 <td>Nome da Marca</td>
-                <td><input type="text" name="txtNome" value="${marca.nome}"></td>
+                <td><input type="text" name="txtNome" value="${marca.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
             <tr >
                 <td colspan="2"><button type="submit">Submit</button></td>
