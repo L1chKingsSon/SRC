@@ -94,20 +94,20 @@ public class NotaFiscalDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update notafiscal set "
-                    + "data = '" + notaFiscal.getData()+ "', "
-                    + "valor = '" + notaFiscal.getValor()+ "', "
-                    + "Transacao = '" + notaFiscal.getTransacao()+ "', ";
-            if(notaFiscal.getFuncionario()== null){
-                stringSQL += "id_Funcionario = null";
+                    + "data = '" + notaFiscal.getData() + "', "
+                    + "valor = '" + notaFiscal.getValor() + "', "
+                    + "Transacao = " + notaFiscal.getTransacao() + ", ";
+            if(notaFiscal.getFuncionario() == null){
+                stringSQL += "id_Funcionario = null" + ", ";
             } else {
-                stringSQL += "id_Funcionario = " + notaFiscal.getFuncionario().getId() +"'";
+                stringSQL += "id_Funcionario = '" + notaFiscal.getFuncionario().getId() + "' , ";
             }
-            if(notaFiscal.getCliente()== null){
-                stringSQL += "id_Cliente = null";
+            if(notaFiscal.getCliente() == null){
+                stringSQL += "id_Cliente = null'" + "', ";
             } else {
-                stringSQL += "id_Cliente = " + notaFiscal.getCliente().getId() +"'";
+                stringSQL += "id_Cliente = '" + notaFiscal.getCliente().getId() + "', ";
             }
-            stringSQL = stringSQL + " where id = " + notaFiscal.getId() + ";";
+            stringSQL += " where id = '" + notaFiscal.getId() + "';";
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

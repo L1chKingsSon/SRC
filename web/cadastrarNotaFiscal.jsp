@@ -17,7 +17,7 @@
     </h1>
     <form action="ManterNotaFiscalController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterNotaFiscal">
        <label>ID</label> 
-       <input type="number" name="idnotafiscal" value="${notaFiscal.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br> 
+       <input type="number" name="txtId" value="${notaFiscal.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br> 
         
        <label>Data</label> 
        <input type="date" name="dateData" value="${notaFiscal.data}"><br><br>
@@ -47,7 +47,7 @@
                             </c:forEach>
        </select><br><br>
 
-       <button type="submit">Cadastrar Nota</button>
+       <button type="submit">Submit</button>
     </form>
     
 </body>

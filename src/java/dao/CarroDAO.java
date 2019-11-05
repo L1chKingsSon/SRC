@@ -48,8 +48,8 @@ public class CarroDAO {
                 rs.getString("ano"),
                 rs.getString("cor"),
                 rs.getFloat("IPVA"),
-                rs.getDate("seguro"),
-                rs.getDate("garantia"),
+                rs.getString("seguro"),
+                rs.getString("garantia"),
                 rs.getDouble("valorComprado"),
                 rs.getDouble("valorVenda"),
                 null
@@ -90,7 +90,7 @@ public class CarroDAO {
                     + "IPVA = '" + carro.getIPVA()+ "', "
                     + "seguro = '" + carro.getSeguro()+ "', "
                     + "garantia = '" + carro.getGarantia()+ "', "
-                    + "valorComprado = " + carro.getValorComprado()+ "', "
+                    + "valorComprado = '" + carro.getValorComprado()+ "', "
                     + "id_Modelo =";
             if(carro.getModelo() == null){
                 stringSQL += null;
