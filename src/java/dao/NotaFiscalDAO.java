@@ -88,26 +88,25 @@ public class NotaFiscalDAO {
         public static void alterar(NotaFiscal notaFiscal) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
-        String stringSQL;
+        String stringSQL = null;
 
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "update notafiscal set "
-                    + "data = '" + notaFiscal.getData() + "', "
-                    + "valor = '" + notaFiscal.getValor() + "', "
-                    + "Transacao = " + notaFiscal.getTransacao() + ", ";
+            stringSQL = "update notafiscal set data= '"+ notaFiscal.getData() +"', "
+                    + "valor= '"+ notaFiscal.getValor() +"', "
+                    + "Transacao= "+ notaFiscal.getTransacao() +" , ";
             if(notaFiscal.getFuncionario() == null){
                 stringSQL += "id_Funcionario = null" + ", ";
             } else {
                 stringSQL += "id_Funcionario = '" + notaFiscal.getFuncionario().getId() + "' , ";
             }
             if(notaFiscal.getCliente() == null){
-                stringSQL += "id_Cliente = null'" + "', ";
+                stringSQL += "id_Cliente = null'" + "' ";
             } else {
-                stringSQL += "id_Cliente = '" + notaFiscal.getCliente().getId() + "', ";
+                stringSQL += "id_Cliente = '" + notaFiscal.getCliente().getId() + "' ";
             }
-            stringSQL += " where id = '" + notaFiscal.getId() + "';";
+            stringSQL += "where id = '" + notaFiscal.getId() + "';";
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
