@@ -57,5 +57,6 @@
                 <button type="submit" >Cadastrar</button>
         </form>
     </table>
+     <a href="index.jsp">home</a>
     </body>
 </html>

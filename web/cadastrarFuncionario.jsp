@@ -65,6 +65,7 @@
                         </select>
   
     <button type="submit">Cadastrar</button>
-</form>    
+</form> 
+<a href="index.jsp">home</a>
 </body>
 </html>
