@@ -95,7 +95,7 @@ public class ManterModeloController extends HttpServlet {
                 Modelo modelo = Modelo.obterModelo(idModelo);
                 request.setAttribute("modelo", modelo);
             }
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModelo.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;

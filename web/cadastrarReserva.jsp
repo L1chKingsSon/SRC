@@ -60,7 +60,7 @@
                 </tr>
                 
 
-                <button type="submit" >Cadastrar</button>
+                <button type="submit" >Confirmar</button>
         </form>
     </table>
     </form>

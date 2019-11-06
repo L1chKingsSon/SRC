@@ -52,7 +52,7 @@
             </c:forEach>
         </table>
         <form action="ManterCarroController?acao=prepararOperacao&operacao=Incluir" method="post">
-         <button type="submit">Submit</button></td>
+         <button type="submit">Confirmar</button></td>
         </form>
         <a href="index.jsp">home</a>
     </body>
