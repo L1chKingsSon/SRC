@@ -29,8 +29,8 @@ public class Carro {
     private Modelo modelo;
     private Estacionamento estacionamento;
     
-    private int idPrimariaEstacionamento;
-    private int idPrimariaModelo;
+    private int id_Estacionamento;
+    private int id_Modelo;
 
     public Carro(int id, String placa, String chassi, String ano, String cor, Boolean IPVA, String seguro, String garantia, double valorComprado, double valorVenda, Modelo modelo, Estacionamento estacionamento) {
 
@@ -49,23 +49,23 @@ public class Carro {
 
     }
 
-    public int getIdPrimariaEstacionamento() {
-        return idPrimariaEstacionamento;
+    public int getId_Estacionamento() {
+        return id_Estacionamento;
     }
 
-    public void setIdPrimariaEstacionamento(int idPrimariaEstacionamento) {
-        this.idPrimariaEstacionamento = idPrimariaEstacionamento;
+    public void setId_Estacionamento(int id_Estacionamento) {
+        this.id_Estacionamento = id_Estacionamento;
     }
     
-    public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
-        if ((this.idPrimariaModelo != 0) && (this.modelo == null)) {
-            this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
+    public int getId_Modelo() throws ClassNotFoundException, SQLException {
+        if ((this.id_Modelo != 0) && (this.modelo == null)) {
+            this.modelo = Modelo.obterModelo(this.id_Modelo);
         }
-        return idPrimariaModelo;
+        return id_Modelo;
     }
 
-    public void setIdPrimariaModelo(int idPrimariaModelo) {
-        this.idPrimariaModelo = idPrimariaModelo;
+    public void setId_Modelo(int id_Modelo) {
+        this.id_Modelo = id_Modelo;
     }
 
     public Estacionamento getEstacionamento()

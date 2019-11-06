@@ -56,8 +56,8 @@ public class CarroDAO {
                 null,
                 null
         );
-        carro.setIdPrimariaModelo(rs.getInt("id_Modelo"));
-        carro.setIdPrimariaEstacionamento(rs.getInt("id_Estacionamento"));
+        carro.setId_Modelo(rs.getInt("id_Modelo"));
+        carro.setId_Estacionamento(rs.getInt("id_Estacionamento"));
         return carro;
     }
 
