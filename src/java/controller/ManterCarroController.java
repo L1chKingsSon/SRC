@@ -113,7 +113,7 @@ public class ManterCarroController extends HttpServlet {
                 Carro carro = Carro.obterCarro(id);
                 request.setAttribute("carro", carro);
 
-            }
+            }   
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarCarro.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
