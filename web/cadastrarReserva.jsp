@@ -60,10 +60,10 @@
                 </tr>
                 
 
-                <button type="submit" >Cadastrar</button>
+                <button type="submit" >Confirmar</button>
         </form>
     </table>
     </form>
-
+<a href="index.jsp">home</a>
 </body>
 </html>

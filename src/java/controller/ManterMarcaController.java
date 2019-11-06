@@ -101,7 +101,7 @@ public class ManterMarcaController extends HttpServlet {
                 Marca marca = Marca.obterMarca(idMarca);
                 request.setAttribute("marca", marca); //nome que vai devolver para o browser
             }
-            RequestDispatcher view = request.getRequestDispatcher("/cadastrarModeloMarca.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarMarca.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;

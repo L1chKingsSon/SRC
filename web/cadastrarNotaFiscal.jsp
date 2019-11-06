@@ -47,8 +47,8 @@
                             </c:forEach>
        </select><br><br>
 
-       <button type="submit">Submit</button>
+       <button type="submit">Confirmar</button>
     </form>
-    
+    <a href="index.jsp">home</a>
 </body>
 </html>

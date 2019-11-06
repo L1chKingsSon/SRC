@@ -34,5 +34,6 @@
         <form action="ManterEstacionamentoController?acao=prepararOperacao&operacao=Incluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir">
         </form>           
+        <a href="index.jsp">home</a>
     </body>
 </html>

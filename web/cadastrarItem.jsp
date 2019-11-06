@@ -54,8 +54,9 @@
                     <td>
                 </tr>
 
-                <button type="submit" >Cadastrar</button>
+                <button type="submit" >Confirmar</button>
         </form>
     </table>
+     <a href="index.jsp">home</a>
     </body>
 </html>

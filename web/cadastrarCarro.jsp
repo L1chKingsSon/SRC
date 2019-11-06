@@ -72,7 +72,8 @@
         <input type="number" name="txtValorVenda" value="${carro.valorComprado}">
         
     
-    <button type="submit">Cadastrar</button>
+    <button type="submit">Confirmar</button>
     </form>
+        <a href="index.jsp">home</a>
     </body>
 </html>

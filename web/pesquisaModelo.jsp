@@ -33,6 +33,7 @@
         </table>
         <form action="ManterModeloController?acao=prepararOperacao&operacao=Incluir" method="post">
             <input type="submit" name="btnIncluir" value="Incluir">
-        </form>        
+        </form>
+<a href="index.jsp">home</a>        
     </body>
 </html>

@@ -44,13 +44,14 @@
                 <td><input type="text" name="txtTipo" value="${contaBanco.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
             </tr>
             <tr >
-                <td colspan="2"><button type="submit">Submit</button></td>
+                <td colspan="2"><button type="submit">Confirmar</button></td>
             </tr>
         </table
 
 
 
     </form>
+            <a href="index.jsp">home</a>
 
 </body>
 </html>
