@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Carro;
+import model.Endereco;
 import model.Estacionamento;
 import model.Modelo;
 
@@ -77,7 +78,7 @@ public class ManterCarroController extends HttpServlet {
                 estacionamento = Estacionamento.obterEstacionamento(IdEstacionamento);
             }
 
-            Carro carro = new Carro(id, placa, chassi, ano, cor, IPVA, seguro, ano, valorComprado, valorVenda, modelo, estacionamento);
+            Carro carro = new Carro(id, placa, chassi, ano, cor, IPVA, seguro, garantia, valorComprado, valorVenda, modelo, estacionamento);
             if (operacao.equals("Incluir")) {
                 try {
                     carro.gravar();
@@ -108,6 +109,7 @@ public class ManterCarroController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("modelos", Modelo.obterModelos());
+            request.setAttribute("enderecos", Endereco.obterEnderecos());
             if (!operacao.equals("Incluir")) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Carro carro = Carro.obterCarro(id);

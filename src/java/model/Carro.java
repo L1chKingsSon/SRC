@@ -77,7 +77,11 @@ public class Carro {
     {
         this.estacionamento = estacionamento;
     }
-    public Modelo getModelo() {
+    public Modelo getModelo() throws ClassNotFoundException, SQLException {
+        if((modelo == null) && (idPrimariaModelo != 0))
+        {
+            modelo = Modelo.obterModelo(idPrimariaModelo);
+        }
         return modelo;
     }
 
