@@ -49,6 +49,6 @@
 
        <button type="submit">Submit</button>
     </form>
-    
+    <a href="index.jsp">home</a>
 </body>
 </html>
