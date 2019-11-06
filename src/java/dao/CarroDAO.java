@@ -56,8 +56,8 @@ public class CarroDAO {
                 null,
                 null
         );
-        carro.setId_Modelo(rs.getInt("id_Modelo"));
-        carro.setId_Estacionamento(rs.getInt("id_Estacionamento"));
+        carro.setIdPrimariaModelo(rs.getInt("id_Modelo"));
+        carro.setIdPrimariaEstacionamento(rs.getInt("id_Estacionamento"));
         return carro;
     }
 
@@ -90,7 +90,7 @@ public class CarroDAO {
                     + "placa = '" + carro.getPlaca() + "', "
                     + "chassi = '" + carro.getChassi() + "', "
                     + "ano = '" + carro.getAno() + "', "
-                    + "IPVA = '" + carro.getIPVA()+ "', "
+                    + "IPVA = " + carro.getIPVA()+ ", "
                     + "seguro = '" + carro.getSeguro()+ "', "
                     + "garantia = '" + carro.getGarantia()+ "', "
                     + "valorComprado = '" + carro.getValorComprado()+ "', "
@@ -106,10 +106,17 @@ public class CarroDAO {
             }
             else
             {
+                System.out.println(carro.getEstacionamento().getId());
                 stringSQL += " '" + carro.getEstacionamento().getId() + "' ";
             }
-            stringSQL = stringSQL + "where id = " + carro.getId();
+            stringSQL = stringSQL + "where id = " + carro.getId() + ";";
+            if(true == true)
+            {
+                System.out.println("te enganei debbuger");
+                        
+            }
             comando.execute(stringSQL);
+            
         } finally {
             fecharConexao(conexao, comando);
         }

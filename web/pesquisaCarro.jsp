@@ -43,8 +43,8 @@
                     <td><c:out value="${carro.seguro}" /></td>
                     <td><c:out value="${carro.garantia}" /></td>
                     <td><c:out value="${carro.valorComprado}" /></td>
-                    <td><c:out value="${carro.id_Modelo}" /></td>
-                    <td><c:out value="${carro.id_Estacionamento}" /></td>
+                    <td><c:out value="${carro.idPrimariaModelo}" /></td>
+                    <td><c:out value="${carro.idPrimariaEstacionamento}" /></td>
                     <td><c:out value="${carro.valorVenda}" /></td>
                     <td><a href="ManterCarroController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${carro.id}"/>">Editar</a></td>
                     <td><a href="ManterCarroController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${carro.id}"/>">Excluir</a></td> 
