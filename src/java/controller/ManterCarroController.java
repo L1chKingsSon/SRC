@@ -108,6 +108,7 @@ public class ManterCarroController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("modelos", Modelo.obterModelos());
+            //request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
             if (!operacao.equals("Incluir")) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Carro carro = Carro.obterCarro(id);

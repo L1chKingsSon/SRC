@@ -88,8 +88,8 @@ public class ManterEstacionamentoController extends HttpServlet {
             request.setAttribute("enderecos", Endereco.obterEnderecos());
             if(!operacao.equals("Incluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
-                Endereco endereco = Endereco.obterEndereco(id);
-                request.setAttribute("endereco", endereco);
+                Estacionamento estacionamento = Estacionamento.obterEstacionamento(id);
+                request.setAttribute("estacionamento", estacionamento);
             }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarEstacionamento.jsp");
             view.forward(request, response);

@@ -78,14 +78,13 @@ public class EstacionamentoDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             stringSQL = "update estacionamento set "
-                    + "numeroVagas = '" + estacionamento.getNumeroVagas()+ "' "
-                    + "id_endereco = ";
+                    + "numeroVagas = '" + estacionamento.getNumeroVagas()+ "', ";
             if(estacionamento.getEndereco() == null){
-                stringSQL += "null";
+                stringSQL += "id_endereco = null";
             } else {
-                stringSQL += estacionamento.getEndereco().getId();
+                stringSQL += "id_endereco = '" + estacionamento.getEndereco().getId() + "'";
             }
-            stringSQL = stringSQL + "where id = " + estacionamento.getId();
+            stringSQL = stringSQL + " where id = " + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);

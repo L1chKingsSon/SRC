@@ -15,7 +15,7 @@
     <body>
         <form action="ManterCarroController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCarro">
         <label>id</label>
-        <input type="number" name="txtId" value="${carro.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> >
+        <input type="number" name="txtId" value="${carro.id}" <c:if test="${operacao == 'Editar'}"> readonly </c:if>  <c:if test="${operacao == 'Excluir'}"> readonly </c:if>  >
         <br>
         <br>
         <label>cor</labe>
@@ -62,7 +62,7 @@
         <label>Estacionamento<label>
     <select name="txtSelect_Estacionamento" id="estacionamento" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${carro.estacionamento.id == null}"> selected</c:if></option>
-                            <c:forEach items="${estacionamento}" var="estacionamento">
+                            <c:forEach items="${estacionamentos}" var="estacionamento">
                                 <option value="${estacionamento.id}" <c:if test="${carro.idPrimariaEstacionamento == estacionamento.id}"> selected</c:if>>${estacionamento.id}</option>
                             </c:forEach>
                         </select>
