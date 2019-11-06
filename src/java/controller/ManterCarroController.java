@@ -77,7 +77,7 @@ public class ManterCarroController extends HttpServlet {
                 estacionamento = Estacionamento.obterEstacionamento(IdEstacionamento);
             }
 
-            Carro carro = new Carro(id, placa, chassi, ano, cor, IPVA, seguro, ano, valorComprado, valorVenda, modelo, estacionamento);
+            Carro carro = new Carro(id, placa, chassi, ano, cor, IPVA, seguro, garantia, valorComprado, valorVenda, modelo, estacionamento);
             if (operacao.equals("Incluir")) {
                 try {
                     carro.gravar();
@@ -107,8 +107,9 @@ public class ManterCarroController extends HttpServlet {
             throws ServletException, SQLException {
         try {
             String operacao = request.getParameter("operacao");
+            request.setAttribute("operacao", operacao);
             request.setAttribute("modelos", Modelo.obterModelos());
-            //request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
+            request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
             if (!operacao.equals("Incluir")) {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Carro carro = Carro.obterCarro(id);
