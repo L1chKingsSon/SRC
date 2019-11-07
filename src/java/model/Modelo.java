@@ -53,7 +53,10 @@ public class Modelo {
         this.nome = nome;
     }
 
-    public Marca getMarca() {
+    public Marca getMarca() throws SQLException, ClassNotFoundException {
+        if((this.idPrimariaMarca != 0) && (this.marca == null)){
+            this.marca = Marca.obterMarca(idPrimariaMarca);
+        }
         return marca;
     }
 
