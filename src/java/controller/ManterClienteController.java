@@ -102,9 +102,9 @@ public class ManterClienteController extends HttpServlet {
                         cliente.excluir();
                     }
                 }
+            }
                 RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
                 view.forward(request, response);
-            }
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
