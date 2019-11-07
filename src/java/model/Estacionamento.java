@@ -50,7 +50,10 @@ public class Estacionamento {
         this.numeroVagas = numeroVagas;
     }
 
-    public Endereco getEndereco() {
+    public Endereco getEndereco() throws SQLException, ClassNotFoundException {
+        if((this.idPrimariaEndereco != 0) && (this.endereco == null)){
+            this.endereco = Endereco.obterEndereco(idPrimariaEndereco);
+        }
         return endereco;
     }
 
