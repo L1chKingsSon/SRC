@@ -58,7 +58,7 @@ public class ManterCarroController extends HttpServlet {
         String placa = request.getParameter("txtPlaca");
         String chassi = request.getParameter("txtChassi");
         String ano = request.getParameter("txtAno");
-        Boolean IPVA = request.getParameter("txtIpva") != null;
+        String IPVA = request.getParameter("txtIpva");
         String seguro = request.getParameter("txtSeguro");
         String garantia = request.getParameter("txtGarantia");
         double valorComprado = Double.parseDouble(request.getParameter("txtValorComprado"));

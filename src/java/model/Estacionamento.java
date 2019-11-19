@@ -70,10 +70,7 @@ public class Estacionamento {
     }
     
     
-     public void gravar()
-            throws 
-            ClassNotFoundException,
-            SQLException {
+     public void gravar() throws ClassNotFoundException, SQLException {
         EstacionamentoDAO.gravar(this);
     }
     
