@@ -92,6 +92,14 @@
         <servlet-name>ManterEstacionamentoController</servlet-name>
         <servlet-class>controller.ManterEstacionamentoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaVendaController</servlet-name>
+        <servlet-class>controller.PesquisaVendaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterVendaController</servlet-name>
+        <servlet-class>controller.ManterVendaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -144,7 +152,7 @@
         <servlet-name>ManterContaBancoController</servlet-name>
         <url-pattern>/ManterContaBancoController</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ManterCompraController</servlet-name>
         <url-pattern>/ManterCompraController</url-pattern>
     </servlet-mapping>
@@ -183,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>ManterEstacionamentoController</servlet-name>
         <url-pattern>/ManterEstacionamentoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaVendaController</servlet-name>
+        <url-pattern>/PesquisaVendaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterVendaController</servlet-name>
+        <url-pattern>/ManterVendaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
