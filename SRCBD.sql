@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Nov-2019 às 20:18
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 5.6.40
+-- Tempo de geração: 19-Nov-2019 às 13:02
+-- Versão do servidor: 10.4.8-MariaDB
+-- versão do PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `srcbd`
+-- Banco de dados: `srcbd`
 --
 
 -- --------------------------------------------------------
@@ -34,9 +34,9 @@ CREATE TABLE `carro` (
   `placa` varchar(45) DEFAULT NULL,
   `chassi` varchar(45) DEFAULT NULL,
   `ano` varchar(45) DEFAULT NULL,
-  `IPVA` bit(1) DEFAULT NULL,
-  `seguro` date DEFAULT NULL,
-  `garantia` date DEFAULT NULL,
+  `IPVA` varchar(45) DEFAULT NULL,
+  `seguro` varchar(45) DEFAULT NULL,
+  `garantia` varchar(45) DEFAULT NULL,
   `valorComprado` double DEFAULT NULL,
   `id_Modelo` int(11) NOT NULL,
   `id_Estacionamento` int(11) NOT NULL,
@@ -48,7 +48,9 @@ CREATE TABLE `carro` (
 --
 
 INSERT INTO `carro` (`id`, `cor`, `placa`, `chassi`, `ano`, `IPVA`, `seguro`, `garantia`, `valorComprado`, `id_Modelo`, `id_Estacionamento`, `valorVenda`) VALUES
-(1, 'azul', 'htk-8302', 'n sei oq é isso', '2019', NULL, NULL, NULL, 10000, 2, 1, 15000);
+(1, 'verde', 'gfd-1325', '45esd23g', '2010', '1', '10/01/2000', '20/01/2000', 123, 1, 1, 432),
+(2, 'ZOMPa', 'gfd-1325', '45esd23g', '2010', '2021', '10/01/2000', '20/01/2000', 123, 1, 1, 4325),
+(3, 'arcoiris', 'ofw-3241', '3290jfao', '1897', '2017', '20/11/2015', '31/12/2019', 10000, 2, 2, 20000);
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,28 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`, `id_Conta_Banco`, `id_Endereco`) VALUES
-(1, 'Raphael', '01654138677', '32991665577', 1, 1);
+(1, 'Raphaela', '01654138677', '32991665577', 1, 1),
+(2, 'teste', '12323543', '23431', 2, 4),
+(3, 'lavinia', '10718864603', '323451', 2, 2),
+(4, 'Davi', '12432', 'asdasd', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `compra`
+--
+
+CREATE TABLE `compra` (
+  `id` int(11) NOT NULL,
+  `id_carro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `compra`
+--
+
+INSERT INTO `compra` (`id`, `id_carro`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -128,7 +151,7 @@ INSERT INTO `endereco` (`id`, `cep`, `uf`, `cidade`, `bairro`, `logradouro`, `nu
 --
 
 CREATE TABLE `estacionamento` (
-  `idEstacionamento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `numeroVagas` int(11) DEFAULT NULL,
   `id_endereco` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,8 +160,9 @@ CREATE TABLE `estacionamento` (
 -- Extraindo dados da tabela `estacionamento`
 --
 
-INSERT INTO `estacionamento` (`idEstacionamento`, `numeroVagas`, `id_endereco`) VALUES
-(1, 16, 1);
+INSERT INTO `estacionamento` (`id`, `numeroVagas`, `id_endereco`) VALUES
+(1, 16, 1),
+(2, 43, 2);
 
 -- --------------------------------------------------------
 
@@ -235,7 +259,9 @@ CREATE TABLE `notafiscal` (
   `valor` varchar(45) DEFAULT NULL,
   `Transacao` enum('COMPRA','VENDA') DEFAULT NULL,
   `id_Funcionario` int(11) NOT NULL,
-  `id_Cliente` int(11) NOT NULL
+  `id_Cliente` int(11) NOT NULL,
+  `id_Compra` int(11) DEFAULT NULL,
+  `id_Venda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -258,12 +284,23 @@ CREATE TABLE `reserva` (
 INSERT INTO `reserva` (`id`, `cor`, `id_Cliente`, `id_Modelo`) VALUES
 (1, 'azul', 1, 1);
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Estrutura da tabela `venda`
+--
+
+CREATE TABLE `venda` (
+  `id` int(11) NOT NULL,
+  `id_carro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `carro`
+-- Índices para tabela `carro`
 --
 ALTER TABLE `carro`
   ADD PRIMARY KEY (`id`),
@@ -271,7 +308,7 @@ ALTER TABLE `carro`
   ADD KEY `fk_Carro_Estacionamento1` (`id_Estacionamento`);
 
 --
--- Indexes for table `cliente`
+-- Índices para tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
@@ -279,26 +316,32 @@ ALTER TABLE `cliente`
   ADD KEY `fk_Cliente_endereco2` (`id_Endereco`);
 
 --
--- Indexes for table `contabanco`
+-- Índices para tabela `compra`
+--
+ALTER TABLE `compra`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `contabanco`
 --
 ALTER TABLE `contabanco`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `endereco`
+-- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `estacionamento`
+-- Índices para tabela `estacionamento`
 --
 ALTER TABLE `estacionamento`
-  ADD PRIMARY KEY (`idEstacionamento`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_Estacionamento_endereco1` (`id_endereco`);
 
 --
--- Indexes for table `funcionario`
+-- Índices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id`),
@@ -306,7 +349,7 @@ ALTER TABLE `funcionario`
   ADD KEY `fk_Funcionario_endereco1` (`id_Endereco`);
 
 --
--- Indexes for table `itens`
+-- Índices para tabela `itens`
 --
 ALTER TABLE `itens`
   ADD PRIMARY KEY (`id`),
@@ -314,20 +357,20 @@ ALTER TABLE `itens`
   ADD KEY `fk_Itens_Carro1` (`id_Carro`);
 
 --
--- Indexes for table `marca`
+-- Índices para tabela `marca`
 --
 ALTER TABLE `marca`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `modelo`
+-- Índices para tabela `modelo`
 --
 ALTER TABLE `modelo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_Modelo_Marca1` (`id_Marca`);
 
 --
--- Indexes for table `notafiscal`
+-- Índices para tabela `notafiscal`
 --
 ALTER TABLE `notafiscal`
   ADD PRIMARY KEY (`id`),
@@ -335,7 +378,7 @@ ALTER TABLE `notafiscal`
   ADD KEY `fk_NotaFiscal_Cliente2` (`id_Cliente`);
 
 --
--- Indexes for table `reserva`
+-- Índices para tabela `reserva`
 --
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`id`),
@@ -343,36 +386,54 @@ ALTER TABLE `reserva`
   ADD KEY `fk_interesse_Modelo1` (`id_Modelo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Índices para tabela `venda`
+--
+ALTER TABLE `venda`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `carro`
+-- AUTO_INCREMENT de tabela `carro`
 --
 ALTER TABLE `carro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `cliente`
+-- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `compra`
+--
+ALTER TABLE `compra`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `funcionario`
+-- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de tabela `venda`
+--
+ALTER TABLE `venda`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
 --
 
 --
 -- Limitadores para a tabela `carro`
 --
 ALTER TABLE `carro`
-  ADD CONSTRAINT `fk_Carro_Estacionamento1` FOREIGN KEY (`id_Estacionamento`) REFERENCES `estacionamento` (`idEstacionamento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Carro_Estacionamento1` FOREIGN KEY (`id_Estacionamento`) REFERENCES `estacionamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Carro_Modelo1` FOREIGN KEY (`id_Modelo`) REFERENCES `modelo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
