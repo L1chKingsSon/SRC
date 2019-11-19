@@ -20,12 +20,18 @@
             <tr>
                 <th>Código do Estacionamento</th>
                 <th>Numero de vagas</th>
+                <th>CEP</th>
+                <th>Numero</th>
+                <th>Complemento</th>
                 <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${estacionamentos}" var="estacionamento">
                 <tr>
                     <td><c:out value="${estacionamento.id}" /></td>
                     <td><c:out value="${estacionamento.numeroVagas}" /></td>
+                    <td><c:out value="${estacionamento.endereco.cep}" /></td>
+                    <td><c:out value="${estacionamento.endereco.numero}" /></td>
+                    <td><c:out value="${estacionamento.endereco.complemento}" /></td>
                     <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${estacionamento.id}"/>">Editar</a></td>
                     <td><a href="ManterEstacionamentoController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${estacionamento.id}"/>">Excluir</a></td> 
                 </tr> 

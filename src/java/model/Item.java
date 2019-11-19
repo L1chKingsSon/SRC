@@ -32,7 +32,10 @@ public class Item {
         return id;
     }
     
-    public Carro getCarro(){
+    public Carro getCarro() throws SQLException, ClassNotFoundException{
+        if((this.idPrimariaCarro != 0) && (this.carro == null)){
+            this.carro = Carro.obterCarro(idPrimariaCarro);
+        }
         return carro;
     }
     
@@ -52,7 +55,10 @@ public class Item {
         this.idPrimariaNotaFiscal = idPrimariaNotaFiscal;
     }
 
-    public NotaFiscal getNotaFiscal() {
+    public NotaFiscal getNotaFiscal() throws SQLException, ClassNotFoundException{
+        if((this.idPrimariaNotaFiscal != 0) && (this.notaFiscal == null)){
+            this.notaFiscal = NotaFiscal.obterNotaFiscal(idPrimariaNotaFiscal);
+        }
         return notaFiscal;
     }
 

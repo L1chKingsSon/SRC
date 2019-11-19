@@ -77,7 +77,10 @@ public class NotaFiscal {
         return NotaFiscalDAO.obterNotaFiscal(codNotaFiscal);
     }
 
-    public Funcionario getFuncionario() {
+    public Funcionario getFuncionario() throws SQLException, ClassNotFoundException {
+        if((this.idPrimariaFuncionario != 0) && (this.funcionario == null)){
+            this.funcionario = Funcionario.obterFuncionario(idPrimariaFuncionario);
+        }
         return funcionario;
     }
 
@@ -85,7 +88,10 @@ public class NotaFiscal {
         this.funcionario = funcionario;
     }
 
-    public Cliente getCliente() {
+    public Cliente getCliente() throws SQLException, ClassNotFoundException {
+        if((this.idPrimariaCliente != 0) && (this.cliente == null)){
+            this.cliente = Cliente.obterCliente(idPrimariaCliente);
+        }
         return cliente;
     }
 

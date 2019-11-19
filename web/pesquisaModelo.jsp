@@ -19,6 +19,7 @@
             <tr>
                 <th>Código do modelo</th>
                 <th>Nome do modelo</th>
+                <th>Marca</th>
                 <th colspan="2">Ação</th>
                 <!--<th>Nome da marca a qual pertence</th>-->
             </tr>
@@ -26,6 +27,7 @@
                 <tr>
                     <td><c:out value="${modelo.id}" /></td>
                     <td><c:out value="${modelo.nome}" /></td>
+                    <td><c:out value="${modelo.marca.nome}" /></td>
                     <td><a href="ManterModeloController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${modelo.id}"/>">Editar</a></td>
                     <td><a href="ManterModeloController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${modelo.id}"/>">Excluir</a></td>                    
                 </tr> 

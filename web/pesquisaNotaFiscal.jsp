@@ -20,6 +20,8 @@
                 <th>Código da Nota</th>
                 <th>Data</th>
                 <th>Valor (em R$)</th>
+                <th>Funcionario Responsavel</th>
+                <th>CPF Cliente</th>
                 <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${notasFiscais}" var="notafiscal">
@@ -27,6 +29,8 @@
                     <td><c:out value="${notafiscal.id}" /></td>
                     <td><c:out value="${notafiscal.data}" /></td>
                     <td><c:out value="${notafiscal.valor}" /></td>
+                    <td><c:out value="${notafiscal.funcionario.nome}" /></td>
+                    <td><c:out value="${notafiscal.cliente.cpf}" /></td>
                     <td><a href="ManterNotaFiscalController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${notafiscal.id}"/>">Editar</a></td>
                     <td><a href="ManterNotaFiscalController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${notafiscal.id}"/>">Excluir</a></td>
                 </tr>
