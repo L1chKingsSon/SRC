@@ -18,7 +18,7 @@
                 <th>Placa Carro</th>
                 <th colspan="2">Ação</th>
             </tr>
-            <c:forEach items="${compras}" var="compras">
+            <c:forEach items="${compras}" var="compra">
                 <tr>
                     <td><c:out value="${compra.id}" /></td>
                     <td><c:out value="${compra.carro.modelo}" /></td>

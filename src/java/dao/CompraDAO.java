@@ -72,7 +72,7 @@ public class CompraDAO {
                     "insert into compra(id, id_carro) "
                     + "values (?,?)");
             comando.setLong(1, compra.getId());
-            comando.setLong(6, compra.getCarro().getId());
+            comando.setLong(2, compra.getCarro().getId());
             
             comando.executeUpdate();
         } finally {

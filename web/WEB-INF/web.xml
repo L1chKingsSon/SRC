@@ -17,6 +17,10 @@
         <servlet-class>controller.PesquisaContaBancoController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PesquisaCompraController</servlet-name>
+        <servlet-class>controller.PesquisaCompraController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ManterMarcaController</servlet-name>
         <servlet-class>controller.ManterMarcaController</servlet-class>
     </servlet>
@@ -47,6 +51,10 @@
     <servlet>
         <servlet-name>ManterContaBancoController</servlet-name>
         <servlet-class>controller.ManterContaBancoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterCompraController</servlet-name>
+        <servlet-class>controller.ManterCompraController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterCarroController</servlet-name>
@@ -101,6 +109,10 @@
         <url-pattern>/PesquisaContaBancoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PesquisaCompraController</servlet-name>
+        <url-pattern>/PesquisaCompraController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ManterMarcaController</servlet-name>
         <url-pattern>/ManterMarcaController</url-pattern>
     </servlet-mapping>
@@ -131,6 +143,10 @@
     <servlet-mapping>
         <servlet-name>ManterContaBancoController</servlet-name>
         <url-pattern>/ManterContaBancoController</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ManterCompraController</servlet-name>
+        <url-pattern>/ManterCompraController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterCarroController</servlet-name>

@@ -21,7 +21,7 @@
     <label>Carro<label>
     <select name="txtSelect_Carro" id="carro" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
                             <option value="0" <c:if test="${compra.carro.id == null}"> selected</c:if></option>
-                            <c:forEach items="${carro}" var="carrp">
+                            <c:forEach items="${carros}" var="carro">
                                 <option value="${carro.id}" <c:if test="${compra.idPrimariaCarro == carro.id}"> selected</c:if>>${carro.placa}, ${carro.cor}, ${carro.modelo} </option>
                             </c:forEach>
                         </select>

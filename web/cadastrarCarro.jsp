@@ -35,14 +35,14 @@
         <br>
         <br>
         <label>IPVA pago</label>
-        <input type="checkbox" name="txtIpva" value="IPVA" id="IPVA" <c:if test="${carro.IPVA == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
+        <input type="text" name="txtIpva" value="${carro.IPVA}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
-        <label>data atÃ© onde o seguro foi pago</label>
+        <label>data até onde o seguro foi pago</label>
         <input type="text" name="txtSeguro" value="${carro.seguro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>
-        <label>data atÃ© onde tem garantia</label>
+        <label>data até onde tem garantia</label>
         <input type ="text" name="txtGarantia" value="${carro.garantia}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
         <br>
         <br>

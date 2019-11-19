@@ -36,15 +36,22 @@ public class Compra {
         this.id = id;
     }
 
-    public Carro getCarro() {
+    public Carro getCarro() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaCarro != 0) && (this.carro == null)){
+        this.carro = Carro.obterCarro(idPrimariaCarro);
+        }
         return carro;
     }
 
-    public void setCarro(Carro carro) {
+    public void setCarro(Carro carro) throws ClassNotFoundException, SQLException {
         this.carro = carro;
     }
 
-    public int getIdPrimariaCarro() {
+    public int getIdPrimariaCarro() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaCarro != 0) && (this.carro == null))
+        {
+            this.carro = Carro.obterCarro(idPrimariaCarro);
+        }
         return idPrimariaCarro;
     }
 

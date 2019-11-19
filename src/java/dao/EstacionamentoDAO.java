@@ -49,7 +49,7 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from estacionamento where idEstacionamento = " + codEstacionamento);
+            ResultSet rs = comando.executeQuery("select * from estacionamento where id = " + codEstacionamento);
             rs.first();
             estacionamento = instanciarEstacionamento(rs);
         } finally {
@@ -61,7 +61,7 @@ public class EstacionamentoDAO {
 
     public static Estacionamento instanciarEstacionamento(ResultSet rs) throws SQLException {
         Estacionamento estacionamento = new Estacionamento(
-                rs.getInt("idEstacionamento"),
+                rs.getInt("id"),
                 rs.getInt("numeroVagas"),
                 null
         );
@@ -84,7 +84,7 @@ public class EstacionamentoDAO {
             } else {
                 stringSQL += "id_endereco = '" + estacionamento.getEndereco().getId() + "'";
             }
-            stringSQL = stringSQL + " where idEstacionamento = " + estacionamento.getId();
+            stringSQL = stringSQL + " where id = " + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
             fecharConexao(conexao, comando);
@@ -100,7 +100,7 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from estacionamento where idEstacionamento ="
+            stringSQL = "delete from estacionamento where id ="
                     + estacionamento.getId();
             comando.execute(stringSQL);
         } finally {
@@ -115,7 +115,7 @@ public class EstacionamentoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.prepareStatement(
-                    "insert into estacionamento (idEstacionamento, numeroVagas, id_endereco) "
+                    "insert into estacionamento (id, numeroVagas, id_endereco) "
                     + "values (?,?,?)");
             comando.setInt(1, estacionamento.getId());
             comando.setInt(2, estacionamento.getNumeroVagas());

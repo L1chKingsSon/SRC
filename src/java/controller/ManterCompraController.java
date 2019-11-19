@@ -84,7 +84,7 @@ public class ManterCompraController extends HttpServlet {
         try {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("compras", Compra.obterCompra());
+            request.setAttribute("carros", Carro.obterCarros());
             if(!operacao.equals("Incluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
                 Compra compra = Compra.obterCompra(id);

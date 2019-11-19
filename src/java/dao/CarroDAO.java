@@ -48,7 +48,7 @@ public class CarroDAO {
                 rs.getString("chassi"),
                 rs.getString("ano"),
                 rs.getString("cor"),
-                rs.getBoolean("IPVA"),
+                rs.getString("IPVA"),
                 rs.getString("seguro"),
                 rs.getString("garantia"),
                 rs.getDouble("valorComprado"),
@@ -135,7 +135,7 @@ public class CarroDAO {
             comando.setString(3, carro.getPlaca());
             comando.setString(4, carro.getChassi());
             comando.setString(5, carro.getAno());
-            comando.setBoolean(6, carro.getIPVA());
+            comando.setString(6, carro.getIPVA());
             comando.setString(7, carro.getSeguro());
             comando.setString(8, carro.getGarantia());
             comando.setDouble(9, carro.getValorComprado());
