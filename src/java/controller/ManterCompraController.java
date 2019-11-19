@@ -141,8 +141,8 @@ public class ManterCompraController extends HttpServlet {
             Logger.getLogger(ManterCompraController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
+ 
+   /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
