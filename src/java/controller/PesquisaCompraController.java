@@ -64,7 +64,7 @@ public class PesquisaCompraController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaCompraController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,7 +82,7 @@ public class PesquisaCompraController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaCompraController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

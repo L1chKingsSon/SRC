@@ -116,9 +116,9 @@ public class ManterCompraController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterCompraController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterCompraController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -136,9 +136,9 @@ public class ManterCompraController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterCompraController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManterEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterCompraController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
