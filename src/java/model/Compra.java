@@ -14,6 +14,10 @@ import java.util.List;
  * @author Raphael
  */
 public class Compra {
+
+    public static Object obterCompra() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         private int id;
         private Carro carro;
         private int idPrimariaCarro;
@@ -22,9 +26,9 @@ public class Compra {
         {
             this.id = id;
             this.carro = carro;
-        }
+        } 
 
-    public int getId() {
+     public int getId() {
         return id;
     }
 

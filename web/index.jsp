@@ -30,6 +30,8 @@ and open the template in the editor.
             <br>
             <a href="PesquisaReservaController">Manter Reservas</a>
             <br>
+            <a href="PesquisaCompraController">Manter Compras</a>
+            <br>
             <a href="PesquisaNotaFiscalController">Manter Notas Fiscais</a>
             <br>
             <a href="PesquisaItemController">Manter Itens</a>
