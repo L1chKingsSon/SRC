@@ -32,7 +32,7 @@
                     <td><c:out value="${cliente.cpf}" /></td>
                     <td><c:out value="${cliente.telefone}" /></td>
                     <td><c:out value="${cliente.contaBanco.conta}" /></td>
-                    <td><c:out value="${cliente.endereco.logradouro}" /></td>
+                    <td><c:out value="${cliente.endereco.logradouro}, número ${cliente.endereco.numero}, ${cliente.endereco.complemento}" /></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${cliente.id}"/>">Editar</a></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${cliente.id}"/>">Excluir</a></td>
                 </tr>
