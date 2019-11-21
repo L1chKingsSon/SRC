@@ -50,9 +50,6 @@ public class Carro {
     }
 
     public int getIdPrimariaEstacionamento() throws SQLException, ClassNotFoundException {
-        if((this.idPrimariaEstacionamento != 0) && (this.estacionamento == null)){
-            this.estacionamento = Estacionamento.obterEstacionamento(this.idPrimariaEstacionamento);
-        }
         return idPrimariaEstacionamento;
     }
 
@@ -61,9 +58,6 @@ public class Carro {
     }
     
     public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
-        if ((this.idPrimariaModelo != 0) && (this.modelo == null)) {
-            this.modelo = Modelo.obterModelo(this.idPrimariaModelo);
-        }
         return idPrimariaModelo;
     }
 

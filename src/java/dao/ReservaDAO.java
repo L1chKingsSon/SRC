@@ -59,6 +59,8 @@ public class ReservaDAO {
                 null,
                 null
         );
+        reserva.setIdPrimariaCliente(rs.getInt("id_Cliente"));
+        reserva.setIdPrimariaModelo(rs.getInt("id_Modelo"));
         return reserva;
     }
     
@@ -88,7 +90,7 @@ public class ReservaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "update reservaset "
+            stringSQL = "update reserva set "
                     + "cor = '" + reserva.getCor() + "', ";
             if(reserva.getCliente() == null){
                 stringSQL = stringSQL + "id_Cliente = null, ";
@@ -101,7 +103,7 @@ public class ReservaDAO {
                 stringSQL += "id_Modelo = null";
             }
             else{
-                stringSQL += "id_Modelo = '" + reserva.getModelo().getId();
+                stringSQL += "id_Modelo = " + reserva.getModelo().getId();
             }
             stringSQL = stringSQL + " where id = " + reserva.getId() + ";";
             comando.execute(stringSQL);
@@ -118,7 +120,7 @@ public class ReservaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from reservawhere id ="
+            stringSQL = "delete from reserva where id ="
                     + reserva.getId();
             comando.execute(stringSQL);
         } finally {
