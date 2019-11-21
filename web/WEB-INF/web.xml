@@ -100,6 +100,10 @@
         <servlet-name>ManterVendaController</servlet-name>
         <servlet-class>controller.ManterVendaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <servlet-class>controller.PesquisaReservaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>ManterVendaController</servlet-name>
         <url-pattern>/ManterVendaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaReservaController</servlet-name>
+        <url-pattern>/PesquisaReservaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

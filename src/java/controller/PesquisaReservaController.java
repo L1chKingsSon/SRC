@@ -15,14 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Endereco;
-import model.Estacionamento;
+import model.Reserva;
 
 /**
  *
- * @author jafar
+ * @author Raphael
  */
-public class PesquisaEstacionamentoController extends HttpServlet {
+public class PesquisaReservaController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +31,12 @@ public class PesquisaEstacionamentoController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         try {
-            request.setAttribute("estacionamentos", Estacionamento.obterEstacionamentos());
-            //request.setAttribute("enderecos", Endereco.obterEnderecos());
-            RequestDispatcher view = request.getRequestDispatcher("/pesquisaEstacionamento.jsp");
+            request.setAttribute("reservas", Reserva.obterReservas());
+            RequestDispatcher view = request.getRequestDispatcher("/pesquisaReserva.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
@@ -64,7 +60,7 @@ public class PesquisaEstacionamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -82,7 +78,7 @@ public class PesquisaEstacionamentoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(PesquisaEstacionamentoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaReservaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -25,7 +25,9 @@
                 <th>salario</th>
                 <th>login</th>
                 <th>senha</th>
-                <th>NivelAcesso</th>
+                <th>Admin</th>
+                <th>conta do banco</th>
+                <th>Endereço</th>
                 <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${funcionarios}" var="funcionario">
@@ -38,6 +40,8 @@
                     <td><c:out value="${funcionario.login}" /></td>
                     <td><c:out value="${funcionario.senha}" /></td>
                     <td><c:out value="${funcionario.nivelAcesso}" /></td>
+                    <td><c:out value="${funcionario.contaBanco.conta}" /></td>
+                    <td><c:out value="${funcionario.endereco.logradouro}" /></td>
                     <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${funcionario.id}"/>">Editar</a></td>
                     <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${funcionario.id}"/>">Excluir</a></td>
                 </tr>

@@ -51,7 +51,10 @@ public abstract class Pessoa {
         this.idPrimariaContaBanco = idPrimariaContaBanco;
     }
 
-    public Endereco getEndereco() {
+    public Endereco getEndereco() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaEndereco != 0) && (this.endereco == null)){
+            this.endereco = Endereco.obterEndereco(idPrimariaEndereco);
+        }
         return endereco;
     }
 
@@ -91,7 +94,10 @@ public abstract class Pessoa {
         this.telefone = telefone;
     }
 
-    public ContaBanco getContaBanco() {
+    public ContaBanco getContaBanco() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaContaBanco != 0) && (this.contaBanco == null)){
+            this.contaBanco = ContaBanco.obterConta(idPrimariaContaBanco);
+        }
         return contaBanco;
     }
 

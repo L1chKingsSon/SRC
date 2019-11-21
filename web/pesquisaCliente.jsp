@@ -21,6 +21,8 @@
                 <th>nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
+                <th>numero da conta</th>
+                <th>endereço</th>
                 <th colspan="2">Ação</th>
             </tr>
             <c:forEach items="${clientes}" var="cliente">
@@ -29,6 +31,8 @@
                     <td><c:out value="${cliente.nome}" /></td>
                     <td><c:out value="${cliente.cpf}" /></td>
                     <td><c:out value="${cliente.telefone}" /></td>
+                    <td><c:out value="${cliente.contaBanco.conta}" /></td>
+                    <td><c:out value="${cliente.endereco.logradouro}" /></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&id=<c:out value="${cliente.id}"/>">Editar</a></td>
                     <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&id=<c:out value="${cliente.id}"/>">Excluir</a></td>
                 </tr>

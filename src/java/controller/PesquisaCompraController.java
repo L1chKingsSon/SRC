@@ -39,7 +39,7 @@ public class PesquisaCompraController extends HttpServlet {
             throws ServletException, IOException, SQLException {
         try {
             request.setAttribute("compras", Compra.obterCompras());
-            request.setAttribute("carros", Carro.obterCarros());
+            //request.setAttribute("carros", Carro.obterCarros());
             RequestDispatcher view = request.getRequestDispatcher("/pesquisaCompra.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException e) {

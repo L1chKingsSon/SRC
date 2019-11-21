@@ -29,8 +29,10 @@ public class Reserva {
         this.cliente = cliente;
     }
     
-    public int getIdPrimariaCliente() {
-
+    public int getIdPrimariaCliente() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaCliente != 0) && (this.cliente == null)){
+            this.cliente = Cliente.obterCliente(idPrimariaCliente);
+        }
         return idPrimariaCliente;
     }
 
@@ -38,8 +40,10 @@ public class Reserva {
         this.idPrimariaCliente = idPrimariaCliente;
     }
     
-    public int getIdPrimariaModelo() {
-
+    public int getIdPrimariaModelo() throws ClassNotFoundException, SQLException {
+        if((this.idPrimariaModelo != 0) && (this.modelo == null)){
+            this.modelo = Modelo.obterModelo(idPrimariaModelo);
+        }
         return idPrimariaModelo;
     }
 
