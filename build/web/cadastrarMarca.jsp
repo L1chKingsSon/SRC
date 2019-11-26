@@ -9,7 +9,6 @@
         <title>Cadastrar Marca</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-        <script src="main.js"></script>
     </head>
     <body>
         <br><br>
@@ -53,7 +52,7 @@
                 if (form.txtId.value == ""){
                     mensagem = mensagem + "Informe o Código da Marca\n";
                 }                             
-                if (form.txtNome.value == "" || form.txtNome.value == null){
+                if (form.txtNome.value == ""){
                     mensagem = mensagem + "Informe o Nome da Marca\n";
                 }             
                 if (!campoNumerico(form.txtID.value)){

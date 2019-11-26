@@ -21,7 +21,7 @@
         <h1>
             Cadastrar Conta de Banco
         </h1>
-    <form action="ManterContaBancoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterContaBanco">
+    <form action="ManterContaBancoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterContaBanco" onsubmit="return validarFormulario(this)">
         <table border="1"> 
             <tr>
                 <td>ID da Conta</td>
@@ -51,6 +51,58 @@
 
 
     </form>
+    <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código ID da Conta\n";
+                }
+                if (form.txtNome.value == ""){
+                    mensagem = mensagem + "Informe um Nome!\n";
+                }
+		if (form.txtAgencia.value == ""){
+                    mensagem = mensagem + "Informe uma Agência!\n";
+                }
+		if (form.txtConta.value == ""){
+                    mensagem = mensagem + "Informe uma Conta!\n";
+                }
+		if (form.txtTipo.value == ""){
+                    mensagem = mensagem + "Informe um tipo de Conta!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (!campoNumerico(form.txtCpf.value)){
+                    mensagem = mensagem + "CPF deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>        
             <a href="index.jsp">home</a>
 
 </body>

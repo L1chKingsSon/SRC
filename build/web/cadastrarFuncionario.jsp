@@ -16,7 +16,7 @@
         Cadastrar Funcionario
     </h1>
 
-    <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario">
+    <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario" onsubmit="return validarFormulario(this)">
     <label>ID Funcionario</label>
     <input name="txtId" type="text" value="${funcionario.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br>
     
@@ -66,6 +66,64 @@
   
     <button type="submit">Confirmar</button>
 </form> 
+<SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código do Cliente\n";
+                }
+                if (form.txtNome.value == ""){
+                    mensagem = mensagem + "Informe um Nome!\n";
+                }
+		if (form.txtCpf.value == ""){
+                    mensagem = mensagem + "Informe um CPF!\n";
+                }
+		if (form.txtTelefone.value == ""){
+                    mensagem = mensagem + "Informe um Telefone!\n";
+                }
+                if (form.txtSalario.value == ""){
+                    mensagem = mensagem + "Informe um Salario!\n";
+                }
+		if (form.txtLogin.value == ""){
+                    mensagem = mensagem + "Informe um nome de Login!\n";
+                }
+		if (form.txtSenha.value == ""){
+                    mensagem = mensagem + "Informe uma Senha!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (!campoNumerico(form.txtCpf.value)){
+                    mensagem = mensagem + "CPF deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>                           
 <a href="index.jsp">home</a>
 </body>
 </html>

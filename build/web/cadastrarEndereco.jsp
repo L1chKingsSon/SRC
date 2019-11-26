@@ -15,7 +15,7 @@
         <h1>
             Cadastrar Endereco
         </h1>
-        <form action="ManterEnderecoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterEndereco">
+        <form action="ManterEnderecoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterEndereco" onsubmit="return validarFormulario(this)">
             <table border="1"> 
                 <tr>
                     <td>ID do endereco</td>
@@ -57,6 +57,64 @@
 
 
         </form>
+    <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código do Endereco\n";
+                }
+                if (form.txtCep.value == ""){
+                    mensagem = mensagem + "Informe um CEP!\n";
+                }
+		if (form.txtUF.value == ""){
+                    mensagem = mensagem + "Informe um Estado!\n";
+                }
+		if (form.txtCidade.value == ""){
+                    mensagem = mensagem + "Informe uma Cidade!\n";
+                }
+		if (form.txtBairro.value == ""){
+                    mensagem = mensagem + "Informe um bairro!\n";
+                }
+                if (form.txtLogradouro.value == ""){
+                    mensagem = mensagem + "Informe um logradouro!\n";
+                }
+		if (form.txtNumero.value == ""){
+                    mensagem = mensagem + "Informe um numero!\n";
+                }
+		if (form.txtComplemento.value == ""){
+                    mensagem = mensagem + "Informe um complemento!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>             
                 <a href="index.jsp">home</a>
     </body>
 </html>

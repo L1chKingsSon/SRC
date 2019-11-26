@@ -12,7 +12,7 @@
             <h1>Cadastro de Compra</h1>
         </header>
 
-        <form action="ManterCompraController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCompra">
+        <form action="ManterCompraController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterCompra" onsubmit="return validarFormulario(this)">
         <label>ID</label>
         <input type="number" name="txtId" value="${compra.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> > </td>
     <br>
@@ -27,7 +27,44 @@
                         </select>
                             <br><br>
 <button type="submit">Confirmar</button>
-</form>  
+</form>
+<SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código da Compra\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>                             
     <a href="index.jsp">home</a>
 </body>
 </html>
