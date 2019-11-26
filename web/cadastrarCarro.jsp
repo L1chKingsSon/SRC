@@ -112,7 +112,7 @@
                 if (form.txtAno.value == ""){
                     mensagem = mensagem + "Informe o ano do carro\n";
                 }
-                if (form.txtIPVA.value == ""){
+                if (form.txtIpva.value == ""){
                     mensagem = mensagem + "Informe até que ano o IPVA do carro foi pago\n";
                 }
                 if (form.txtSeguro.value == ""){

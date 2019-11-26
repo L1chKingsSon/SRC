@@ -83,7 +83,6 @@
             
         </SCRIPT>                     
     </table>
-    </form>
 <a href="index.jsp">home</a>
 </body>
 </html>

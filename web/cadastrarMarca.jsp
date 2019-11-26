@@ -28,7 +28,7 @@
             </table>
         </form>
         <SCRIPT language="JavaScript">
-            
+            <!--
             
             function campoNumerico(valor)
             {
@@ -55,7 +55,7 @@
                 if (form.txtNome.value == ""){
                     mensagem = mensagem + "Informe o Nome da Marca\n";
                 }             
-                if (!campoNumerico(form.txtID.value)){
+                if (!campoNumerico(form.txtId.value)){
                     mensagem = mensagem + "Código da Marca deve ser numérico\n";
                 }
                 if (mensagem == ""){
@@ -65,7 +65,7 @@
                     return false;
                 }                
             } 
-            
+            //-->
         </SCRIPT>       
             
     </body>
