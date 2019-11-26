@@ -15,7 +15,7 @@
         <h1>
             Cadastrar Modelo
         </h1>
-        <form action="ManterModeloController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterModelo">
+        <form action="ManterModeloController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterModelo" onsubmit="return validarFormulario(this)">
             <table border="1">
                 <tr>
                     <td>ID do Modelo</td>
@@ -42,6 +42,46 @@
 
                 <button type="submit" >Confirmar</button>
         </form>
+        <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código do Modelo\n";
+                }
+                if (form.txtNome.value == ""){
+                    mensagem = mensagem + "Informe um Nome!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>                     
     </table>
     </form>
 <a href="index.jsp">home</a>

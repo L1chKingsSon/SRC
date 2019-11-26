@@ -15,7 +15,7 @@
     <h1>
         Cadastrar Nota Fiscal
     </h1>
-    <form action="ManterNotaFiscalController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterNotaFiscal">
+    <form action="ManterNotaFiscalController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterNotaFiscal" onsubmit="return validarFormulario(this)">
        <label>ID</label> 
        <input type="number" name="txtId" value="${notaFiscal.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br> 
         
@@ -49,6 +49,52 @@
 
        <button type="submit">Confirmar</button>
     </form>
+    <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código da Nota\n";
+                }
+                if (form.txtData.value == ""){
+                    mensagem = mensagem + "Informe uma Data!\n";
+                }
+                if (form.txtValor.value == ""){
+                    mensagem = mensagem + "Informe um Valor!\n";
+                }
+                if (!campoNumerico(form.txtValor.value)){
+                    mensagem = mensagem + "Valor deve ser Numérico!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT> 
     <a href="index.jsp">home</a>
 </body>
 </html>
