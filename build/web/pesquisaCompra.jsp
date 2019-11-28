@@ -9,6 +9,8 @@
         <title>Listar Compras</title>
     </head>
     <body>
+        
+        
         <h1>Pesquisa de Compras</h1>
         <table border="1">
             <tr>
