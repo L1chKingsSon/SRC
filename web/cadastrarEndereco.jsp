@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+<<<<<<< HEAD
         <nav id="sidebar" class="navbar navbar-expand-lg navbar-light bg-dark">
             <ul class="list-unstyled ">
                 <ul>
@@ -103,5 +104,111 @@
                 </table>
             </form>
         </div>
+=======
+        <h1>
+            Cadastrar Endereco
+        </h1>
+        <form action="ManterEnderecoController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterEndereco" onsubmit="return validarFormulario(this)">
+            <table border="1"> 
+                <tr>
+                    <td>ID do endereco</td>
+                    <td><input type="number" name="txtId" value="${endereco.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>cep</td>
+                    <td><input type="text" name="txtCep" value="${endereco.cep}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>uf</td>
+                    <td><input type="text" name="txtUF" value="${endereco.uf}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>cidade</td>
+                    <td><input type="text" name="txtCidade" value="${endereco.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>bairro</td>
+                    <td><input type="text" name="txtBairro" value="${endereco.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>logradouro</td>
+                    <td><input type="text" name="txtLogradouro" value="${endereco.logradouro}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>numero</td>
+                    <td><input type="text" name="txtNumero" value="${endereco.numero}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>complemento</td>
+                    <td><input type="text" name="txtComplemento" value="${endereco.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Confirmar</button></td>
+                </tr>
+            </table
+
+
+
+        </form>
+    <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código do Endereco\n";
+                }
+                if (form.txtCep.value == ""){
+                    mensagem = mensagem + "Informe um CEP!\n";
+                }
+		if (form.txtUF.value == ""){
+                    mensagem = mensagem + "Informe um Estado!\n";
+                }
+		if (form.txtCidade.value == ""){
+                    mensagem = mensagem + "Informe uma Cidade!\n";
+                }
+		if (form.txtBairro.value == ""){
+                    mensagem = mensagem + "Informe um bairro!\n";
+                }
+                if (form.txtLogradouro.value == ""){
+                    mensagem = mensagem + "Informe um logradouro!\n";
+                }
+		if (form.txtNumero.value == ""){
+                    mensagem = mensagem + "Informe um numero!\n";
+                }
+		if (form.txtComplemento.value == ""){
+                    mensagem = mensagem + "Informe um complemento!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>             
+                <a href="index.jsp">home</a>
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
     </body>
 </html>

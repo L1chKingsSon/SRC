@@ -64,9 +64,18 @@
             Cadastrar Funcionario
         </h1>
 
+<<<<<<< HEAD
         <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario">
         <label>ID Funcionario</label>
         <input name="txtId" type="text" value="${funcionario.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br>
+=======
+    <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterFuncionario" onsubmit="return validarFormulario(this)">
+    <label>ID Funcionario</label>
+    <input name="txtId" type="text" value="${funcionario.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ><br><br>
+    
+    <label>Nome</label>
+    <input name="txtNome" type="text" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ><br><br>
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
 
         <label>Nome</label>
         <input name="txtNome" type="text" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ><br><br>
@@ -79,6 +88,7 @@
         <label>Telefone</label>
         <input type="text" name="txtTelefone" value="${funcionario.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ><br><br>
 
+<<<<<<< HEAD
         <label>Salario</label>
         <input type="number" name="txtSalario" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ><br><br>
 
@@ -115,5 +125,91 @@
         <button type="submit">Confirmar</button>
     </form> 
 </div>
+=======
+    <label>Admin: </label>
+    
+    <input type="checkbox" name="txtNivelAcesso" value="Admin" id="Admin" <c:if test="${funcionario.nivelAcesso == true}">checked</c:if> <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
+    <br><br>
+    
+    <!--<input type="checkbox" name="txtNivelAcesso" value="Admin" <c:if test="${funcionario.nivelAcesso == true}"> checked </c:if> > <br>
+  -->
+  <label>Endereco<label>
+    <select name="txtSelect_Endereco" id="endereco" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
+                            <option value="0" <c:if test="${funcionario.endereco.id == null}"> selected</c:if></option>
+                            <c:forEach items="${enderecos}" var="endereco">
+                                <option value="${endereco.id}" <c:if test="${funcionario.idPrimariaEndereco == endereco.id}"> selected</c:if>>${endereco.logradouro}, ${endereco.numero}, ${endereco.complemento} </option>
+                            </c:forEach>
+                        </select>
+                            <br><br>
+                            <label>Conta do banco</label>
+    <select name="txtSelect_ContaBanco" id="contaBanco" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
+                            <option value="0" <c:if test="${funcionario.contaBanco.id == null}"> selected</c:if></option>
+                            <c:forEach items="${contasBanco}" var="contaBanco">
+                                <option value="${contaBanco.id}" <c:if test="${funcionario.idPrimariaContaBanco == contaBanco.id}"> selected</c:if>>conta: ${contaBanco.conta}, agencia: ${contaBanco.agencia}</option>
+                            </c:forEach>
+                        </select>
+  
+    <button type="submit">Confirmar</button>
+</form> 
+<SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código do Cliente\n";
+                }
+                if (form.txtNome.value == ""){
+                    mensagem = mensagem + "Informe um Nome!\n";
+                }
+		if (form.txtCpf.value == ""){
+                    mensagem = mensagem + "Informe um CPF!\n";
+                }
+		if (form.txtTelefone.value == ""){
+                    mensagem = mensagem + "Informe um Telefone!\n";
+                }
+                if (form.txtSalario.value == ""){
+                    mensagem = mensagem + "Informe um Salario!\n";
+                }
+		if (form.txtLogin.value == ""){
+                    mensagem = mensagem + "Informe um nome de Login!\n";
+                }
+		if (form.txtSenha.value == ""){
+                    mensagem = mensagem + "Informe uma Senha!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (!campoNumerico(form.txtCpf.value)){
+                    mensagem = mensagem + "CPF deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT>                           
+<a href="index.jsp">home</a>
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
 </body>
 </html>

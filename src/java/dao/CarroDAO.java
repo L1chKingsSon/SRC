@@ -102,19 +102,15 @@ public class CarroDAO {
             }
             stringSQL += "id_Estacionamento =";
             if(carro.getEstacionamento() == null){
-                stringSQL += " null";
+                stringSQL += " null, ";
             }
             else
             {
                 System.out.println(carro.getEstacionamento().getId());
-                stringSQL += " '" + carro.getEstacionamento().getId() + "' ";
+                stringSQL += " '" + carro.getEstacionamento().getId() + "', ";
             }
+            stringSQL += "valorVenda = '" + carro.getValorVenda() + "' ";
             stringSQL = stringSQL + "where id = " + carro.getId() + ";";
-            if(true == true)
-            {
-                System.out.println("te enganei debbuger");
-                        
-            }
             comando.execute(stringSQL);
             
         } finally {

@@ -9,6 +9,7 @@
         <title>Cadastrar Marca</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+<<<<<<< HEAD
         <script src="main.js"></script>
          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
@@ -76,5 +77,66 @@
                 </table>
             </form>
          </div>
+=======
+    </head>
+    <body>
+        <br><br>
+        <form action="ManterMarcaController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterMarca" onsubmit="return validarFormulario(this)">
+            <table border="1">
+                <tr>
+                    <td>ID da marca</td>
+                    <td><input type="number" name="txtId" value="${marca.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
+            </tr>
+            <tr>
+                <td>Nome da Marca</td>
+                <td><input type="text" name="txtNome" value="${marca.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+            </tr>
+            <tr >
+                <td colspan="2"><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+            </tr>
+            </table>
+        </form>
+        <SCRIPT language="JavaScript">
+            <!--
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código da Marca\n";
+                }                             
+                if (form.txtNome.value == ""){
+                    mensagem = mensagem + "Informe o Nome da Marca\n";
+                }             
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Código da Marca deve ser numérico\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            //-->
+        </SCRIPT>       
+            
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
     </body>
 </html>

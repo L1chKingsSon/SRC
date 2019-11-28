@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+<<<<<<< HEAD
         <nav id="sidebar" class="navbar navbar-expand-lg navbar-light bg-dark">
             <ul class="list-unstyled ">
                 <ul>
@@ -76,6 +77,26 @@
                         <td>ID da reserva</td>
                         <td>
                     <input type="number" name="txtId" value="${reserva.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
+=======
+        <h1>
+            Cadastrar Reserva
+        </h1>
+        <form action="ManterReservaController?acao=confirmarOperacao&operacao=${operacao}" method="post" name="frmManterReserva" onsubmit="return validarFormulario(this)">
+            <table border="1">
+                <tr>
+                    <td>ID da reserva</td>
+                    <td>
+                <input type="number" name="txtId" value="${reserva.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if> ></td>
+                </td>
+                </tr>
+                <tr>
+                    <td>cor da reserva</td>
+                    <td><input type="text" name="txtCor" value="${reserva.cor}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                </tr>
+                <tr>
+                    <td>
+                        Modelo da reserva
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
                     </td>
                     </tr>
                     <tr>
@@ -112,6 +133,52 @@
             </form>
         </table>
         </form>
+<<<<<<< HEAD
 </div>
+=======
+    <SCRIPT language="JavaScript">
+            
+            
+            function campoNumerico(valor)
+            {
+                var caracteresValidos = "0123456789";
+                var ehNumero = true;
+                var umCaracter;
+                for (i = 0; i < valor.length && ehNumero == true; i++) 
+                { 
+                    umCaracter = valor.charAt(i); 
+                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                    {
+                        ehNumero = false;
+                    }
+                }
+                return ehNumero;
+            }
+
+            function validarFormulario(form) { 
+                var mensagem;
+                mensagem = "";
+                if (form.txtId.value == ""){
+                    mensagem = mensagem + "Informe o Código da Reserva\n";
+                }
+                if (form.txtCor.value == ""){
+                    mensagem = mensagem + "Informe uma Cor!\n";
+                }
+                if (!campoNumerico(form.txtId.value)){
+                    mensagem = mensagem + "Id deve ser Númerico!\n";
+                }
+                if (mensagem == ""){
+                    return true;
+                }else{
+                    alert(mensagem);
+                    return false;
+                }                
+            } 
+            
+        </SCRIPT> 
+    </table>
+    </form>
+<a href="index.jsp">home</a>
+>>>>>>> 82637cd20acb8d66c456bb3e21a51e807aed035a
 </body>
 </html>

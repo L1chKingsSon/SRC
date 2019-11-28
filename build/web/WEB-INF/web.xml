@@ -104,6 +104,10 @@
         <servlet-name>PesquisaReservaController</servlet-name>
         <servlet-class>controller.PesquisaReservaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <servlet-class>exception.TratamentoExcecao</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaModeloController</servlet-name>
         <url-pattern>/PesquisaModeloController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TratamentoExcecao</servlet-name>
+        <url-pattern>/TratamentoExcecao</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PesquisaCarroController</servlet-name>
