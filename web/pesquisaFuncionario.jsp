@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Funcionarios</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
     <body>        
@@ -48,8 +49,8 @@
             </c:forEach>
         </table>
         <form action="ManterFuncionarioController?acao=prepararOperacao&operacao=Incluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input type="submit" name="btnIncluir" value="Incluir" class="button">
         </form>
-        <a href="index.jsp">home</a>
+        <a href="index.jsp" class="homelink">home</a>
     </body>
 </html>

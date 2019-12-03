@@ -11,7 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Listar Contas de Banco</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <h1>Pesquisa de Contas de Banco</h1>
@@ -34,9 +35,9 @@
                 </tr>
             </c:forEach>
         </table>
-         <form action="ManterContaBancoController?acao=prepararOperacao&operacao=Incluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+        <form action="ManterContaBancoController?acao=prepararOperacao&operacao=Incluir" method="post">
+            <input type="submit" name="btnIncluir" value="Incluir" class="button">
         </form>
-        <a href="index.jsp">home</a>
+        <a href="index.jsp" class="homelink">home</a>
     </body>
 </html>

@@ -11,7 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Listar Marcas</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <h1>Pesquisa de marcas</h1>
@@ -31,8 +32,8 @@
             </c:forEach>
         </table>
         <form action="ManterMarcaController?acao=prepararOperacao&operacao=Incluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input type="submit" name="btnIncluir" value="Incluir" class="button">
         </form>
-        <a href="index.jsp">home</a>
+        <a href="index.jsp" class="homelink">Home</a>
     </body>
 </html>

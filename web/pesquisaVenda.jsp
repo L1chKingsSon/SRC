@@ -7,6 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Vendas</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <h1>Pesquisa de Vendas</h1>
@@ -30,8 +31,8 @@
             </c:forEach>
         </table>
         <form action="ManterVendaController?acao=prepararOperacao&operacao=Incluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input type="submit" name="btnIncluir" value="Incluir" class="button">
         </form>           
-        <a href="index.jsp">home</a>
+        <a href="index.jsp" class="homelink">home</a>
     </body>
 </html>

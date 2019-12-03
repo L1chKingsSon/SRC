@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Carros</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <h1>Pesquisa de Carros</h1>
@@ -52,8 +53,8 @@
             </c:forEach>
         </table>
         <form action="ManterCarroController?acao=prepararOperacao&operacao=Incluir" method="post">
-         <button type="submit">Confirmar</button></td>
+            <input type="submit" name="btnIncluir" value="Incluir" class="button">
         </form>
-        <a href="index.jsp">home</a>
+        <a href="index.jsp" class="homelink">home</a>
     </body>
 </html>
