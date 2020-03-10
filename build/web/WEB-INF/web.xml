@@ -108,6 +108,10 @@
         <servlet-name>TratamentoExcecao</servlet-name>
         <servlet-class>exception.TratamentoExcecao</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioController</servlet-name>
+        <servlet-class>relatorio.RelatorioController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaMarcaController</servlet-name>
         <url-pattern>/PesquisaMarcaController</url-pattern>
@@ -216,17 +220,21 @@
         <servlet-name>PesquisaReservaController</servlet-name>
         <url-pattern>/PesquisaReservaController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioController</servlet-name>
+        <url-pattern>/RelatorioController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-     <error-page>
+    <error-page>
         <error-code>404</error-code>
-             <location>/TratamentoExcecao</location>
-         </error-page>
-        <error-page>
-            <exception-type>java.lang.Exception</exception-type>
-            <location>/TratamentoExcecao</location>
-        </error-page>
+        <location>/TratamentoExcecao</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/TratamentoExcecao</location>
+    </error-page>
 </web-app>
