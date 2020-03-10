@@ -38,7 +38,9 @@ and open the template in the editor.
         <a href="PesquisaVendaController">Manter Vendas</a>
         <br>
         <a href="PesquisaNotaFiscalController">Manter Notas Fiscais</a>
-
+        <br>
+        <a href="RelatorioController">Relatorio</a>
+        
 
     </body>
 </html>
