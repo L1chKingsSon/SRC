@@ -144,18 +144,18 @@
                 if (!campoNumerico(form.txtId.value)) {
                     mensagem = mensagem + "Código do carro deve ser numérico\n";
                 }
-                if (!campoNumerico(form.txtValorComprado.value)) {
-                    mensagem = mensagem + "Valor que o carro foi comprado deve ser numérico\n";
-                }
+//                if (!campoNumerico(form.txtValorComprado.value)) {
+//                    mensagem = mensagem + "Valor que o carro foi comprado deve ser numérico\n";
+//                }
                 if (!campoNumerico(form.txtSelect_Modelo.value)) {
                     mensagem = mensagem + "Código do modelo deve ser numérico\n";
                 }
                 if (!campoNumerico(form.txtSelect_Estacionamento.value)) {
                     mensagem = mensagem + "Código do estacionamento deve ser numérico\n";
                 }
-                if (!campoNumerico(form.txtValorVenda.value)) {
-                    mensagem = mensagem + "Valor de venda do carro deve ser numérico\n";
-                }
+//                if (!campoNumerico(form.txtValorVenda.value)) {
+//                    mensagem = mensagem + "Valor de venda do carro deve ser numérico\n";
+//                }
                 if (mensagem == "") {
                     return true;
                 } else {

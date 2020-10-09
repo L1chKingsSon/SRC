@@ -57,7 +57,7 @@ public class NotaFiscalDAO {
                 rs.getInt("id"),
                 rs.getString("data"),
                 rs.getDouble("valor"),
-                rs.getBoolean("transacao"),
+                rs.getString("transacao"),
                 null,
                 null);
         notaFiscal.setIdPrimariaFuncionario(rs.getInt("id_Funcionario"));
@@ -76,7 +76,7 @@ public class NotaFiscalDAO {
             comando.setLong(1, notaFiscal.getId());
             comando.setString(2, notaFiscal.getData());
             comando.setDouble(3, notaFiscal.getValor());
-            comando.setBoolean(4, notaFiscal.getTransacao());
+            comando.setString(4, notaFiscal.getTransacao());
             comando.setLong(5, notaFiscal.getFuncionario().getId());
             comando.setLong(6, notaFiscal.getCliente().getId());
             comando.executeUpdate();
@@ -95,7 +95,7 @@ public class NotaFiscalDAO {
             comando = conexao.createStatement();
             stringSQL = "update notafiscal set data= '"+ notaFiscal.getData() +"', "
                     + "valor= '"+ notaFiscal.getValor() +"', "
-                    + "Transacao= "+ notaFiscal.getTransacao() +" , ";
+                    + "Transacao= '"+ notaFiscal.getTransacao() +"' , ";
             if(notaFiscal.getFuncionario() == null){
                 stringSQL += "id_Funcionario = null" + ", ";
             } else {

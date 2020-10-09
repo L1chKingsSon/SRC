@@ -20,14 +20,14 @@ public class NotaFiscal {
     private long id;
     private String data;
     private double valor;
-    private Boolean transacao;
+    private String transacao;
     private Funcionario funcionario;
     private Cliente cliente;
     
     private int idPrimariaFuncionario;
     private int idPrimariaCliente;
 
-    public NotaFiscal(long id, String data, double valor, Boolean transacao, 
+    public NotaFiscal(long id, String data, double valor, String transacao, 
             Funcionario funcionario, Cliente cliente) {
         this.id = id;
         this.data = data;
@@ -37,11 +37,11 @@ public class NotaFiscal {
         this.cliente = cliente;
     }
 
-    public Boolean getTransacao() {
+    public String getTransacao() {
         return transacao;
     }
 
-    public void setTransacao(Boolean transacao) {
+    public void setTransacao(String transacao) {
         this.transacao = transacao;
     }
 

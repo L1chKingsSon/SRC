@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td>Data</td>
-                        <td><input type="date" name="txtData" value="${notaFiscal.data}" placeholder="MM/DD/AAAA" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
+                        <td><input type="number" name="txtData" value="${notaFiscal.data}" placeholder="MM/DD/AAAA" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> ></td>
                     </tr>
                     <tr>
                         <td>Valor</td>
@@ -32,8 +32,8 @@
                     <tr>
                         <td>Tipo Transação</td>
                         <td><select name="Select_transacao" <c:if test="${operacao == 'Excluir'}"> readonly </c:if> >
-                                <option value=true>Venda</option>
-                                <option value=false>Compra</option>
+                                <option value='VENDA' <c:if test="${notaFiscal.transacao == 'VENDA'}"> selected</c:if> >Venda</option>
+                                <option value='COMPRA' <c:if test="${notaFiscal.transacao == 'COMPRA'}"> selected</c:if> >Compra</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -90,9 +90,9 @@
                 if (form.txtValor.value == "") {
                     mensagem = mensagem + "Informe um Valor!\n";
                 }
-                if (!campoNumerico(form.txtValor.value)) {
-                    mensagem = mensagem + "Valor deve ser Numérico!\n";
-                }
+//                if (!campoNumerico(form.txtValor.value)) {
+//                    mensagem = mensagem + "Valor deve ser Numérico!\n";
+//                }
                 if (!campoNumerico(form.txtId.value)) {
                     mensagem = mensagem + "Id deve ser Númerico!\n";
                 }
