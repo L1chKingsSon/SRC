@@ -23,7 +23,9 @@ public class Reserva {
 
     private long id;
     private String cor;
+    @OneToMany
     private Modelo modelo;
+    @OneToMany
     private Cliente cliente;
     private int idPrimariaModelo;
     private int idPrimariaCliente;

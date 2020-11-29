@@ -21,7 +21,9 @@ public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String telefone;
+    @OneToMany
     private Endereco endereco;
+    @ManyToOne
     private ContaBanco contaBanco;
     private int idPrimariaEndereco;
     private int idPrimariaContaBanco;

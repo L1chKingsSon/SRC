@@ -20,9 +20,9 @@ import java.util.List;
 public class Estacionamento {
     @Id
     @GeneratedValue
-
     private int id;
     private int numeroVagas;
+    @OneToOne
     private Endereco endereco;
     private int idPrimariaEndereco;
 

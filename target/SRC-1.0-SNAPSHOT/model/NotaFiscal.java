@@ -23,7 +23,9 @@ public class NotaFiscal {
     private String data;
     private double valor;
     private String transacao;
+    @OneToMany
     private Funcionario funcionario;
+    @OneToMany
     private Cliente cliente;
     
     private int idPrimariaFuncionario;

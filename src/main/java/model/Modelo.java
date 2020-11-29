@@ -23,6 +23,7 @@ public class Modelo {
 
     private int id;
     private String nome;
+    @OneToMany
     private Marca marca;
     private int idPrimariaMarca;
 

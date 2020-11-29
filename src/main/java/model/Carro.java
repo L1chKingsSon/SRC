@@ -6,7 +6,6 @@
 package model;
 
 import dao.DAO;
-import org.hibernate.annotations.Entity;
 import javax.persistence.*;
 
 import java.sql.SQLException;
@@ -30,7 +29,9 @@ public class Carro {
     private String garantia;
     private double valorComprado;
     private double valorVenda;
+    @OneToMany
     private Modelo modelo;
+    @OneToMany
     private Estacionamento estacionamento;
     
     private int idPrimariaEstacionamento;

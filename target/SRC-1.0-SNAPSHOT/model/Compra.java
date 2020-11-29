@@ -25,6 +25,7 @@ public class Compra {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         private int id;
+        @ManyToOne
         private Carro carro;
         private int idPrimariaCarro;
         

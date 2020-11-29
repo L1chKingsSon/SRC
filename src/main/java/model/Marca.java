@@ -7,7 +7,6 @@
 package model;
 
 import dao.DAO;
-import org.hibernate.annotations.Entity;
 import javax.persistence.*;
 import java.sql.SQLException;
 import java.util.List;

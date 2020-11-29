@@ -22,7 +22,9 @@ public class Item {
     @GeneratedValue
 
     private int id;
+    @ManyToOne
     private Carro carro;
+    @OneToMany
     private NotaFiscal notaFiscal;
     private int idPrimariaNotaFiscal;
     private int idPrimariaCarro;
