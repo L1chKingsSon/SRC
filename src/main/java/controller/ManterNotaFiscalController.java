@@ -106,7 +106,7 @@ public class ManterNotaFiscalController extends HttpServlet {
             request.setAttribute("clientes", Cliente.obterClientes());
             if(!operacao.equals("Incluir")){
                 int id = Integer.parseInt(request.getParameter("id"));
-                NotaFiscal notaFiscal = NotaFiscal.obterNotaFiscal((long) id);
+                NotaFiscal notaFiscal = NotaFiscal.obterNotaFiscal(id);
                 request.setAttribute("notaFiscal", notaFiscal);
             }
             RequestDispatcher view = request.getRequestDispatcher("/cadastrarNotaFiscal.jsp");

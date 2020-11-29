@@ -25,13 +25,14 @@
                     <webXml>web/WEB-INF/web.xml</webXml>
                     <webResources>
                         <resource>
-                            <directory>src/main/java/</directory>
+                            <directory>web/</directory>
                             <filtering>true</filtering>
                         </resource>
                     </webResources>
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
 
     <dependencies>
@@ -63,6 +64,13 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
         </dependency>
+
+<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
 
     </dependencies>
 </project>

@@ -29,13 +29,16 @@ public class Carro {
     private String garantia;
     private double valorComprado;
     private double valorVenda;
-    @OneToMany
+
+    @ManyToOne
     private Modelo modelo;
-    @OneToMany
+    @ManyToOne
     private Estacionamento estacionamento;
     
     private int idPrimariaEstacionamento;
     private int idPrimariaModelo;
+
+    public Carro(){}
 
     public Carro(int id, String placa, String chassi, String ano, String cor, String IPVA, String seguro, String garantia, double valorComprado, double valorVenda, Modelo modelo, Estacionamento estacionamento) {
 
@@ -178,7 +181,7 @@ public class Carro {
         return DAO.findAll(Carro.class);
     }
 
-    public static Carro obterCarro(Long codCarro) throws ClassNotFoundException, SQLException {
+    public static Carro obterCarro(int codCarro) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Carro) DAO.findOne(codCarro, Carro.class);
     }

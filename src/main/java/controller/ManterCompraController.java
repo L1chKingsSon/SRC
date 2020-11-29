@@ -54,7 +54,7 @@ public class ManterCompraController extends HttpServlet {
         try {
             Carro carro = null;
             if(idCarro != 0){
-                carro = Carro.obterCarro((long) idCarro);
+                carro = Carro.obterCarro(idCarro);
             }
             Compra compra = new Compra(id, carro);
 

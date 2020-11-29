@@ -20,15 +20,17 @@ import java.util.List;
 public class Reserva {
     @Id
     @GeneratedValue
-
     private long id;
+
     private String cor;
-    @OneToMany
+    @ManyToOne
     private Modelo modelo;
-    @OneToMany
+    @ManyToOne
     private Cliente cliente;
     private int idPrimariaModelo;
     private int idPrimariaCliente;
+
+    public Reserva(){}
 
     public Reserva(long id, String cor, Modelo modelo, Cliente cliente) {
         this.id = id;
@@ -96,7 +98,7 @@ public class Reserva {
         return DAO.findAll(Reserva.class);
     }
 
-    public static Reserva obterReserva(long codReserva) throws ClassNotFoundException, SQLException {
+    public static Reserva obterReserva(int codReserva) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Reserva) DAO.findOne(codReserva, Reserva.class);
     }

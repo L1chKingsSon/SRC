@@ -18,6 +18,9 @@ import java.util.List;
  */
 @Entity
 public class Cliente extends Pessoa {
+    public Cliente(){
+        super();
+    }
 
     public Cliente(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
         super(id, nome, cpf, telefone, endereco, contaBanco);
@@ -29,7 +32,7 @@ public class Cliente extends Pessoa {
         return DAO.findAll(Cliente.class);
     }
 
-    public static Cliente obterCliente(long codCliente) throws ClassNotFoundException, SQLException {
+    public static Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Cliente) DAO.findOne(codCliente, Cliente.class);
     }

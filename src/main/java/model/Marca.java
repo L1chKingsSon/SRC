@@ -21,7 +21,9 @@ public class Marca {
     @GeneratedValue
     private int id;
     private String nome;
-    private dao.DAO DAO = new DAO();
+
+    public Marca(){}
+
     public Marca(int id, String nome) {
         this.id = id;
         this.nome = nome;
@@ -48,7 +50,7 @@ public class Marca {
         return DAO.findAll(Marca.class);
     }
 
-    public static Marca obterMarca(long codMarca) throws ClassNotFoundException, SQLException {
+    public static Marca obterMarca(int codMarca) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Marca) DAO.findOne(codMarca, Marca.class);
     }

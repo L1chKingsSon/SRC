@@ -20,12 +20,14 @@ import java.util.List;
 public class ContaBanco {
     @Id
     @GeneratedValue
-
     private long id;
+
     private String nome;
     private String agencia;
     private String conta;
     private String tipo;
+
+    public ContaBanco(){}
 
     public ContaBanco(long id, String agencia, String conta, String tipo, String nome) {
         this.id = id;
@@ -80,7 +82,7 @@ public class ContaBanco {
         return DAO.findAll(ContaBanco.class);
     }
 
-    public static ContaBanco obterConta(long codConta) throws ClassNotFoundException, SQLException {
+    public static ContaBanco obterConta(int codConta) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (ContaBanco) DAO.findOne(codConta, ContaBanco.class);
     }

@@ -59,11 +59,11 @@ public class ManterItemController extends HttpServlet {
         try {
             NotaFiscal notaFiscal = null;
             if (idNotaFiscal != 0) {
-                notaFiscal = NotaFiscal.obterNotaFiscal((long) idNotaFiscal);
+                notaFiscal = NotaFiscal.obterNotaFiscal(idNotaFiscal);
             }
             Carro carro = null;
             if (idCarro != 0){
-                carro = Carro.obterCarro((long) idCarro);
+                carro = Carro.obterCarro(idCarro);
             }
             Item item = new Item(id, carro, notaFiscal);
             if (operacao.equals("Incluir")) {

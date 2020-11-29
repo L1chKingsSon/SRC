@@ -24,10 +24,12 @@ public class Item {
     private int id;
     @ManyToOne
     private Carro carro;
-    @OneToMany
+    @ManyToOne
     private NotaFiscal notaFiscal;
     private int idPrimariaNotaFiscal;
     private int idPrimariaCarro;
+
+    public Item(){}
 
     public Item(int id, Carro carro, NotaFiscal notaFiscal) {
         this.id = id;
@@ -35,13 +37,13 @@ public class Item {
         this.notaFiscal = notaFiscal;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     
     public Carro getCarro() throws SQLException, ClassNotFoundException{
         if((this.idPrimariaCarro != 0) && (this.carro == null)){
-            this.carro = Carro.obterCarro((long) idPrimariaCarro);
+            this.carro = Carro.obterCarro(idPrimariaCarro);
         }
         return carro;
     }
@@ -64,7 +66,7 @@ public class Item {
 
     public NotaFiscal getNotaFiscal() throws SQLException, ClassNotFoundException{
         if((this.idPrimariaNotaFiscal != 0) && (this.notaFiscal == null)){
-            this.notaFiscal = NotaFiscal.obterNotaFiscal((long) idPrimariaNotaFiscal);
+            this.notaFiscal = NotaFiscal.obterNotaFiscal(idPrimariaNotaFiscal);
         }
         return notaFiscal;
     }
@@ -85,7 +87,7 @@ public class Item {
         DAO DAO = new DAO();
         return DAO.findAll(Item.class);
     }
-    public static Item obterItem(long codItem) throws ClassNotFoundException, SQLException{
+    public static Item obterItem(int codItem) throws ClassNotFoundException, SQLException{
         DAO DAO = new DAO();
         return (Item) DAO.findOne(codItem, Item.class);
     }

@@ -20,8 +20,8 @@ import java.util.List;
 public class Endereco {
     @Id
     @GeneratedValue
-
     private int id;
+
     private String cep;
     private String uf;
     private String cidade;
@@ -29,6 +29,10 @@ public class Endereco {
     private String logradouro;
     private String numero;
     private String complemento;
+    @OneToOne
+    private Estacionamento estacionamento;
+
+    public Endereco(){}
 
     public Endereco(int id, String cep, String uf, String cidade, String bairro, String logadouro, String numero, String complemento) {
         this.id = id;
@@ -110,7 +114,7 @@ public class Endereco {
         return DAO.findAll(Endereco.class);
     }
 
-    public static Endereco obterEndereco(long codEndereco) throws ClassNotFoundException, SQLException {
+    public static Endereco obterEndereco(int codEndereco) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Endereco) DAO.findOne(codEndereco, Endereco.class);
     }

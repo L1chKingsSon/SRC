@@ -96,7 +96,7 @@ public class ManterMarcaController extends HttpServlet {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
             if(!operacao.equals("Incluir")){
-                Long idMarca = Long.parseLong(request.getParameter("id"));
+                int idMarca = Integer.parseInt(request.getParameter("id"));
                 Marca marca = Marca.obterMarca(idMarca);
                 request.setAttribute("marca", marca); //nome que vai devolver para o browser
             }

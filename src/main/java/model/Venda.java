@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
  * @author Raphael
  */
 @Entity
@@ -21,22 +20,25 @@ public class Venda {
 
     @Id
     @GeneratedValue
+    private int id;
+
+    @ManyToOne
+    private Carro carro;
+
+    private int idPrimariaCarro;
+
+    public Venda(){}
+
+    public Venda(int id, Carro carro) {
+        this.id = id;
+        this.carro = carro;
+    }
 
     public static Object obterVenda() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-        private int id;
-        @OneToOne
-        private Carro carro;
-        private int idPrimariaCarro;
-        
-        public Venda(int id, Carro carro)
-        {
-            this.id = id;
-            this.carro = carro;
-        } 
 
-     public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -45,8 +47,8 @@ public class Venda {
     }
 
     public Carro getCarro() throws ClassNotFoundException, SQLException {
-        if((this.idPrimariaCarro != 0) && (this.carro == null)){
-        this.carro = Carro.obterCarro((long) idPrimariaCarro);
+        if ((this.idPrimariaCarro != 0) && (this.carro == null)) {
+            this.carro = Carro.obterCarro(idPrimariaCarro);
         }
         return carro;
     }
@@ -56,9 +58,8 @@ public class Venda {
     }
 
     public int getIdPrimariaCarro() throws ClassNotFoundException, SQLException {
-        if((this.idPrimariaCarro != 0) && (this.carro == null))
-        {
-            this.carro = Carro.obterCarro((long) idPrimariaCarro);
+        if ((this.idPrimariaCarro != 0) && (this.carro == null)) {
+            this.carro = Carro.obterCarro(idPrimariaCarro);
         }
         return idPrimariaCarro;
     }
@@ -66,13 +67,13 @@ public class Venda {
     public void setIdPrimariaCarro(int idPrimariaCarro) {
         this.idPrimariaCarro = idPrimariaCarro;
     }
-        
+
     public static List<Object> obterVendas() throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return DAO.findAll(Venda.class);
     }
 
-    public static Venda obterVenda(long codVenda) throws ClassNotFoundException, SQLException {
+    public static Venda obterVenda(int codVenda) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Venda) DAO.findOne(codVenda, Venda.class);
     }
@@ -82,12 +83,12 @@ public class Venda {
         DAO.save(this);
     }
 
-    public void excluir() throws ClassNotFoundException, SQLException{
+    public void excluir() throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         DAO.delete(this);
     }
 
-    public void alterar() throws ClassNotFoundException, SQLException{
+    public void alterar() throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         DAO.update(this);
     }

@@ -20,12 +20,13 @@ import java.util.List;
 public class Modelo {
     @Id
     @GeneratedValue
-
     private int id;
     private String nome;
-    @OneToMany
+    @ManyToOne
     private Marca marca;
     private int idPrimariaMarca;
+
+    public Modelo(){}
 
     public Modelo(int id, String nome, Marca marca) {
         this.id = id;
@@ -76,7 +77,7 @@ public class Modelo {
         return DAO.findAll(Modelo.class);
     }
 
-    public static Modelo obterModelo(long codModelo) throws ClassNotFoundException, SQLException {
+    public static Modelo obterModelo(int codModelo) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Modelo) DAO.findOne(codModelo, Modelo.class);
     }

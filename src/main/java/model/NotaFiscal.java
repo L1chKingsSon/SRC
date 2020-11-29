@@ -23,13 +23,14 @@ public class NotaFiscal {
     private String data;
     private double valor;
     private String transacao;
-    @OneToMany
+    @ManyToOne
     private Funcionario funcionario;
-    @OneToMany
+    @ManyToOne
     private Cliente cliente;
     
     private int idPrimariaFuncionario;
     private int idPrimariaCliente;
+    public NotaFiscal(){}
 
     public NotaFiscal(long id, String data, double valor, String transacao, 
             Funcionario funcionario, Cliente cliente) {
@@ -78,7 +79,7 @@ public class NotaFiscal {
         return DAO.findAll(NotaFiscal.class);
     }
 
-    public static NotaFiscal obterNotaFiscal(Long codNotaFiscal) throws ClassNotFoundException, SQLException {
+    public static NotaFiscal obterNotaFiscal(int codNotaFiscal) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (NotaFiscal) DAO.findOne(codNotaFiscal, NotaFiscal.class);
     }

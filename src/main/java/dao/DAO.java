@@ -50,7 +50,7 @@ public class DAO {
         return Optional.empty();
     }
 
-    public Object findOne(Long key, Class c){
+    public Object findOne(int key, Class c){
         SessionFactory factory = this.getSessionFactory();
         Session session = factory.openSession();
 

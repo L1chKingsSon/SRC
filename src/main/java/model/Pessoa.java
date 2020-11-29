@@ -18,15 +18,19 @@ public abstract class Pessoa {
     @Id
     @GeneratedValue
     private int id;
+
     private String nome;
     private String cpf;
     private String telefone;
-    @OneToMany
+
+    @ManyToOne
     private Endereco endereco;
     @ManyToOne
     private ContaBanco contaBanco;
+
     private int idPrimariaEndereco;
     private int idPrimariaContaBanco;
+    public Pessoa(){}
 
     public Pessoa(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco) {
         this.id = id;

@@ -52,7 +52,7 @@ public class ManterModeloController extends HttpServlet {
         
         int id = Integer.parseInt(request.getParameter("txtId"));
         String nome = request.getParameter("txtNome");
-        Long marcaCarro = Long.parseLong(request.getParameter("txtSelect_marca"));
+        int marcaCarro = Integer.parseInt(request.getParameter("txtSelect_marca"));
 
         try {
             Marca marca = null;

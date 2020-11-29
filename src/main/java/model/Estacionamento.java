@@ -21,10 +21,13 @@ public class Estacionamento {
     @Id
     @GeneratedValue
     private int id;
+
     private int numeroVagas;
     @OneToOne
     private Endereco endereco;
     private int idPrimariaEndereco;
+
+    public Estacionamento(){}
 
     public Estacionamento(int id, int numeroVagas, Endereco endereco) {
         this.id = id;
@@ -72,7 +75,7 @@ public class Estacionamento {
         return DAO.findAll(Estacionamento.class);
     }
 
-    public static Estacionamento obterEstacionamento(long codEstacionamento) throws ClassNotFoundException, SQLException {
+    public static Estacionamento obterEstacionamento(int codEstacionamento) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Estacionamento) DAO.findOne(codEstacionamento, Estacionamento.class);
     }

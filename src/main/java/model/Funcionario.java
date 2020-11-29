@@ -18,13 +18,13 @@ import java.util.List;
  */
 @Entity
 public class Funcionario extends Pessoa {
-    @Id
-    @GeneratedValue
 
     private int salario;
     private String login;
     private String senha;
     private Boolean nivelAcesso;
+
+    public Funcionario(){}
 
     public Funcionario(int id, String nome, String cpf, String telefone, Endereco endereco, ContaBanco contaBanco, int salario, String login, String senha, Boolean nivelAcesso) {
         super(id, nome, cpf, telefone, endereco, contaBanco);
@@ -73,7 +73,7 @@ public class Funcionario extends Pessoa {
         return DAO.findAll(Funcionario.class);
     }
 
-    public static Funcionario obterFuncionario(long codFuncionario) throws ClassNotFoundException, SQLException {
+    public static Funcionario obterFuncionario(int codFuncionario) throws ClassNotFoundException, SQLException {
         DAO DAO = new DAO();
         return (Funcionario) DAO.findOne(codFuncionario, Funcionario.class);
     }
