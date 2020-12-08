@@ -20,9 +20,20 @@ import net.sf.jasperreports.engine.JasperPrint;
 
 public class Relatorio1Controller extends HttpServlet {
 
+//    protected void alerta(){System.out.println("EITA");}
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        System.out.println("AlertaprocessRequest");
+        String acao = request.getParameter("acao");
+        if (acao.equals("emitir")) {
+                emitir(request, response);
+        }
+    }
+
+    protected void emitir(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Connection conexao = null;
+//        System.out.println("AlertaEmitir");
         try {
             DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy_HHmmss");
             Date date = new Date();

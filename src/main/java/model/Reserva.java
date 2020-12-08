@@ -20,7 +20,7 @@ import java.util.List;
 public class Reserva {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     private String cor;
     @ManyToOne
@@ -32,7 +32,7 @@ public class Reserva {
 
     public Reserva(){}
 
-    public Reserva(long id, String cor, Modelo modelo, Cliente cliente) {
+    public Reserva(int id, String cor, Modelo modelo, Cliente cliente) {
         this.id = id;
         this.cor = cor;
         this.modelo = modelo;
@@ -59,7 +59,7 @@ public class Reserva {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

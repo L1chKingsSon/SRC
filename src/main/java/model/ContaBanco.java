@@ -20,7 +20,7 @@ import java.util.List;
 public class ContaBanco {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     private String nome;
     private String agencia;
@@ -29,7 +29,7 @@ public class ContaBanco {
 
     public ContaBanco(){}
 
-    public ContaBanco(long id, String agencia, String conta, String tipo, String nome) {
+    public ContaBanco(int id, String agencia, String conta, String tipo, String nome) {
         this.id = id;
         this.agencia = agencia;
         this.conta = conta;
@@ -41,7 +41,7 @@ public class ContaBanco {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

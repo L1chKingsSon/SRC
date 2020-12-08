@@ -39,13 +39,13 @@ and open the template in the editor.
         <br>
         <a href="PesquisaNotaFiscalController">Manter Notas Fiscais</a>
         <br>
-        <a href="Relatorio1Controller?acao=emitir">Relatório 1 (TODOS os modelos e carros)</a>
+        <a href="Relatorio1Controller?acao=emitir">Relatorio 1 (TODOS os modelos e carros)</a>
         <br>
-        <a href="Relatorio2Controller?acao=filtrar">Relatório 2 (FILTRO com modelos de carros)</a>
+        <a href="Relatorio2Controller?acao=filtrar">Relatorio 2 (FILTRO com modelos de carros)</a>
         <br>
-        <a href="Relatorio3Controller?acao=emitir">Relatório 3 (TODOS os carros)</a>
+        <a href="Relatorio3Controller?acao=emitir">Relatorio 3 (TODOS os carros)</a>
         <br>
-        <a href="Relatorio4Controller?acao=filtrar">Relatório 4 (FILTRO com modelos ou marcas de carros)</a>
+        <a href="Relatorio4Controller?acao=filtrar">Relatorio 4 (FILTRO com modelos ou marcas de carros)</a>
         
 
     </body>

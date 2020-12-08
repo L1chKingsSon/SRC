@@ -27,7 +27,7 @@ public class RelatorioController extends HttpServlet {
  Connection conexao = null;
         try {
 //            Class.forName("com.mysql.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost/srcbd", "root", "");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost/SRC", "root", "password");
             HashMap parametros = new HashMap();
 //            parametros.put("PAR_codCurso", Integer.parseInt(request.getParameter("txtCodCurso")));
             String relatorio = getServletContext().getRealPath("java/relatorio")+"/report8.jasper";

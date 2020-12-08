@@ -22,6 +22,15 @@ public class Relatorio3Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String acao = request.getParameter("acao");
+        if (acao.equals("emitir")) {
+            emitir(request, response);
+
+        }
+    }
+
+    protected void emitir(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         Connection conexao = null;
         try {
             DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy_HHmmss");

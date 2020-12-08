@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="iText-2.1.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Downloads/drive-download-20201207T113439Z-001/iText-2.1.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

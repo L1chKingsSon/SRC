@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-collections4-4.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Downloads/lib-20201208T023248Z-001/lib/commons-collections4-4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/lib-20201208T023248Z-001/lib/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/lib-20201208T023248Z-001/lib/commons-logging-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

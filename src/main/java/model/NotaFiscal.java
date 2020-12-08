@@ -19,7 +19,7 @@ import java.util.List;
 public class NotaFiscal {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
     private String data;
     private double valor;
     private String transacao;
@@ -32,7 +32,7 @@ public class NotaFiscal {
     private int idPrimariaCliente;
     public NotaFiscal(){}
 
-    public NotaFiscal(long id, String data, double valor, String transacao, 
+    public NotaFiscal(int id, String data, double valor, String transacao,
             Funcionario funcionario, Cliente cliente) {
         this.id = id;
         this.data = data;
@@ -54,7 +54,7 @@ public class NotaFiscal {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
